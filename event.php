@@ -3,6 +3,12 @@ if(!isset($_SESSION))
 {
     session_start();
 }
+if (empty($_SESSION['loginID'])) {
+    header('Location: login.php?message=login first!');
+    die();
+}
+
+
 require_once 'includes/dbh.inc.php';
 global $pdo;
 require 'tools/error.tool.php';
@@ -130,13 +136,13 @@ if ($creator['id'] == $_SESSION['loginID']) {
             <input type="submit" value="DELETE" class="orange_button delete_button">
         </form>
     <?php }
-    if (!$already_joined) { ?>
+    if (!$already_joined && !$is_creator) { ?>
         <form action="includes/add_user_to_event_handler.inc.php" class="join_content" method="POST">
             <input type="hidden" name="event_id" value="<?php echo $_GET['id']?>">
             <input type="hidden" name="user_id" value="<?php echo $_SESSION['loginID']?>">
             <input <?php echo $max_people == $registered_people ? 'disabled' : '' ?> type="submit" value="JOIN" class="orange_button join_button">
         </form>
-    <?php } else { ?>
+    <?php } else if (!$is_creator) { ?>
         <form action="includes/remove_user_from_event_handler.inc.php" method="POST">
             <input type="hidden" name="event_id" value="<?php echo $_GET['id']?>">
             <input type="hidden" name="user_id" value="<?php echo $_SESSION['loginID']?>">
@@ -155,10 +161,6 @@ if ($creator['id'] == $_SESSION['loginID']) {
     </div>
 
     <div class="participants">
-        <?php
-        if (empty($participants)) { ?>
-            <div class="zero_participants">There are no participants yet :( <br> Become first!</div>
-        <?php } ?>
         <div class="title">participants</div>
         <?php
         foreach ($participants as $user) { ?>
@@ -167,7 +169,10 @@ if ($creator['id'] == $_SESSION['loginID']) {
                 <div class="name"><?php echo $user['username'] ?></div>
             </a>
         <?php }
-        ?>
+
+        if (empty($participants)) { ?>
+            <div class="zero_participants">There are no participants yet :( <br> Become first!</div>
+        <?php } ?>
 
 
     </div>

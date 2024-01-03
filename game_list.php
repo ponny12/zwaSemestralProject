@@ -225,8 +225,6 @@ try {
             <div class="sorted">
                 <label for="sorted_by_select">sorted by</label>
                 <select name="sorted_by" id="sorted_by_select" class="sorted_by_select">
-                    <option value="event_time" <?php if ($sorted_by == 'event_time') echo 'selected' ?>>date</option>
-                    <option value="max_people" <?php if ($sorted_by == 'max_people') echo 'selected' ?>>max people</option>
                     <option value="name" <?php if ($sorted_by == 'name') echo 'selected' ?>>name of game</option>
                 </select>
                 <label for="order"></label>
@@ -243,7 +241,7 @@ try {
                     <option value="pico" <?php if ($platform == 'pico') echo 'selected' ?>>PICO</option>
                     <option value="pcvr" <?php if ($platform == 'pcvr') echo 'selected' ?>>PC VR</option>
                 </select>
-                <label for="items_per_page">events on one page</label>
+                <label for="items_per_page">games on one page</label>
                 <select name="items_per_page" id="items_per_page" class="filter">
                     <option value="2" <?php if ($items_per_page == '2') echo 'selected' ?>>2</option>
                     <option value="5" <?php if ($items_per_page == '5') echo 'selected' ?>>5</option>

@@ -272,8 +272,8 @@ header {
 
 .textnew .hot {
 	color: #FF7D00;
-    font-size: 1.5em;
-    letter-spacing: normal;
+    letter-spacing: 0.5rem;
+    font-family: 'Moul', serif;
 }
 
 .menu {
