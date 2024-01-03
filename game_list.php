@@ -267,7 +267,7 @@ try {
 
     foreach ($games as $game) { ?>
 
-        <a href="game.php?game_id=<?php echo $game['id'] ?>" title="<?php echo $game['description'] ?>" class="item">
+        <a href="game.php?id=<?php echo $game['id'] ?>" title="<?php echo $game['description'] ?>" class="item">
             <div class="group">
                 <img src="<?php echo $game['img_small'] ?>" alt="game_image">
 

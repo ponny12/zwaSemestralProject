@@ -312,7 +312,7 @@ try {
             $dateTIME = date( 'H:i', $php_date );
 
             ?>
-            <a href="event.php?event_id=<?php echo $event['event_id'] ?>" class="item">
+            <a href="event.php?id=<?php echo $event['event_id'] ?>" class="item">
                 <img src="<?php echo $event['img_big'] ?>" alt="game_image">
                 <div class="text_section">
                     <div class="title"><?php

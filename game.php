@@ -6,11 +6,11 @@ require 'includes/dbh.inc.php';
 global $pdo;
 
 # check GET and set game_id from it
-if (!isset($_GET['game_id']) || $_GET['game_id'] == '') {
+if (!isset($_GET['id']) || $_GET['id'] == '') {
     header('Location: index.php');
     die();
 } else {
-    $game_id = $_GET['game_id'];
+    $game_id = $_GET['id'];
 }
 # select game from db
 try {

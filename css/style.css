@@ -39,7 +39,9 @@ body {
     color: #ffffff;
     background-color: #FF7D00;
     padding: 0.3rem 0.5rem;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 .orange_button:hover {
     position: relative;
@@ -844,56 +846,146 @@ footer {
 /*---------------------------------------EVENT PAGE---------------------------------*/
 
 .event_content {
-    width: 85%;
-    margin: 8rem auto 0;
-    padding: 1.5rem;
-
+    width: 60%;
+    margin: 3rem auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     
     color: #15616D;
-    border: #15616D 3px solid;
-    border-radius: 10px;
 }
 
 .event_content .container {
+    width: 100%;
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
     /* align-items: center; */
 }
 
 .event_content .container img {
     width: 7rem;
+    height: 7rem;
     border: #15616D 2px solid;
     border-radius: 5px;
 }
 
-/* .event_content .container .text_section {
-
-} */
+.event_content .container .text_section {
+    width: 100%;
+}
 
 .event_content .container .text_section .title {
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #15616D;
 }
 
 .event_content .container .info_section {
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
 }
 
 .event_content .container .info_section .counter {
-    font-weight: 500;
-    font-size: 2rem;
+    font-weight: 600;
+    font-size: 3rem;
+}
+
+.event_content .container .info_section .datetime_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.event_content .container .info_section .datetime_section .datetime {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-wrap: avoid;
 }
 
 .event_content .container .info_section .datetime {
     font-size: 1.3rem;
 }
 
+.event_content .delete_content {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem;
+}
+.event_content .delete_content .delete_button {
+    background-color: #fd3f3f;
+}
+.event_content .delete_content .delete_button {
+    background-color: #fd3f3f;
+}
 
+.event_content .join_content .join_button:disabled {
+     background-color: silver;
+}
+.event_content .join_content .join_button:disabled:hover {
+    bottom: 0;
+    cursor: default;
+}
+
+.event_content .created_by {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem;
+    color: #15616D;
+}
+.event_content .created_by .title {
+    color: silver;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.event_content .created_by .creator {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+.event_content .created_by .creator img {
+    height: 90%;
+}
+.event_content .created_by .creator .name {
+    color: #15616D;
+    font-size: 1.5rem;
+}
+.event_content .created_by .creator:hover {
+    background-color: #d8d8d8;
+}
+
+.event_content .participants {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.event_content .participants .title {
+    color: silver;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.event_content .participants .user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+
+    color: #15616D;
+}
+.event_content .participants .user:hover {
+    background-color: #d8d8d8;
+}
+.event_content .participants .user .name {
+    font-size: 1.5rem;
+}
 
 
 
