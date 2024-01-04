@@ -120,13 +120,13 @@ try {
                                         FROM events e 
                                         JOIN games g ON e.game_id = g.id
                                         LEFT JOIN games_platforms p ON g.id = p.id
-                                        WHERE (g.name LIKE "%'.$sanitized_search.'%" OR g.description LIKE "%'.$sanitized_search.'%")');
+                                        WHERE (g.name LIKE "%'.$sanitized_search.'%" OR g.description LIKE "%'.$sanitized_search.'%" OR e.description LIKE "%'.$sanitized_search.'%")');
     } else {
         $stmt = $pdo->query('SELECT COUNT(*)
                                         FROM events e 
                                         JOIN games g ON e.game_id = g.id
                                         LEFT JOIN games_platforms p ON g.id = p.id
-                                        WHERE (g.name LIKE "%'.$sanitized_search.'%" OR g.description LIKE "%'.$sanitized_search.'%") AND p.'.$platform.' = 1');
+                                        WHERE (g.name LIKE "%'.$sanitized_search.'%" OR g.description LIKE "%'.$sanitized_search.'%" OR e.description LIKE "%'.$sanitized_search.'%") AND p.'.$platform.' = 1');
     }
     $result = $stmt->fetch();
 } catch (Exception $e) {
@@ -177,7 +177,7 @@ try {
                                     FROM events e 
                                     JOIN games g ON e.game_id = g.id 
                                     LEFT JOIN games_platforms p ON g.id = p.id
-                                    WHERE (name LIKE "%'.$sanitized_search.'%" OR g.description LIKE "%'.$sanitized_search.'%")
+                                    WHERE (name LIKE "%'.$sanitized_search.'%" OR g.description LIKE "%'.$sanitized_search.'%" OR e.description LIKE "%'.$sanitized_search.'%")
                                     ORDER BY '.$sorted_by.' '.$order.'
                                     LIMIT '.$from_item.', '.$items_per_page);
     } else {
@@ -186,7 +186,7 @@ try {
                                     FROM events e 
                                     JOIN games g ON e.game_id = g.id 
                                     LEFT JOIN games_platforms p ON g.id = p.id
-                                    WHERE (name LIKE "%'.$sanitized_search.'%" OR g.description LIKE "%'.$sanitized_search.'%") AND p.'.$platform.' = 1
+                                    WHERE (name LIKE "%'.$sanitized_search.'%" OR g.description LIKE "%'.$sanitized_search.'%" OR e.description LIKE "%'.$sanitized_search.'%") AND p.'.$platform.' = 1
                                     ORDER BY '.$sorted_by.' '.$order.'
                                     LIMIT '.$from_item.', '.$items_per_page);
     }
@@ -197,9 +197,6 @@ try {
     header('Location: error.php');
     die();
 }
-
-
-
 
 ?>
 

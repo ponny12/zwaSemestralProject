@@ -30,14 +30,12 @@ if (isset($_SESSION['loginID'])) {
             <a href="game_list.php" class="header_menu_btn">games</a>
             <a href="create.php" class="header_menu_btn">create</a>
             <a href="discover.php" class="header_menu_btn">discover</a>
-            <?php if ($isLogin) {
-                if ($isAdmin) { ?>
-                    <a href="admin_panel.php" class="btn header_login_btn">admin panel</a>
-                    <?php
-                } else { ?>
-                <a href="profile.php?id=<?php echo $_SESSION["loginID"]?>" class="btn header_login_btn">user: <?php echo $_SESSION["loginName"]?></a>
-                <?php } ?>
-                <a href="includes/logout_handler.inc.php" class="btn logout_btn"><img src="images/logout.png" class="logout_img" alt="log out"></a>
+            <?php if ($isLogin) { ?>
+                <a href="profile.php?id=<?php echo htmlspecialchars($_SESSION["loginID"])?>" class="btn header_profile_btn">
+                    <img src="<?php echo htmlspecialchars($_SESSION["loginImage"])?>" alt="profile image">
+                    <?php echo htmlspecialchars($_SESSION["loginName"])?>
+                </a>
+                <a href="includes/logout_handler.inc.php" class="btn logout_btn"><img src="images/logout_green.png" class="logout_img" alt="log out"></a>
 
                 <?php
             } else { ?>

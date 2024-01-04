@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arimo&family=Moul&display=swap');
 
+
+
 * {
 	box-sizing: border-box;
 	text-decoration: none;
@@ -162,7 +164,7 @@ header {
 
 
 
-.header_menu_btn:hover {
+.header_content .header_menu .header_menu_btn:hover {
 	color: #c9c9c9;
 }
 /*login and signup btns*/
@@ -173,22 +175,41 @@ header {
 	font-weight: 700;
 	padding: 0.3em 0.5em;
 
-	text-wrap: nowrap;
+	text-wrap: none;
 }
 /*login btn*/
 .header_login_btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 	background-color: #E5E5E5;
 	color: #FF7D00;
 }
 
 .header_login_btn:hover {
-	background-color: #dbdbdb;
-	color: rgb(255, 132, 0);
-	position: relative;
-	bottom: 1px;
-
+    background-color: #d5d5d5;
+    color: #ea7300;
+    position: relative;
+    bottom: 1px;
 }
-/*signin btn*/
+/*profile btn*/
+.header_profile_btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #0f5460;
+    color: #ffffff;
+}
+
+.header_profile_btn:hover {
+    background-color: #0b4c57;
+    color: silver;
+}
+
+.header_profile_btn img {
+    width: 2rem;
+}
+/*sign in btn*/
 .header_signup_btn {
 	background-color: #FF7D00;
 	color:#E5E5E5;
@@ -202,13 +223,13 @@ header {
 
 
 .header_content .logout_btn {
-    background-color: #fd3f3f;
+    background-color: #FF7D00;
     height: 52px;
     width: 52px;
 }
 
 .header_content .logout_btn:hover {
-    background-color: #fd5151;
+    background-color: #ea7200;
     position: relative;
     bottom: 1px;
 }
@@ -1017,12 +1038,20 @@ footer {
     font-weight: bold;
 }
 
+.create_content .step {
+    font-size: 2rem;
+    font-weight: bold;
+    color: silver;
+    margin: 1rem 0;
+}
+
 .create_content .search {
     width: min(90%, 30rem);
     height: 3rem;
     display: flex;
     justify-content: space-between;
     gap: 0.5rem;
+    margin: 1rem 0;
 }
 
 .create_content .search .search_line {
@@ -1048,18 +1077,16 @@ footer {
 
 
 .create_content .create_event_form {
-    height: 40rem;
     width: max(100%, 400px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     margin: 2rem auto;
+    gap: 1rem;
 
     font-size: 1.5rem;
     color: #15616D;
-    border: #15616D 3px solid;
-    border-radius: 10px;
 }
 
 .create_content .create_event_form .game_window {
@@ -1108,10 +1135,32 @@ footer {
     background-color: #E5E5E5;
 }
 
-.create_content .create_event_form .submit:hover {
-    background-color: #15616D;
-    color: #ffffff;
+.create_content .create_event_form .event_description {
+    height: 10rem;
+    width: min(90%, 30rem);
+    color: #15616D;
+    font-size: 1.4rem;
+    border: #15616D 2px solid;
+    border-radius: 10px;
+    background-color: #E5E5E5;
+}
 
+.create_content .create_event_form .submit {
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FF7D00;
+    border: none;
+    padding: 0.5rem;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.create_content .create_event_form .submit:hover {
+    position: relative;
+    bottom: 1px;
 }
 
 
@@ -1207,6 +1256,10 @@ footer {
     border: 1px solid #15616D;
     border-radius: 5px;
     resize: none;
+}
+
+.profile_container .save:disabled {
+    background-color: silver;
 }
 
 .delete_user_form {
@@ -1315,6 +1368,17 @@ footer {
     border: none;
     border-radius: 5px;
 }
+.admin_content .create_game_form .submit:hover {
+    background-color: #ef7400;
+    position: relative;
+    bottom: 3px;
+}
+.admin_content .create_game_form .submit:disabled {
+    background-color: silver;
+}
+.admin_content .create_game_form .submit:hover:disabled {
+    bottom: 0px;
+}
 
 /*---------------------------------------GAME_LIST PAGE---------------------------------*/
 
@@ -1324,7 +1388,7 @@ footer {
     margin: 2rem auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.5rem;
 
 }
@@ -1393,6 +1457,19 @@ footer {
     display: flex;
     gap: 1rem;
     color: #15616D;
+}
+.game_content .name_and_platforms {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.game_content .name_and_platforms .platform_label {
+    padding: 0.3rem 0.5rem;
+    background-color: #FF7D00;
+    color: #E5E5E5;
+    border-radius: 100px;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 .game_content img {
     border: 2px solid #15616D;
@@ -1542,6 +1619,40 @@ footer {
 
     .body_content .menu .item:nth-child(3) {
         display: none;
+    }
+
+}
+
+@media print {
+    header {
+        display: none;
+    }
+    footer {
+        display: none;
+    }
+    body {
+        width: 100%;
+        padding: 0;
+        margin: 2rem;
+        font-size: 1rem !important;
+    }
+    * {
+        font-size: 1rem !important;
+        color: black !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        gap: 0 !important;
+        height: min-content !important;
+        font-family: 'Montserrat', sans-serif !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+    }
+    img {
+        height: 5rem !important;
+        width: 5rem !important;
+    }
+    .hot_events_section .item {
+        height: 10rem !important;
     }
 
 }

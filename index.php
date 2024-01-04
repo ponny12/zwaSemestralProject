@@ -79,10 +79,10 @@ try {
                     }
 
                     ?>
-                    <a href="event.php?id=<?php echo $event['event_id'] ?>" class="item">
+                    <a href="event.php?id=<?php echo htmlspecialchars($event['event_id']) ?>" class="item">
                         <div class="title"><?php echo htmlspecialchars($event['name']) ?></div>
-                        <div class="date"><?php echo strtoupper($time_text) ?></div>
-                        <img src="<?php echo $event['img_big'] ?>" alt="beatsaber" class="img">
+                        <div class="date"><?php echo htmlspecialchars(strtoupper($time_text)) ?></div>
+                        <img src="<?php echo htmlspecialchars($event['img_big']) ?>" alt="<?php echo htmlspecialchars($event['name'])?>" class="img">
                     </a>
                 <?php }
 

@@ -14,7 +14,7 @@ if (!isset($_GET['id']) || $_GET['id'] == '') {
 }
 # select game from db
 try {
-    $stmt = $pdo->prepare('SELECT * FROM games WHERE games.id = :game_id');
+    $stmt = $pdo->prepare('SELECT * FROM games JOIN games_platforms p ON games.id = p.id WHERE games.id = :game_id');
     $stmt->bindParam(':game_id', $game_id, PDO::PARAM_INT);
     $stmt->execute();
     $game = $stmt->fetch();
@@ -29,7 +29,7 @@ try {
 } finally {
     $stmt = null;
 }
-# select one event with this game from the db
+# select three events with this game from the db
 try {
     $stmt = $pdo->prepare('SELECT *, e.description as event_description
                                 FROM events e
@@ -86,11 +86,23 @@ try {
             <img src="<?php echo htmlspecialchars($game['img_big'])?>" alt="game logo">
         </div>
         <div class="text">
-            <div class="name"><?php echo htmlspecialchars($game['name'])?></div>
+            <div class="name_and_platforms">
+                <div class="name"><?php echo htmlspecialchars($game['name'])?></div>
+                <?php
+                if ($game['meta']) { ?>
+                    <div class="platform_label">META</div>
+                <?php }
+                if ($game['pico']) { ?>
+                    <div class="platform_label">PICO</div>
+                <?php }
+                if ($game['pcvr']) { ?>
+                    <div class="platform_label">PC VR</div>
+                <?php } ?>
+            </div>
             <div class="description"><?php echo htmlspecialchars($game['description'])?></div>
         </div>
     </div>
-
+s
 
 
     <div class="event_with_game_content">

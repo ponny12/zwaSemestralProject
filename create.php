@@ -43,7 +43,7 @@ try {
 }
 
 
-if (isset($_POST['create_button'])) {
+if (isset($_POST['create_button']) && $_POST['token'] == $_SESSION['token']) {
     #check all fields
     #get game_id
     if (isset($_POST['game'])) {
@@ -155,7 +155,7 @@ if (isset($_POST['create_button'])) {
     <title>VRMates - create new event</title>
     <link rel="icon" type="image/x-icon" href="images/icons/favicon.ico">
 
-    <script defer src=""></script>
+    <script defer src="js/createEventScript.js"></script>
 </head>
 
 <body>
@@ -171,11 +171,15 @@ if (isset($_POST['create_button'])) {
         <?php }
 
         ?>
-        <form action="#" class="create_event_form" method="POST">
-
+        <form action="#" class="create_event_form" method="POST" id="create_event_form">
+            <?php
+            $_SESSION['token'] = time();
+            ?>
+            <input type="hidden" name="token" value="<?php echo $_SESSION['token']?>">
             <div class="title">
                 create your event
             </div>
+            <div class="step">step 1. Choose a game</div>
 
             <div class="search">
                 <input type="search" name="search_line" id="search" value="<?php echo $search == '_' ? '' : $search ?>" placeholder="type a game name" class="search_line">
@@ -201,16 +205,23 @@ if (isset($_POST['create_button'])) {
 
                 ?>
             </div>
+            <div class="error" id="game_error"></div>
+
+            <label for="event_description" class="step">step 2. Write a description</label>
 
 
+            <textarea name="event_description" id="event_description" class="event_description" placeholder="Write everything people need to know about your event. If you need to clarify the platform, how long you will play and so on. You can also indicate your discord so people know how to contact you"></textarea>
+            <div class="error" id="description_error"></div>
+            <label for="event_time" class="step">step 3. Select date and time</label>
 
-            <label>Event description: <textarea name="event_description" id="event_description" placeholder="write all what people need to know about your event!"></textarea></label>
+            <input type="datetime-local" name="event_time" id="event_time">
+            <div class="error" id="date_error"></div>
 
-
-            <label>Select date and time: <input type="datetime-local" name="event_time" id=""> </label>
-            <label>How many people do you need: <input type="number" name="max_people" id="event_people" min="2"
-                    max="99"></label>
-            <input type="submit" name="create_button" value="create" class="create_button">
+            <label for="event_people" class="step">step 4. Set a limit on the number<br>of people (includes you)</label>
+            <input type="number" name="max_people" id="event_people" min="2"
+                    max="99">
+            <div class="error" id="people_count_error"></div>
+            <input type="submit" name="create_button" value="create" id="submit" class="submit">
         </form>
     </div>
 

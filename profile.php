@@ -65,6 +65,7 @@ if (isset($user['admin']) && $user['admin'] != null) {
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>VRMate</title>
     <link rel="icon" type="image/x-icon" href="images/icons/favicon.ico">
+    <script defer src="js/profileEditScript.js"></script>
 </head>
 
 
@@ -75,19 +76,21 @@ if (isset($user['admin']) && $user['admin'] != null) {
     <?php
     # edit view
     if ($edit) { ?>
-        <form class="profile_container" method="POST" action="includes/profile_edit_handler.inc.php" enctype="multipart/form-data">
-            <input type="hidden" name="id" value="<?php echo $user['id'] ?>">
+        <form class="profile_container" method="POST" action="includes/profile_edit_handler.inc.php" id="edit_profile_form" enctype="multipart/form-data">
+            <input type="hidden" name="id" id="id" value="<?php echo $user['id'] ?>">
             <div class="image_and_edit">
                 <img src="<?php echo htmlspecialchars($user['img_big'])?>" alt="user photo" class="user_photo">
                 <input type="file" name="image" class="image_edit" id="image_edit" accept="image/webp, image/jpeg, image/png">
             </div>
             <div class="user_personal_data">
                 <div class="username_and_edit">
-                    <input type="text" name="name" class="username_edit" value="<?php echo htmlspecialchars($user['username']) ?>">
-                    <input type="submit" name="submit" class="orange_button save" value="save">
+                    <input type="text" name="name" class="username_edit" id="new_name" value="<?php echo htmlspecialchars($user['username']) ?>">
+                    <div class="error" id="name_error"></div>
+                    <input type="submit" name="submit" id="submit" class="orange_button save" value="save">
                 </div>
                 <div class="info_title">info:</div>
-                <textarea name="info" class="info_text_edit"><?php echo htmlspecialchars($user['info'])?></textarea>
+                <textarea name="info" class="info_text_edit" id="new_info"><?php echo htmlspecialchars($user['info'])?></textarea>
+                <div class="error" id="info_error"></div>
             </div>
         </form>
     <?php } else {
@@ -112,17 +115,24 @@ if (isset($user['admin']) && $user['admin'] != null) {
 
     <?php } 
     
-    if ($id == $_SESSION['loginID'] && !$edit) { ?>
+    if ($id == $_SESSION['loginID'] && !$edit && !$_SESSION['isAdmin']) { ?>
         <form action="includes/profile_delete_handler.inc.php" class="delete_user_form" method="POST">
             <label for="password"></label>
             <div class="delete">
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars($id)?>">
                 <input type="checkbox" name="delete_checkbox" id="delete_checkbox"> <label for="delete_checkbox" class="checkbox_label">I want to delete my account and all events I've created without the slightest possibility of recovery, I accept all the risks associated with deleting my account, understanding that for the rest of my life I will miss without a company for VR games</label>
                 <input type="password" name="password" id="password" class="password" placeholder="enter your password">
                 <input type="submit" name="submit" value="delete" class="delete_button">
             </div>
         </form>
     
-    <?php } ?>
+    <?php }
+    if ($_SESSION['isAdmin']) { ?>
+        <div class="admin_tools">
+            <a href="create_new_game.php" class="add_game orange_button">add new game</a>
+        </div>
+    <?php }
+    ?>
 
     <?php include "footer.php";?>
 

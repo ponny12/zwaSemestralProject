@@ -62,7 +62,7 @@ if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
         </div>
         <div class="error" id="checkbox_error"></div>
 
-        <input type="submit" name="submit" value="ADD" class="submit">
+        <input type="submit" id="submit" name="submit" value="ADD" class="submit">
 
     </form>
 </div>

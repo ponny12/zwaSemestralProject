@@ -166,6 +166,6 @@ try {
 }
 
 
-header("Location: ../admin_panel.php?successfully_upload=true");
+header("Location: ../create_new_game.php?successfully_upload=true");
 die();
 

@@ -27,6 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             unset($_SESSION['lastNickname']);
             $_SESSION["loginID"] = $results["id"];
             $_SESSION["loginName"] = $results["username"];
+            $_SESSION["loginImage"] = $results["img_small"];
+
 
             $stmt = $pdo->prepare('SELECT * FROM admins WHERE user_id = :loginID');
             $stmt->bindParam(':loginID', $_SESSION['loginID'], PDO::PARAM_INT);
@@ -58,5 +60,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 } else {
-    header("Location: ../error.php");
+    header("Location: ../index.php");
 }

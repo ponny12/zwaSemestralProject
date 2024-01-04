@@ -13,33 +13,33 @@ const confirmError = document.getElementById('confirmError')
 const emailError = document.getElementById('emailError')
 
 
-function isUserAlreadyExist(username) {
-    var xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.open("GET", "includes/check_username.inc.php?q=" + username, true);
-
-    xmlhttp.onload = function() {
-        if (this.status == 200) {
-            if (this.response == '') {
-                submit.disabled = false;
-                document.getElementById("usernameError").innerHTML = '';
-            } else {
-                submit.disabled = true;
-                document.getElementById("usernameError").innerHTML = this.responseText;
-            }
-        }
-    };
-
-    xmlhttp.send();
-}
-
 signupForm.addEventListener('submit', (e) => {
     usernameError.innerHTML = ""
     matchPassError.innerHTML = ""
     weakPassError.innerHTML = ""
     confirmError.innerHTML = ""
     emailError.innerHTML = ""
-    errorOccured =  false
+    let errorOccured = false
+
+    let xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.open("GET", "includes/check_username.inc.php?q=" + username.value, true);
+
+    xmlhttp.onload = function() {
+        if (this.status === 200) {
+            if (this.response === '') {
+                submit.disabled = false;
+                usernameError.innerHTML = '';
+            } else {
+                submit.disabled = true;
+                usernameError.innerHTML = this.responseText;
+            }
+        }
+    };
+    xmlhttp.send();
+
+
+
 
     if (pass1.value.length < 8 || pass1.value === pass1.value.toLowerCase()) {
         weakPassError.innerHTML = "Password must contain at least 8 symbols and 1 uppercase letter!"
@@ -53,17 +53,15 @@ signupForm.addEventListener('submit', (e) => {
         usernameError.innerHTML = "Nickname must be at least 5 symbols long"
         errorOccured = true
     }
-    if (confirmLicense.checked == false) {
+    if (confirmLicense.checked === false) {
         confirmError.innerHTML = "confirm our politic please"
         errorOccured = true
     }
     if (!/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(email.value)) {
-        emailError.innerHTML = "invalid email adress"
+        emailError.innerHTML = "invalid email address"
         errorOccured = true
 
     }
-
-    isUserAlreadyExist(username);
 
     if (errorOccured) {
         e.preventDefault()

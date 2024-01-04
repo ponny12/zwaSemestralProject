@@ -26,6 +26,9 @@ if ($new_name == '') {
 if ($new_name == 'default') {
     raiseError('attempt to change profile data, but new username is special word "default".', '../');
 }
+if (strlen($new_name) < 5 || strlen($new_name) > 20) {
+    raiseError('attempt to change profile data, but new username is too short or too long.', '../');
+}
 # check if info is correct
 $new_info = $_POST['info'];
 if ($new_info == '') {
@@ -65,9 +68,10 @@ try {
 } catch (Exception $e) {
     raiseError('db failed: '.$e.' while processing user with id: '.$user_id, '../');
 }
+# update session name value
+$_SESSION['loginName'] = $new_name;
 
 # check if image presents and insert if it is
-
 if (isset($_FILES['image']) && !empty($_FILES['image']['name'])) {
     #check if file received
     $file = $_FILES['image'];
@@ -118,7 +122,10 @@ if (isset($_FILES['image']) && !empty($_FILES['image']['name'])) {
         unlink('../'.$user_old['img_small']);
         unlink('../'.$user_old['img_big']);
     }
+    # update session image info
+    $_SESSION['loginImage'] = $new_path_small_for_db;
 }
+
 $stmt = null;
 $pdo = null;
 

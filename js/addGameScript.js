@@ -10,7 +10,7 @@ const nameError = document.getElementById('name_error');
 const descriptionError = document.getElementById('description_error');
 const imageError = document.getElementById('image_error');
 const checkboxError = document.getElementById('checkbox_error');
-
+const submitBtn = document.getElementById('submit');
 
 function isGameAlreadyExist(name) {
     var xmlhttp = new XMLHttpRequest();
@@ -21,8 +21,10 @@ function isGameAlreadyExist(name) {
         if (this.status == 200) {
             if (this.response == '') {
                 nameError.innerHTML = '';
+                submitBtn.disabled = false;
             } else {
                 nameError.innerHTML = this.responseText;
+                submitBtn.disabled = true;
             }
         }
     };
