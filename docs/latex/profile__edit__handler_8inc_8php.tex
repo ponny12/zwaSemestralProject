@@ -1,0 +1,122 @@
+\doxysection{includes/profile\+\_\+edit\+\_\+handler.inc.\+php File Reference}
+\hypertarget{profile__edit__handler_8inc_8php}{}\label{profile__edit__handler_8inc_8php}\index{includes/profile\_edit\_handler.inc.php@{includes/profile\_edit\_handler.inc.php}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+global \mbox{\hyperlink{profile__edit__handler_8inc_8php_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}} = null
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}( \$\+\_\+\+SERVER\mbox{[} \textquotesingle{}REQUEST\+\_\+\+METHOD\textquotesingle{}\mbox{]} !=\textquotesingle{}POST\textquotesingle{}) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(!isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}submit\textquotesingle{}\mbox{]})) \mbox{\hyperlink{profile__edit__handler_8inc_8php_ae30b9cd0cdeacb1318fd7c73973c2507}{\$user\+\_\+id}} = intval(\$\+\_\+\+POST\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]})
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(\$user\+\_\+id !=\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}login\+ID\textquotesingle{}\mbox{]}) \mbox{\hyperlink{profile__edit__handler_8inc_8php_abb0c0dac6ab007d9275628ebd48adcd8}{\$new\+\_\+name}} = \$\+\_\+\+POST\mbox{[}\textquotesingle{}name\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(\$new\+\_\+name==\textquotesingle{}\textquotesingle{}) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}( \$new\+\_\+name==\textquotesingle{}default\textquotesingle{}) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(strlen(\$new\+\_\+name)$<$ 5\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}strlen(\$new\+\_\+name) $>$ 20) \mbox{\hyperlink{profile__edit__handler_8inc_8php_ab036c3c61068b1124fff1ff6769bd2a5}{\$new\+\_\+info}} = \$\+\_\+\+POST\mbox{[}\textquotesingle{}info\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(\$new\+\_\+info==\textquotesingle{}\textquotesingle{}) \mbox{\hyperlink{profile__edit__handler_8inc_8php_a342d5d70c45f5bcc107cba31d87167b7}{try}}
+\item 
+\mbox{\hyperlink{profile__edit__handler_8inc_8php_ac8ef170464d502fbe4116c4cd31bf3a4}{\$user\+\_\+old}} = \$stmt-\/$>$fetch()
+\item 
+\mbox{\hyperlink{profile__edit__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}} = \$stmt-\/$>$fetch()
+\item 
+\mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}}(Exception \$e) \mbox{\hyperlink{profile__edit__handler_8inc_8php_ad697b991219703fe33d1524082730c41}{\$\+\_\+\+SESSION}} \mbox{[}\textquotesingle{}login\+Name\textquotesingle{}\mbox{]} = \$new\+\_\+name
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(isset(\$\+\_\+\+FILES\mbox{[}\textquotesingle{}image\textquotesingle{}\mbox{]}) \&\&!empty(\$\+\_\+\+FILES\mbox{[}\textquotesingle{}image\textquotesingle{}\mbox{]}\mbox{[}\textquotesingle{}name\textquotesingle{}\mbox{]})) \mbox{\hyperlink{profile__edit__handler_8inc_8php_a437a1d08981cf40816eca5cbb93e90eb}{\$stmt}} = null
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{profile__edit__handler_8inc_8php_ad697b991219703fe33d1524082730c41}\label{profile__edit__handler_8inc_8php_ad697b991219703fe33d1524082730c41} 
+\index{profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}!\$\_SESSION@{\$\_SESSION}}
+\index{\$\_SESSION@{\$\_SESSION}!profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$\_SESSION}{\$\_SESSION}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}} (Exception \$e) \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}login\+Name\textquotesingle{}\mbox{]} = \$new\+\_\+name}
+
+
+
+Definition at line \mbox{\hyperlink{profile__edit__handler_8inc_8php_source_l00072}{72}} of file \mbox{\hyperlink{profile__edit__handler_8inc_8php_source}{profile\+\_\+edit\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{profile__edit__handler_8inc_8php_ab036c3c61068b1124fff1ff6769bd2a5}\label{profile__edit__handler_8inc_8php_ab036c3c61068b1124fff1ff6769bd2a5} 
+\index{profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}!\$new\_info@{\$new\_info}}
+\index{\$new\_info@{\$new\_info}!profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$new\_info}{\$new\_info}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}( \$new\+\_\+name==\textquotesingle{}\textquotesingle{}) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(\$new\+\_\+name==\textquotesingle{}default\textquotesingle{}) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} (strlen( \$new\+\_\+name)$<$ 5\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}strlen( \$new\+\_\+name) $>$ 20) \$new\+\_\+info = \$\+\_\+\+POST\mbox{[}\textquotesingle{}info\textquotesingle{}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{profile__edit__handler_8inc_8php_source_l00033}{33}} of file \mbox{\hyperlink{profile__edit__handler_8inc_8php_source}{profile\+\_\+edit\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{profile__edit__handler_8inc_8php_abb0c0dac6ab007d9275628ebd48adcd8}\label{profile__edit__handler_8inc_8php_abb0c0dac6ab007d9275628ebd48adcd8} 
+\index{profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}!\$new\_name@{\$new\_name}}
+\index{\$new\_name@{\$new\_name}!profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$new\_name}{\$new\_name}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} ( \$user\+\_\+id !=\$\+\_\+\+SESSION\mbox{[} \textquotesingle{}login\+ID\textquotesingle{}\mbox{]}) \$new\+\_\+name = \$\+\_\+\+POST\mbox{[}\textquotesingle{}name\textquotesingle{}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{profile__edit__handler_8inc_8php_source_l00022}{22}} of file \mbox{\hyperlink{profile__edit__handler_8inc_8php_source}{profile\+\_\+edit\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{profile__edit__handler_8inc_8php_a5766efd703cef0e00bfc06b3f3acbe0e}\label{profile__edit__handler_8inc_8php_a5766efd703cef0e00bfc06b3f3acbe0e} 
+\index{profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily \$pdo = null}
+
+
+
+Definition at line \mbox{\hyperlink{profile__edit__handler_8inc_8php_source_l00006}{6}} of file \mbox{\hyperlink{profile__edit__handler_8inc_8php_source}{profile\+\_\+edit\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{profile__edit__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}\label{profile__edit__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07} 
+\index{profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}!\$result@{\$result}}
+\index{\$result@{\$result}!profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$result}{\$result}}
+{\footnotesize\ttfamily \$result = \$stmt-\/$>$fetch()}
+
+
+
+Definition at line \mbox{\hyperlink{profile__edit__handler_8inc_8php_source_l00052}{52}} of file \mbox{\hyperlink{profile__edit__handler_8inc_8php_source}{profile\+\_\+edit\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{profile__edit__handler_8inc_8php_a437a1d08981cf40816eca5cbb93e90eb}\label{profile__edit__handler_8inc_8php_a437a1d08981cf40816eca5cbb93e90eb} 
+\index{profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}!\$stmt@{\$stmt}}
+\index{\$stmt@{\$stmt}!profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$stmt}{\$stmt}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} (isset( \$\+\_\+\+FILES\mbox{[} \textquotesingle{}image\textquotesingle{}\mbox{]}) \&\&!empty( \$\+\_\+\+FILES\mbox{[} \textquotesingle{}image\textquotesingle{}\mbox{]}\mbox{[} \textquotesingle{}name\textquotesingle{}\mbox{]})) \$stmt = null}
+
+
+
+Definition at line \mbox{\hyperlink{profile__edit__handler_8inc_8php_source_l00129}{129}} of file \mbox{\hyperlink{profile__edit__handler_8inc_8php_source}{profile\+\_\+edit\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{profile__edit__handler_8inc_8php_ae30b9cd0cdeacb1318fd7c73973c2507}\label{profile__edit__handler_8inc_8php_ae30b9cd0cdeacb1318fd7c73973c2507} 
+\index{profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}!\$user\_id@{\$user\_id}}
+\index{\$user\_id@{\$user\_id}!profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$user\_id}{\$user\_id}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(\$\+\_\+\+SERVER\mbox{[}\textquotesingle{}REQUEST\+\_\+\+METHOD\textquotesingle{}\mbox{]} !=\textquotesingle{}POST\textquotesingle{}) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} (!isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}submit\textquotesingle{}\mbox{]})) \$user\+\_\+id = intval(\$\+\_\+\+POST\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]})}
+
+
+
+Definition at line \mbox{\hyperlink{profile__edit__handler_8inc_8php_source_l00017}{17}} of file \mbox{\hyperlink{profile__edit__handler_8inc_8php_source}{profile\+\_\+edit\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{profile__edit__handler_8inc_8php_ac8ef170464d502fbe4116c4cd31bf3a4}\label{profile__edit__handler_8inc_8php_ac8ef170464d502fbe4116c4cd31bf3a4} 
+\index{profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}!\$user\_old@{\$user\_old}}
+\index{\$user\_old@{\$user\_old}!profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$user\_old}{\$user\_old}}
+{\footnotesize\ttfamily \$user\+\_\+old = \$stmt-\/$>$fetch()}
+
+
+
+Definition at line \mbox{\hyperlink{profile__edit__handler_8inc_8php_source_l00043}{43}} of file \mbox{\hyperlink{profile__edit__handler_8inc_8php_source}{profile\+\_\+edit\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{profile__edit__handler_8inc_8php_a342d5d70c45f5bcc107cba31d87167b7}\label{profile__edit__handler_8inc_8php_a342d5d70c45f5bcc107cba31d87167b7} 
+\index{profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}!try@{try}}
+\index{try@{try}!profile\_edit\_handler.inc.php@{profile\_edit\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(!empty(\$result) \&\& \$result\mbox{[}\textquotesingle{}username\textquotesingle{}\mbox{]} !=\$user\+\_\+old\mbox{[}\textquotesingle{}username\textquotesingle{}\mbox{]}) \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}} (Exception \$e) try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{profile__edit__handler_8inc_8php_a437a1d08981cf40816eca5cbb93e90eb}{\$stmt}}\ =\ \mbox{\hyperlink{profile__edit__handler_8inc_8php_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ *\ FROM\ users\ WHERE\ users.id\ =\ :user\_id'})}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{profile__edit__handler_8inc_8php_source_l00039}{39}} of file \mbox{\hyperlink{profile__edit__handler_8inc_8php_source}{profile\+\_\+edit\+\_\+handler.\+inc.\+php}}.
+

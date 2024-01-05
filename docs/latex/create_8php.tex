@@ -1,0 +1,125 @@
+\doxysection{create.\+php File Reference}
+\hypertarget{create_8php}{}\label{create_8php}\index{create.php@{create.php}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} (!isset( \$\+\_\+\+SESSION))
+\item 
+global \mbox{\hyperlink{create_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}
+\item 
+\mbox{\hyperlink{create_8php_a8b9258a0949c521830380818e33c164f}{\$games}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{create_8php_ae5bdccab14dffa73cfe88ff355572504}{\$successfully\+\_\+upload}} = false
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty( \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}login\+ID\textquotesingle{}\mbox{]})) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}search\+\_\+button\textquotesingle{}\mbox{]}) \&\& \$\+\_\+\+POST\mbox{[}\textquotesingle{}search\+\_\+line\textquotesingle{}\mbox{]} !=\textquotesingle{}\textquotesingle{} \&\& \$\+\_\+\+POST\mbox{[}\textquotesingle{}search\+\_\+line\textquotesingle{}\mbox{]} !=\textquotesingle{}\+\_\+\textquotesingle{}) \mbox{\hyperlink{create_8php_a3dff60ca0da6bc98937343c2496f9694}{else}}
+\item 
+\mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\+\_\+search}} = \$search
+\item 
+\mbox{\hyperlink{create_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}}(Exception \$e) \mbox{\hyperlink{create_8php_a20fb99398e894aefb3af9ab650dd32f4}{if}} (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}create\+\_\+button\textquotesingle{}\mbox{]}) \&\&\$\+\_\+\+POST\mbox{[} \textquotesingle{}token\textquotesingle{}\mbox{]}==\$\+\_\+\+SESSION\mbox{[} \textquotesingle{}token\textquotesingle{}\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{create_8php_a8b9258a0949c521830380818e33c164f}\label{create_8php_a8b9258a0949c521830380818e33c164f} 
+\index{create.php@{create.php}!\$games@{\$games}}
+\index{\$games@{\$games}!create.php@{create.php}}
+\doxysubsubsection{\texorpdfstring{\$games}{\$games}}
+{\footnotesize\ttfamily \$games = \mbox{[}$\,$\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{create_8php_source_l00010}{10}} of file \mbox{\hyperlink{create_8php_source}{create.\+php}}.
+
+\Hypertarget{create_8php_a9f187aeb0999f8898ae2451de67650d0}\label{create_8php_a9f187aeb0999f8898ae2451de67650d0} 
+\index{create.php@{create.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!create.php@{create.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily global \$pdo}
+
+
+
+Definition at line \mbox{\hyperlink{create_8php_source_l00008}{8}} of file \mbox{\hyperlink{create_8php_source}{create.\+php}}.
+
+\Hypertarget{create_8php_a7d55e18b034f38153336bceb8ca02a95}\label{create_8php_a7d55e18b034f38153336bceb8ca02a95} 
+\index{create.php@{create.php}!\$sanitized\_search@{\$sanitized\_search}}
+\index{\$sanitized\_search@{\$sanitized\_search}!create.php@{create.php}}
+\doxysubsubsection{\texorpdfstring{\$sanitized\_search}{\$sanitized\_search}}
+{\footnotesize\ttfamily \$sanitized\+\_\+search = \$search}
+
+
+
+Definition at line \mbox{\hyperlink{create_8php_source_l00030}{30}} of file \mbox{\hyperlink{create_8php_source}{create.\+php}}.
+
+\Hypertarget{create_8php_ae5bdccab14dffa73cfe88ff355572504}\label{create_8php_ae5bdccab14dffa73cfe88ff355572504} 
+\index{create.php@{create.php}!\$successfully\_upload@{\$successfully\_upload}}
+\index{\$successfully\_upload@{\$successfully\_upload}!create.php@{create.php}}
+\doxysubsubsection{\texorpdfstring{\$successfully\_upload}{\$successfully\_upload}}
+{\footnotesize\ttfamily \$successfully\+\_\+upload = false}
+
+
+
+Definition at line \mbox{\hyperlink{create_8php_source_l00011}{11}} of file \mbox{\hyperlink{create_8php_source}{create.\+php}}.
+
+\Hypertarget{create_8php_a3dff60ca0da6bc98937343c2496f9694}\label{create_8php_a3dff60ca0da6bc98937343c2496f9694} 
+\index{create.php@{create.php}!else@{else}}
+\index{else@{else}!create.php@{create.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}login\+ID\textquotesingle{}\mbox{]})) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}search\+\_\+button\textquotesingle{}\mbox{]}) \&\&\$\+\_\+\+POST\mbox{[} \textquotesingle{}search\+\_\+line\textquotesingle{}\mbox{]} !=\textquotesingle{}\textquotesingle{} \&\&\$\+\_\+\+POST\mbox{[} \textquotesingle{}search\+\_\+line\textquotesingle{}\mbox{]} !=\textquotesingle{}\+\_\+\textquotesingle{}) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \$search\ =\ \textcolor{charliteral}{'\_'}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{create_8php_source_l00028}{28}} of file \mbox{\hyperlink{create_8php_source}{create.\+php}}.
+
+\Hypertarget{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}\label{create_8php_ac725e896cd274c32a2c65d0fcd3397ed} 
+\index{create.php@{create.php}!if@{if}}
+\index{if@{if}!create.php@{create.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{!}]{isset \$\+\_\+\+SESSION }\end{DoxyParamCaption})}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{game__list_8php_a2d1f877d9738711d7686b368e02e2174}{\$sorted\_by}}\ =\ \textcolor{stringliteral}{'event\_time'}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{create_8php_source_l00002}{2}} of file \mbox{\hyperlink{create_8php_source}{create.\+php}}.
+
+\Hypertarget{create_8php_a20fb99398e894aefb3af9ab650dd32f4}\label{create_8php_a20fb99398e894aefb3af9ab650dd32f4} 
+\index{create.php@{create.php}!if@{if}}
+\index{if@{if}!create.php@{create.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}}(Exception \$e) if(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}create\+\_\+button\textquotesingle{}\mbox{]}) \&\& \$\+\_\+\+POST\mbox{[}\textquotesingle{}token\textquotesingle{}\mbox{]}==\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}token\textquotesingle{}\mbox{]}) (\begin{DoxyParamCaption}\item[{isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}create\+\_\+button\textquotesingle{}\mbox{]}) \&\&}]{\$\+\_\+\+POST\mbox{[} \textquotesingle{}token\textquotesingle{}\mbox{]} = {\ttfamily =~\$\+\_\+SESSION\mbox{[}\textquotesingle{}token\textquotesingle{}\mbox{]}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{create_8php_source_l00046}{46}} of file \mbox{\hyperlink{create_8php_source}{create.\+php}}.
+
+\Hypertarget{create_8php_abe4cc9788f52e49485473dc699537388}\label{create_8php_abe4cc9788f52e49485473dc699537388} 
+\index{create.php@{create.php}!try@{try}}
+\index{try@{try}!create.php@{create.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{create_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ *\ FROM\ games\ g}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOIN\ games\_platforms\ p\ ON\ g.id\ =\ p.id}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ g.name\ LIKE\ "{}\%'}.\mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ORDER\ BY\ g.name'})}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{create_8php_source_l00034}{34}} of file \mbox{\hyperlink{create_8php_source}{create.\+php}}.
+

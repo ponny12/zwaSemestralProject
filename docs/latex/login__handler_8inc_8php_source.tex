@@ -1,0 +1,70 @@
+\doxysection{login\+\_\+handler.\+inc.\+php}
+\hypertarget{login__handler_8inc_8php_source}{}\label{login__handler_8inc_8php_source}\index{includes/login\_handler.inc.php@{includes/login\_handler.inc.php}}
+\mbox{\hyperlink{login__handler_8inc_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00002}00002\ session\_start();}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00005}00005\ \textcolor{keywordflow}{if}\ (\$\_SERVER[\textcolor{stringliteral}{"{}REQUEST\_METHOD"{}}]\ ==\ \textcolor{stringliteral}{"{}POST"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00006}00006\ \ \ \ \ \$nickname\ =\ \$\_POST[\textcolor{stringliteral}{"{}nickname"{}}];}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00007}00007\ \ \ \ \ \$pass\ =\ \$\_POST[\textcolor{stringliteral}{"{}password"{}}];}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00011}00011\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00012}00012\ \ \ \ \ \ \ \ \ require\ \textcolor{stringliteral}{"{}dbh.inc.php"{}};}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00013}00013\ \ \ \ \ \ \ \ \ global\ \mbox{\hyperlink{create_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}};}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00015}00015\ \ \ \ \ \ \ \ \ \$query\ =\ \textcolor{stringliteral}{"{}SELECT\ *\ FROM\ users\ WHERE\ username\ =\ :username"{}};}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00016}00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{create_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\$query);}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00017}00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{"{}:username"{}},\ \$nickname);}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00018}00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00020}00020\ \ \ \ \ \ \ \ \ \$results\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetch();}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (empty(\$results)\ ||\ !password\_verify(\$pass,\ \$results[\textcolor{stringliteral}{"{}pwd"{}}]))\ \{}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{"{}loginError"{}}]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{"{}lastNickname"{}}]\ =\ \$nickname;}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../login.php"{}});}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00025}00025\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{"{}loginError"{}}]\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ unset(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'lastNickname'}]);}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{"{}loginID"{}}]\ =\ \$results[\textcolor{stringliteral}{"{}id"{}}];}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{"{}loginName"{}}]\ =\ \$results[\textcolor{stringliteral}{"{}username"{}}];}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{"{}loginImage"{}}]\ =\ \$results[\textcolor{stringliteral}{"{}img\_small"{}}];}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{create_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ *\ FROM\ admins\ WHERE\ user\_id\ =\ :loginID'});}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':loginID'},\ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}],\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{add__user__to__event__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetch();}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isset(\mbox{\hyperlink{add__user__to__event__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}[\textcolor{stringliteral}{'user\_id'}])\ \&\&\ \mbox{\hyperlink{add__user__to__event__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}[\textcolor{stringliteral}{'user\_id'}]\ ==\ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}])\ \{}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'isAdmin'}]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'isAdmin'}]\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../index.php"{}});}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00051}00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../login.php"{}});}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00056}00056\ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00057}00057\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00058}00058\ \ \ \ \ \ \ \ \ die(\textcolor{stringliteral}{"{}Query\ failed:\ "{}}\ .\ \$e-\/>getMessage());}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00062}\mbox{\hyperlink{login__handler_8inc_8php_aece20fdbe311cf659d1abaccff7bb37d}{00062}}\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00063}00063\ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../index.php"{}});}
+\DoxyCodeLine{\Hypertarget{login__handler_8inc_8php_source_l00064}00064\ \}}
+
+\end{DoxyCode}

@@ -3,7 +3,7 @@ if(!isset($_SESSION))
 {
     session_start();
 }
-require 'includes/dbh.inc.php';
+require 'tools/dbh.tool.php';
 global $pdo;
 if (empty($_SESSION['loginID'])) {
     $_SESSION['errorType'] = 'You are not allowed to visit a profile page without a registration.';
@@ -16,9 +16,7 @@ if (empty($_SESSION['loginID'])) {
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 } else {
-    $_SESSION['errorType'] = 'Profile id was not selected.';
-    header('Location: error.php');
-    die();
+    $id = $_SESSION['loginID'];
 }
 
 
@@ -93,9 +91,9 @@ if (isset($user['admin']) && $user['admin'] != null) {
                 <div class="error" id="info_error"></div>
             </div>
         </form>
-    <?php } else {
-        # display view
-        ?>
+    <?php }
+    # display view
+    else { ?>
 
     <content class="profile_container">
         <img src="<?php echo htmlspecialchars($user['img_big'])?>" alt="user photo" class="user_photo">
@@ -129,7 +127,14 @@ if (isset($user['admin']) && $user['admin'] != null) {
     <?php }
     if ($_SESSION['isAdmin']) { ?>
         <div class="admin_tools">
-            <a href="create_new_game.php" class="add_game orange_button">add new game</a>
+            <div class="title">Admin tools:</div>
+            <br>
+            <div class="tools">
+                <a href="create_new_game.php" class="orange_button">add new game</a>
+                <a href="suggestions_list.php" class="orange_button">suggestions</a>
+                <a href="includes/delete_past_events.inc.php" class="orange_button">delete past events</a>
+            </div>
+
         </div>
     <?php }
     ?>

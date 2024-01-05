@@ -4,7 +4,7 @@ if(!isset($_SESSION))
     session_start();
 }
 
-require 'includes/dbh.inc.php';
+require 'tools/dbh.tool.php';
 global $pdo;
 
 
@@ -344,6 +344,8 @@ try {
 
 
 </div>
+
+<a href="suggest_new_game.php" class="suggestions orange_button">suggest a new game</a>
 
 
 <?php include "footer.php"; ?>

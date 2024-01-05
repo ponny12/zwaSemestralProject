@@ -1,0 +1,75 @@
+\doxysection{image.\+tool.\+php}
+\hypertarget{image_8tool_8php_source}{}\label{image_8tool_8php_source}\index{tools/image.tool.php@{tools/image.tool.php}}
+\mbox{\hyperlink{image_8tool_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00003}\mbox{\hyperlink{image_8tool_8php_af66452eefcccf4ad3e31cdbdf4756ecb}{00003}}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{image_8tool_8php_af66452eefcccf4ad3e31cdbdf4756ecb}{resize\_image}}(\mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{\$file}},\ \$new\_size)}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00005}00005\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00006}00006\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(file\_exists(\mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{\$file}}))\ \{}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00008}00008\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919}{\$type}}\ =\ array\_slice(explode(\textcolor{charliteral}{'/'},\ mime\_content\_type(\mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{\$file}})),\ -\/1,\ 1)[0];}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00011}00011\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919}{\$type}}\ ==\ \textcolor{stringliteral}{'jpg'}\ ||\ \mbox{\hyperlink{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919}{\$type}}\ ==\ \textcolor{stringliteral}{'jpeg'})\ \{}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$original\_image\ =\ imagecreatefromjpeg(\mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{\$file}});}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919}{\$type}}\ ==\ \textcolor{stringliteral}{'png'})\ \{}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$original\_image\ =\ imagecreatefrompng(\mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{\$file}});}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919}{\$type}}\ ==\ \textcolor{stringliteral}{'webp'})\ \{}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$original\_image\ =\ imagecreatefromwebp(\mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{\$file}});}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'resize\_image\ function\ error:\ unknown\ image\ extension...'}.\$type;}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../error.php'});}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \$original\_width\ =\ imagesx(\$original\_image);}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \$original\_height\ =\ imagesy(\$original\_image);}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00026}00026\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#\ calculating\ aspect\ ratio\ and\ set\ new\ parameters}}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$original\_width\ <\ \$original\_height)\ \{}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$ratio\ =\ \$new\_size\ /\ \$original\_width;}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$new\_width\ =\ \$new\_size;}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$new\_height\ =\ \$original\_height\ *\ \$ratio;}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$x\_offset\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$y\_offset\ =\ (\$original\_height\ -\/\ \$original\_width)\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$ratio\ =\ \$new\_size\ /\ \$original\_height;}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$new\_height\ =\ \$new\_size;}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$new\_width\ =\ \$original\_width\ *\ \$ratio;}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$x\_offset\ =\ (\$original\_width\ -\/\ \$original\_height)\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$y\_offset\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00044}00044\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#}}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00050}00050\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#creating\ and\ saving\ new\ image}}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \$new\_image\ =\ imagecreatetruecolor(\$new\_size,\ \$new\_size);}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ imagecopyresampled(\$new\_image,\ \$original\_image,\ 0,\ 0,\ \$x\_offset,\ \$y\_offset,\ \$new\_width,\ \$new\_height,\ \$original\_width,\ \$original\_height);}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ imagejpeg(\$new\_image,\ \mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{\$file}});}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00057}00057\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'resize\_image\ function\ error:\ file\ does\ not\ exist.\ '}.\$file;}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../error.php'});}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00063}00063\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00064}00064\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'resize\ image\ function\ failed:\ '}.\$e;}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00065}00065\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../error.php'});}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00066}00066\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{image_8tool_8php_source_l00069}00069\ \}}
+
+\end{DoxyCode}

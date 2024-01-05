@@ -1,0 +1,74 @@
+\doxysection{includes/delete\+\_\+event\+\_\+handler.inc.\+php File Reference}
+\hypertarget{delete__event__handler_8inc_8php}{}\label{delete__event__handler_8inc_8php}\index{includes/delete\_event\_handler.inc.php@{includes/delete\_event\_handler.inc.php}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{delete__event__handler_8inc_8php_ab2e66f440fe1bd6f7256ac7c6c016a02}{if}} ( \$\+\_\+\+SERVER\mbox{[} \textquotesingle{}REQUEST\+\_\+\+METHOD\textquotesingle{}\mbox{]} !=\textquotesingle{}POST\textquotesingle{}\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}empty( \$\+\_\+\+POST\mbox{[} \textquotesingle{}event\+\_\+id\textquotesingle{}\mbox{]})\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}empty( \$\+\_\+\+POST\mbox{[} \textquotesingle{}user\+\_\+id\textquotesingle{}\mbox{]}))
+\item 
+global \mbox{\hyperlink{delete__event__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}
+\item 
+\mbox{\hyperlink{delete__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996}{\$event\+\_\+id}} = intval(\$\+\_\+\+POST\mbox{[}\textquotesingle{}event\+\_\+id\textquotesingle{}\mbox{]})
+\item 
+\mbox{\hyperlink{delete__event__handler_8inc_8php_af0fcd925f00973e32f7214859dfb3c6b}{\$user\+\_\+id}} = intval(\$\+\_\+\+POST\mbox{[}\textquotesingle{}user\+\_\+id\textquotesingle{}\mbox{]})
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty( \$\+\_\+\+POST\mbox{[} \textquotesingle{}delete\+\_\+text\textquotesingle{}\mbox{]})\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}\$\+\_\+\+POST\mbox{[} \textquotesingle{}delete\+\_\+text\textquotesingle{}\mbox{]} !=\textquotesingle{}DELETE\textquotesingle{}) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(\$user\+\_\+id !=\$\+\_\+\+SESSION \mbox{\hyperlink{delete__event__handler_8inc_8php_a697b77a70c5dc710a90b422eb3a77d12}{try}} \mbox{[}\textquotesingle{}login\+ID\textquotesingle{}\mbox{]} \&\& \$\+\_\+\+SESSION\mbox{[}\textquotesingle{}login\+ID\textquotesingle{}\mbox{]} !=1)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{delete__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996}\label{delete__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996} 
+\index{delete\_event\_handler.inc.php@{delete\_event\_handler.inc.php}!\$event\_id@{\$event\_id}}
+\index{\$event\_id@{\$event\_id}!delete\_event\_handler.inc.php@{delete\_event\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$event\_id}{\$event\_id}}
+{\footnotesize\ttfamily \$event\+\_\+id = intval(\$\+\_\+\+POST\mbox{[}\textquotesingle{}event\+\_\+id\textquotesingle{}\mbox{]})}
+
+
+
+Definition at line \mbox{\hyperlink{delete__event__handler_8inc_8php_source_l00013}{13}} of file \mbox{\hyperlink{delete__event__handler_8inc_8php_source}{delete\+\_\+event\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{delete__event__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}\label{delete__event__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0} 
+\index{delete\_event\_handler.inc.php@{delete\_event\_handler.inc.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!delete\_event\_handler.inc.php@{delete\_event\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily global \$pdo}
+
+
+
+Definition at line \mbox{\hyperlink{delete__event__handler_8inc_8php_source_l00011}{11}} of file \mbox{\hyperlink{delete__event__handler_8inc_8php_source}{delete\+\_\+event\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{delete__event__handler_8inc_8php_af0fcd925f00973e32f7214859dfb3c6b}\label{delete__event__handler_8inc_8php_af0fcd925f00973e32f7214859dfb3c6b} 
+\index{delete\_event\_handler.inc.php@{delete\_event\_handler.inc.php}!\$user\_id@{\$user\_id}}
+\index{\$user\_id@{\$user\_id}!delete\_event\_handler.inc.php@{delete\_event\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$user\_id}{\$user\_id}}
+{\footnotesize\ttfamily \$user\+\_\+id = intval(\$\+\_\+\+POST\mbox{[}\textquotesingle{}user\+\_\+id\textquotesingle{}\mbox{]})}
+
+
+
+Definition at line \mbox{\hyperlink{delete__event__handler_8inc_8php_source_l00014}{14}} of file \mbox{\hyperlink{delete__event__handler_8inc_8php_source}{delete\+\_\+event\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{delete__event__handler_8inc_8php_ab2e66f440fe1bd6f7256ac7c6c016a02}\label{delete__event__handler_8inc_8php_ab2e66f440fe1bd6f7256ac7c6c016a02} 
+\index{delete\_event\_handler.inc.php@{delete\_event\_handler.inc.php}!if@{if}}
+\index{if@{if}!delete\_event\_handler.inc.php@{delete\_event\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}}
+{\footnotesize\ttfamily if(\$\+\_\+\+SERVER\mbox{[}\textquotesingle{}REQUEST\+\_\+\+METHOD\textquotesingle{}\mbox{]} !=\textquotesingle{}POST\textquotesingle{}\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}empty(\$\+\_\+\+POST\mbox{[}\textquotesingle{}event\+\_\+id\textquotesingle{}\mbox{]})\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}empty(\$\+\_\+\+POST\mbox{[}\textquotesingle{}user\+\_\+id\textquotesingle{}\mbox{]})) (\begin{DoxyParamCaption}\item[{}]{\$\+\_\+\+SERVER !\mbox{[} \textquotesingle{}\+REQUEST\+\_\+\+METHOD\textquotesingle{}\mbox{]} = {\ttfamily \textquotesingle{}POST\textquotesingle{}~\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}~empty(\$\+\_\+POST\mbox{[}\textquotesingle{}event\+\_\+id\textquotesingle{}\mbox{]})~\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}~empty(\$\+\_\+POST\mbox{[}\textquotesingle{}user\+\_\+id\textquotesingle{}\mbox{]})} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{delete__event__handler_8inc_8php_source_l00002}{2}} of file \mbox{\hyperlink{delete__event__handler_8inc_8php_source}{delete\+\_\+event\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{delete__event__handler_8inc_8php_a697b77a70c5dc710a90b422eb3a77d12}\label{delete__event__handler_8inc_8php_a697b77a70c5dc710a90b422eb3a77d12} 
+\index{delete\_event\_handler.inc.php@{delete\_event\_handler.inc.php}!try@{try}}
+\index{try@{try}!delete\_event\_handler.inc.php@{delete\_event\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}} (Exception \$e) try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{delete__event__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'DELETE\ FROM\ events\_users\ WHERE\ events\_users.event\_id\ =\ :event\_id'})}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{delete__event__handler_8inc_8php_source_l00027}{27}} of file \mbox{\hyperlink{delete__event__handler_8inc_8php_source}{delete\+\_\+event\+\_\+handler.\+inc.\+php}}.
+

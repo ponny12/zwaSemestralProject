@@ -1,0 +1,153 @@
+\doxysection{discover.\+php File Reference}
+\hypertarget{discover_8php}{}\label{discover_8php}\index{discover.php@{discover.php}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{discover_8php_ad0ed846c8f91b26c70889960cd0c7526}{if}} (!isset( \$\+\_\+\+SESSION))
+\item 
+global \mbox{\hyperlink{discover_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(isset(\$\+\_\+\+GET\mbox{[}\textquotesingle{}search\textquotesingle{}\mbox{]}) \&\& \$\+\_\+\+GET\mbox{[}\textquotesingle{}search\textquotesingle{}\mbox{]} !=\textquotesingle{}\textquotesingle{} \&\& \$\+\_\+\+GET\mbox{[}\textquotesingle{}search\textquotesingle{}\mbox{]} !=\textquotesingle{}\+\_\+\textquotesingle{}) \mbox{\hyperlink{discover_8php_aa0d29377b94fcb45fe2534905bdf41e3}{else}}
+\item 
+\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\+\_\+search}} = \$search
+\item 
+\mbox{\hyperlink{discover_8php_aaf5dd8cf45c4b750f688d9716ba59195}{\$all\+\_\+args}} = "{}\&search=\$search\&sorted\+\_\+by=\$sorted\+\_\+by\&order=\$order\&items\+\_\+per\+\_\+page=\$items\+\_\+per\+\_\+page\&platform=\$platform"{}
+\item 
+\mbox{\hyperlink{discover_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}}(Exception \$e) \mbox{\hyperlink{discover_8php_add7ab0317f6847b2336e382bded9b7b3}{\$row\+\_\+count}} = \$result\mbox{[}0\mbox{]}
+\item 
+\mbox{\hyperlink{discover_8php_a9f17eee7b7ba0af984d1a70a84f05446}{\$num\+\_\+of\+\_\+page}} = ceil(\$row\+\_\+count / \$items\+\_\+per\+\_\+page)
+\item 
+\mbox{\hyperlink{discover_8php_a95a39965ce2356a40e05903617566233}{\$from\+\_\+item}} = (\$page -\/ 1) \texorpdfstring{$\ast$}{*} \$items\+\_\+per\+\_\+page
+\item 
+\mbox{\hyperlink{discover_8php_a1bcec9bbd34255927faaf155bf3a940a}{\$events}} = \$stmt-\/$>$fetch\+All()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{discover_8php_aaf5dd8cf45c4b750f688d9716ba59195}\label{discover_8php_aaf5dd8cf45c4b750f688d9716ba59195} 
+\index{discover.php@{discover.php}!\$all\_args@{\$all\_args}}
+\index{\$all\_args@{\$all\_args}!discover.php@{discover.php}}
+\doxysubsubsection{\texorpdfstring{\$all\_args}{\$all\_args}}
+{\footnotesize\ttfamily \$all\+\_\+args = "{}\&search=\$search\&sorted\+\_\+by=\$sorted\+\_\+by\&order=\$order\&items\+\_\+per\+\_\+page=\$items\+\_\+per\+\_\+page\&platform=\$platform"{}}
+
+
+
+Definition at line \mbox{\hyperlink{discover_8php_source_l00114}{114}} of file \mbox{\hyperlink{discover_8php_source}{discover.\+php}}.
+
+\Hypertarget{discover_8php_a1bcec9bbd34255927faaf155bf3a940a}\label{discover_8php_a1bcec9bbd34255927faaf155bf3a940a} 
+\index{discover.php@{discover.php}!\$events@{\$events}}
+\index{\$events@{\$events}!discover.php@{discover.php}}
+\doxysubsubsection{\texorpdfstring{\$events}{\$events}}
+{\footnotesize\ttfamily \$events = \$stmt-\/$>$fetch\+All()}
+
+
+
+Definition at line \mbox{\hyperlink{discover_8php_source_l00194}{194}} of file \mbox{\hyperlink{discover_8php_source}{discover.\+php}}.
+
+\Hypertarget{discover_8php_a95a39965ce2356a40e05903617566233}\label{discover_8php_a95a39965ce2356a40e05903617566233} 
+\index{discover.php@{discover.php}!\$from\_item@{\$from\_item}}
+\index{\$from\_item@{\$from\_item}!discover.php@{discover.php}}
+\doxysubsubsection{\texorpdfstring{\$from\_item}{\$from\_item}}
+{\footnotesize\ttfamily \$from\+\_\+item = (\$page -\/ 1) \texorpdfstring{$\ast$}{*} \$items\+\_\+per\+\_\+page}
+
+
+
+Definition at line \mbox{\hyperlink{discover_8php_source_l00149}{149}} of file \mbox{\hyperlink{discover_8php_source}{discover.\+php}}.
+
+\Hypertarget{discover_8php_a9f17eee7b7ba0af984d1a70a84f05446}\label{discover_8php_a9f17eee7b7ba0af984d1a70a84f05446} 
+\index{discover.php@{discover.php}!\$num\_of\_page@{\$num\_of\_page}}
+\index{\$num\_of\_page@{\$num\_of\_page}!discover.php@{discover.php}}
+\doxysubsubsection{\texorpdfstring{\$num\_of\_page}{\$num\_of\_page}}
+{\footnotesize\ttfamily \$num\+\_\+of\+\_\+page = ceil(\$row\+\_\+count / \$items\+\_\+per\+\_\+page)}
+
+
+
+Definition at line \mbox{\hyperlink{discover_8php_source_l00143}{143}} of file \mbox{\hyperlink{discover_8php_source}{discover.\+php}}.
+
+\Hypertarget{discover_8php_a9f187aeb0999f8898ae2451de67650d0}\label{discover_8php_a9f187aeb0999f8898ae2451de67650d0} 
+\index{discover.php@{discover.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!discover.php@{discover.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily global \$pdo}
+
+
+
+Definition at line \mbox{\hyperlink{discover_8php_source_l00009}{9}} of file \mbox{\hyperlink{discover_8php_source}{discover.\+php}}.
+
+\Hypertarget{discover_8php_add7ab0317f6847b2336e382bded9b7b3}\label{discover_8php_add7ab0317f6847b2336e382bded9b7b3} 
+\index{discover.php@{discover.php}!\$row\_count@{\$row\_count}}
+\index{\$row\_count@{\$row\_count}!discover.php@{discover.php}}
+\doxysubsubsection{\texorpdfstring{\$row\_count}{\$row\_count}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}} (Exception \$e) \$row\+\_\+count = \$result\mbox{[}0\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{discover_8php_source_l00139}{139}} of file \mbox{\hyperlink{discover_8php_source}{discover.\+php}}.
+
+\Hypertarget{discover_8php_a7d55e18b034f38153336bceb8ca02a95}\label{discover_8php_a7d55e18b034f38153336bceb8ca02a95} 
+\index{discover.php@{discover.php}!\$sanitized\_search@{\$sanitized\_search}}
+\index{\$sanitized\_search@{\$sanitized\_search}!discover.php@{discover.php}}
+\doxysubsubsection{\texorpdfstring{\$sanitized\_search}{\$sanitized\_search}}
+{\footnotesize\ttfamily \$sanitized\+\_\+search = \$search}
+
+
+
+Definition at line \mbox{\hyperlink{discover_8php_source_l00033}{33}} of file \mbox{\hyperlink{discover_8php_source}{discover.\+php}}.
+
+\Hypertarget{discover_8php_aa0d29377b94fcb45fe2534905bdf41e3}\label{discover_8php_aa0d29377b94fcb45fe2534905bdf41e3} 
+\index{discover.php@{discover.php}!else@{else}}
+\index{else@{else}!discover.php@{discover.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} (isset( \$\+\_\+\+GET\mbox{[} \textquotesingle{}page\textquotesingle{}\mbox{]}) \&\&intval( \$\+\_\+\+GET\mbox{[} \textquotesingle{}page\textquotesingle{}\mbox{]}) $>$ 0 \&\&intval( \$\+\_\+\+GET\mbox{[} \textquotesingle{}page\textquotesingle{}\mbox{]})$<$=\$num\+\_\+of\+\_\+page) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \$search\ =\ \textcolor{charliteral}{'\_'}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{discover_8php_source_l00031}{31}} of file \mbox{\hyperlink{discover_8php_source}{discover.\+php}}.
+
+\Hypertarget{discover_8php_ad0ed846c8f91b26c70889960cd0c7526}\label{discover_8php_ad0ed846c8f91b26c70889960cd0c7526} 
+\index{discover.php@{discover.php}!if@{if}}
+\index{if@{if}!discover.php@{discover.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}}
+{\footnotesize\ttfamily if(!isset(\$\+\_\+\+SESSION)) (\begin{DoxyParamCaption}\item[{!}]{isset \$\+\_\+\+SESSION }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{discover_8php_source_l00002}{2}} of file \mbox{\hyperlink{discover_8php_source}{discover.\+php}}.
+
+\Hypertarget{discover_8php_abe4cc9788f52e49485473dc699537388}\label{discover_8php_abe4cc9788f52e49485473dc699537388} 
+\index{discover.php@{discover.php}!try@{try}}
+\index{try@{try}!discover.php@{discover.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\$platform\ ==\ \textcolor{stringliteral}{'all'})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{discover_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>query(\textcolor{stringliteral}{'SELECT\ COUNT(*)}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FROM\ events\ e\ }}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOIN\ games\ g\ ON\ e.game\_id\ =\ g.id}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LEFT\ JOIN\ games\_platforms\ p\ ON\ g.id\ =\ p.id}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ (g.name\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ g.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ e.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{})'});}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{discover_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>query(\textcolor{stringliteral}{'SELECT\ COUNT(*)}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FROM\ events\ e\ }}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOIN\ games\ g\ ON\ e.game\_id\ =\ g.id}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LEFT\ JOIN\ games\_platforms\ p\ ON\ g.id\ =\ p.id}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ (g.name\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ g.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ e.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{})\ AND\ p.'}.\$platform.\textcolor{stringliteral}{'\ =\ 1'});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{add__user__to__event__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetch()}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{discover_8php_source_l00117}{117}} of file \mbox{\hyperlink{discover_8php_source}{discover.\+php}}.
+

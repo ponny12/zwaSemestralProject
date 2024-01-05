@@ -3,7 +3,7 @@ if(!isset($_SESSION))
 {
     session_start();
 }
-require "dbh.inc.php";
+require "../tools/dbh.tool.php";
 global $pdo;
 
 if (!isset($_GET['q'])) {

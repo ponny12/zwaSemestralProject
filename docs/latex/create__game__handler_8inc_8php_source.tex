@@ -1,0 +1,177 @@
+\doxysection{create\+\_\+game\+\_\+handler.\+inc.\+php}
+\hypertarget{create__game__handler_8inc_8php_source}{}\label{create__game__handler_8inc_8php_source}\index{includes/create\_game\_handler.inc.php@{includes/create\_game\_handler.inc.php}}
+\mbox{\hyperlink{create__game__handler_8inc_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00002}\mbox{\hyperlink{create__game__handler_8inc_8php_ad0ed846c8f91b26c70889960cd0c7526}{00002}}\ \textcolor{keywordflow}{if}(!isset(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}))}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00003}00003\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00004}00004\ \ \ \ \ session\_start();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00005}00005\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00006}00006\ require\ \textcolor{stringliteral}{'../tools/error.tool.php'};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00007}00007\ require\ \textcolor{stringliteral}{'dbh.inc.php'};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00008}\mbox{\hyperlink{create__game__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{00008}}\ global\ \mbox{\hyperlink{create__game__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00010}00010\ \textcolor{preprocessor}{\#\ check\ if\ connecting\ via\ post}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00011}00011\ \textcolor{keywordflow}{if}\ (\$\_SERVER[\textcolor{stringliteral}{'REQUEST\_METHOD'}]\ !=\ \textcolor{stringliteral}{'POST'})\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'attempt\ to\ add\ game,\ but\ not\ by\ post\ request.'};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00013}00013\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../error.php'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00014}00014\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00016}00016\ \textcolor{preprocessor}{\#\ check\ if\ post\ data\ received}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00017}00017\ \textcolor{keywordflow}{if}\ (!isset(\$\_POST[\textcolor{stringliteral}{'submit'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00018}00018\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'attempt\ to\ add\ game,\ but\ no\ post\ data\ found.'};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00019}00019\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../error.php'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00020}00020\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00021}00021\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00022}00022\ \textcolor{preprocessor}{\#\ check\ if\ name\ is\ empty}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00023}\mbox{\hyperlink{create__game__handler_8inc_8php_a76a7d2519cbe77a6aef513d42cf791b1}{00023}}\ \mbox{\hyperlink{create__game__handler_8inc_8php_a76a7d2519cbe77a6aef513d42cf791b1}{\$name}}\ =\ trim(\$\_POST[\textcolor{stringliteral}{'name'}]);}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00024}00024\ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{create__game__handler_8inc_8php_a76a7d2519cbe77a6aef513d42cf791b1}{\$name}}))\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'attempt\ to\ add\ game,\ but\ name\ can\ not\ be\ empty.'};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00026}00026\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../error.php'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00027}00027\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00029}00029\ \textcolor{preprocessor}{\#\ check\ if\ game\ with\ the\ same\ name\ already\ exist}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00030}\mbox{\hyperlink{create__game__handler_8inc_8php_abe4cc9788f52e49485473dc699537388}{00030}}\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00031}00031\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{create__game__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ name\ FROM\ games\ WHERE\ LOWER(games.name)\ =\ :name'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':name'},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a76a7d2519cbe77a6aef513d42cf791b1}{\$name}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00034}\mbox{\hyperlink{create__game__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{00034}}\ \ \ \ \ \mbox{\hyperlink{create__game__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetch();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{if}\ (!empty(\mbox{\hyperlink{create__game__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}))\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00036}00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'attempt\ to\ add\ game\ that\ already\ exist(same\ name).'};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00037}00037\ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../error.php'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00038}00038\ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00040}00040\ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'db\ connection\ failed:\ '}.\$e;}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00042}00042\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../error.php'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00043}00043\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00044}\mbox{\hyperlink{create__game__handler_8inc_8php_a32292f75b6f103cc8b74527a00c94b2b}{00044}}\ \}\ \textcolor{keywordflow}{finally}\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00046}00046\ \ \ \ \ \mbox{\hyperlink{create__game__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00048}00048\ \textcolor{preprocessor}{\#\ check\ if\ description\ is\ empty}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00049}\mbox{\hyperlink{create__game__handler_8inc_8php_a87b032cba06009e3467abf1c8018d960}{00049}}\ \mbox{\hyperlink{create__game__handler_8inc_8php_a87b032cba06009e3467abf1c8018d960}{\$description}}\ =\ trim(\$\_POST[\textcolor{stringliteral}{'description'}]);}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00050}00050\ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{create__game__handler_8inc_8php_a87b032cba06009e3467abf1c8018d960}{\$description}}))\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'attempt\ to\ add\ game,\ but\ description\ can\ not\ be\ empty.'};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00052}00052\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../error.php'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00053}00053\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00056}00056\ \textcolor{preprocessor}{\#\ check\ checkboxes(at\ least\ 1\ should\ be\ selected)}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00057}00057\ \textcolor{keywordflow}{if}\ (!isset(\$\_POST[\textcolor{stringliteral}{'meta'}])\ \&\&\ !isset(\$\_POST[\textcolor{stringliteral}{'pico'}])\ \&\&\ !isset(\$\_POST[\textcolor{stringliteral}{'pcvr'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00058}00058\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'attempt\ to\ add\ game,\ but\ no\ platform\ selected.'};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00059}00059\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../error.php'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00060}00060\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00062}00062\ \textcolor{preprocessor}{\#set\ checkboxes}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00063}00063\ \textcolor{keywordflow}{if}\ (isset(\$\_POST[\textcolor{stringliteral}{'meta'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00064}00064\ \ \ \ \ \$meta\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00065}\mbox{\hyperlink{create__game__handler_8inc_8php_a19f5c4dcfcf41072c1ac8904c4f5001c}{00065}}\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00066}00066\ \ \ \ \ \$meta\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00068}00068\ \textcolor{keywordflow}{if}\ (isset(\$\_POST[\textcolor{stringliteral}{'pico'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00069}00069\ \ \ \ \ \$pico\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00070}00070\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00071}00071\ \ \ \ \ \$pico\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00072}00072\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00073}00073\ \textcolor{keywordflow}{if}\ (isset(\$\_POST[\textcolor{stringliteral}{'pcvr'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00074}00074\ \ \ \ \ \$pcvr\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00075}00075\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00076}00076\ \ \ \ \ \$pcvr\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00078}00078\ \textcolor{preprocessor}{\#-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00080}00080\ \textcolor{preprocessor}{\#check\ if\ file\ received}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00081}\mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{00081}}\ \mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{\$file}}\ =\ \$\_FILES[\textcolor{stringliteral}{'image'}];}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00082}00082\ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{\$file}}[\textcolor{stringliteral}{'name'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00083}00083\ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'attempt\ to\ add\ game,\ but\ no\ file\ for\ image\ was\ selected.'},\ \textcolor{stringliteral}{'../'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00085}00085\ \textcolor{preprocessor}{\#check\ type\ of\ file}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00086}00086\ \textcolor{keywordflow}{if}\ (!preg\_match(\textcolor{stringliteral}{'\#image/*\#'},\ \mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{\$file}}[\textcolor{stringliteral}{'type'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00087}00087\ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'attempt\ to\ add\ game,\ but\ attached\ file\ is\ not\ image.'},\ \textcolor{stringliteral}{'../'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00088}00088\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00089}00089\ \textcolor{preprocessor}{\#resize\ the\ image}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00090}\mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{00090}}\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}}\ =\ \mbox{\hyperlink{create__game__handler_8inc_8php_a76a7d2519cbe77a6aef513d42cf791b1}{\$name}};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00091}00091\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}}\ =\ str\_replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}\_"{}},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00092}00092\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}}\ =\ str\_replace(\textcolor{stringliteral}{"{}/"{}},\ \textcolor{stringliteral}{"{}\_"{}},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00093}00093\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}}\ =\ str\_replace(\textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)"{}},\ \textcolor{stringliteral}{"{}\_"{}},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00094}00094\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}}\ =\ str\_replace(\textcolor{stringliteral}{"{}:"{}},\ \textcolor{stringliteral}{"{}\_"{}},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00095}00095\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}}\ =\ str\_replace(\textcolor{stringliteral}{"{}*"{}},\ \textcolor{stringliteral}{"{}\_"{}},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00096}00096\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}}\ =\ str\_replace(\textcolor{stringliteral}{"{}?"{}},\ \textcolor{stringliteral}{"{}\_"{}},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00097}00097\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}}\ =\ str\_replace(\textcolor{stringliteral}{"{}\(\backslash\)"{}"{}},\ \textcolor{stringliteral}{"{}\_"{}},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00098}00098\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}}\ =\ str\_replace(\textcolor{stringliteral}{"{}<"{}},\ \textcolor{stringliteral}{"{}\_"{}},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00099}00099\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}}\ =\ str\_replace(\textcolor{stringliteral}{"{}>"{}},\ \textcolor{stringliteral}{"{}\_"{}},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00100}00100\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}}\ =\ str\_replace(\textcolor{stringliteral}{"{}|"{}},\ \textcolor{stringliteral}{"{}\_"{}},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00101}00101\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}}\ =\ str\_replace(\textcolor{stringliteral}{"{}."{}},\ \textcolor{stringliteral}{"{}\_"{}},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\_name}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00103}\mbox{\hyperlink{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919}{00103}}\ \mbox{\hyperlink{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919}{\$type}}\ =\ array\_slice(explode(\textcolor{charliteral}{'.'},\ \mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{\$file}}[\textcolor{stringliteral}{'name'}]),\ -\/1,\ 1)[0];}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00104}\mbox{\hyperlink{create__game__handler_8inc_8php_ab6d550f2b1705e9e971e83869a84047b}{00104}}\ \mbox{\hyperlink{create__game__handler_8inc_8php_ab6d550f2b1705e9e971e83869a84047b}{\$new\_path\_big}}\ =\ \textcolor{stringliteral}{'../images/games\_images/'}.\$file\_name.\textcolor{stringliteral}{'\_big.'}.\mbox{\hyperlink{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919}{\$type}};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00105}\mbox{\hyperlink{create__game__handler_8inc_8php_abae31d072e95b3332bc2479d09581349}{00105}}\ \mbox{\hyperlink{create__game__handler_8inc_8php_abae31d072e95b3332bc2479d09581349}{\$new\_path\_small}}\ =\ \textcolor{stringliteral}{'../images/games\_images/'}.\$file\_name.\textcolor{stringliteral}{'\_small.'}.\mbox{\hyperlink{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919}{\$type}};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00106}00106\ \textcolor{preprocessor}{\#\ for\ db\ without\ ../}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00107}\mbox{\hyperlink{create__game__handler_8inc_8php_aac0ad6d723a5d29ab3bf6049d2e2ea98}{00107}}\ \mbox{\hyperlink{create__game__handler_8inc_8php_aac0ad6d723a5d29ab3bf6049d2e2ea98}{\$new\_path\_big\_for\_db}}\ =\ \textcolor{stringliteral}{'images/games\_images/'}.\$file\_name.\textcolor{stringliteral}{'\_big.'}.\mbox{\hyperlink{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919}{\$type}};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00108}\mbox{\hyperlink{create__game__handler_8inc_8php_aa9285bc63f1dfdf6b36180dd9b4e9e3c}{00108}}\ \mbox{\hyperlink{create__game__handler_8inc_8php_aa9285bc63f1dfdf6b36180dd9b4e9e3c}{\$new\_path\_small\_for\_db}}\ =\ \textcolor{stringliteral}{'images/games\_images/'}.\$file\_name.\textcolor{stringliteral}{'\_small.'}.\mbox{\hyperlink{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919}{\$type}};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00109}00109\ move\_uploaded\_file(\mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{\$file}}[\textcolor{stringliteral}{'tmp\_name'}],\ \mbox{\hyperlink{create__game__handler_8inc_8php_ab6d550f2b1705e9e971e83869a84047b}{\$new\_path\_big}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00110}00110\ copy(\mbox{\hyperlink{create__game__handler_8inc_8php_ab6d550f2b1705e9e971e83869a84047b}{\$new\_path\_big}},\ \mbox{\hyperlink{create__game__handler_8inc_8php_abae31d072e95b3332bc2479d09581349}{\$new\_path\_small}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00111}00111\ require\ \textcolor{stringliteral}{'../tools/image.tool.php'};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00112}00112\ \mbox{\hyperlink{image_8tool_8php_af66452eefcccf4ad3e31cdbdf4756ecb}{resize\_image}}(\mbox{\hyperlink{create__game__handler_8inc_8php_ab6d550f2b1705e9e971e83869a84047b}{\$new\_path\_big}},\ 150);}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00113}00113\ \mbox{\hyperlink{image_8tool_8php_af66452eefcccf4ad3e31cdbdf4756ecb}{resize\_image}}(\mbox{\hyperlink{create__game__handler_8inc_8php_abae31d072e95b3332bc2479d09581349}{\$new\_path\_small}},\ 50);}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00115}00115\ \textcolor{preprocessor}{\#insert\ game\ info}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00116}00116\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00117}00117\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{create__game__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'INSERT\ INTO\ games\ (name,\ description,\ img\_small,\ img\_big)\ VALUES\ (:name,\ :description,\ :image\_small,\ :image\_big)'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00118}00118\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':name'},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a76a7d2519cbe77a6aef513d42cf791b1}{\$name}},\ PDO::PARAM\_STR);}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00119}00119\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':description'},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a87b032cba06009e3467abf1c8018d960}{\$description}},\ PDO::PARAM\_STR);}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00120}00120\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':image\_small'},\ \mbox{\hyperlink{create__game__handler_8inc_8php_aa9285bc63f1dfdf6b36180dd9b4e9e3c}{\$new\_path\_small\_for\_db}},\ PDO::PARAM\_STR);}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00121}00121\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':image\_big'},\ \mbox{\hyperlink{create__game__handler_8inc_8php_aac0ad6d723a5d29ab3bf6049d2e2ea98}{\$new\_path\_big\_for\_db}},\ PDO::PARAM\_STR);}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00122}00122\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00123}00123\ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00124}00124\ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'db\ failed:\ '}.\$e,\ \textcolor{stringliteral}{'../'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00125}00125\ \}\ \textcolor{keywordflow}{finally}\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00126}00126\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00127}00127\ \ \ \ \ \mbox{\hyperlink{create__game__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00128}00128\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00129}00129\ \textcolor{preprocessor}{\#get\ id\ of\ game}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00130}00130\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00131}00131\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{create__game__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ id\ FROM\ games\ WHERE\ games.name\ =\ :name'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00132}00132\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':name'},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a76a7d2519cbe77a6aef513d42cf791b1}{\$name}},\ PDO::PARAM\_STR);}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00133}00133\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00134}00134\ \ \ \ \ \mbox{\hyperlink{create__game__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetch();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00135}00135\ \ \ \ \ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{create__game__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}))\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00136}00136\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'did\ not\ found\ game\ with\ name:\ '}.\$name;}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00137}00137\ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../error.php'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00138}00138\ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00139}00139\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00140}\mbox{\hyperlink{create__game__handler_8inc_8php_a764c44f4c037b6ff7b78806cd13e1ece}{00140}}\ \ \ \ \ \mbox{\hyperlink{create__game__handler_8inc_8php_a764c44f4c037b6ff7b78806cd13e1ece}{\$id}}\ =\ \mbox{\hyperlink{create__game__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}[\textcolor{stringliteral}{'id'}];}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00142}00142\ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00143}00143\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'db\ get\ failed:\ '}.\$e;}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00144}00144\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../error.php'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00145}00145\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00146}00146\ \}\ \textcolor{keywordflow}{finally}\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00147}00147\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00148}00148\ \ \ \ \ \mbox{\hyperlink{create__game__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00149}00149\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00150}00150\ \textcolor{preprocessor}{\#insert\ platforms\ info}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00151}00151\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00152}00152\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{create__game__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'INSERT\ INTO\ games\_platforms\ (id,\ meta,\ pico,\ pcvr)\ VALUES\ (:id,\ :meta,\ :pico,\ :pcvr)'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00153}00153\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':id'},\ \mbox{\hyperlink{create__game__handler_8inc_8php_a764c44f4c037b6ff7b78806cd13e1ece}{\$id}},\ PDO::PARAM\_STR);}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00154}00154\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':meta'},\ \$meta,\ PDO::PARAM\_STR);}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00155}00155\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':pico'},\ \$pico,\ PDO::PARAM\_STR);}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00156}00156\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':pcvr'},\ \$pcvr,\ PDO::PARAM\_STR);}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00157}00157\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00159}00159\ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00160}00160\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'db\ get\ failed:\ '}.\$e;}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00161}00161\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../error.php'});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00162}00162\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00163}00163\ \}\ \textcolor{keywordflow}{finally}\ \{}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00164}00164\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00165}00165\ \ \ \ \ \mbox{\hyperlink{create__game__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00166}00166\ \}}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00169}00169\ header(\textcolor{stringliteral}{"{}Location:\ ../create\_new\_game.php?successfully\_upload=true"{}});}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00170}00170\ die();}
+\DoxyCodeLine{\Hypertarget{create__game__handler_8inc_8php_source_l00171}00171\ }
+
+\end{DoxyCode}

@@ -1,0 +1,79 @@
+\doxysection{profile\+\_\+delete\+\_\+handler.\+inc.\+php}
+\hypertarget{profile__delete__handler_8inc_8php_source}{}\label{profile__delete__handler_8inc_8php_source}\index{includes/profile\_delete\_handler.inc.php@{includes/profile\_delete\_handler.inc.php}}
+\mbox{\hyperlink{profile__delete__handler_8inc_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00002}00002\ include\ \textcolor{stringliteral}{'dbh.inc.php'};}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00003}00003\ include\ \textcolor{stringliteral}{'../tools/error.tool.php'};}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00004}\mbox{\hyperlink{profile__delete__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{00004}}\ global\ \mbox{\hyperlink{profile__delete__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}};}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00006}00006\ \textcolor{keywordflow}{if}\ (\$\_SERVER[\textcolor{stringliteral}{'REQUEST\_METHOD'}]\ !=\ \textcolor{stringliteral}{'POST'}\ ||\ !isset(\$\_POST[\textcolor{stringliteral}{'submit'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00007}00007\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../index.php'});}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00008}00008\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00009}00009\ \}}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00011}\mbox{\hyperlink{profile__delete__handler_8inc_8php_ae7d56089a2b6b87eb3b4f1b0f1a9bddd}{00011}}\ \mbox{\hyperlink{profile__delete__handler_8inc_8php_ae7d56089a2b6b87eb3b4f1b0f1a9bddd}{\$id}}\ =\ \$\_POST[\textcolor{stringliteral}{'id'}];}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00012}\mbox{\hyperlink{profile__delete__handler_8inc_8php_a12e4252e778952d356721bc655cff8c8}{00012}}\ \mbox{\hyperlink{profile__delete__handler_8inc_8php_a12e4252e778952d356721bc655cff8c8}{\$pwd}}\ =\ \$\_POST[\textcolor{stringliteral}{'password'}];}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00013}00013\ \textcolor{keywordflow}{if}\ (!isset(\$\_POST[\textcolor{stringliteral}{'delete\_checkbox'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00014}00014\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../profile.php?id='}.\mbox{\hyperlink{profile__delete__handler_8inc_8php_ae7d56089a2b6b87eb3b4f1b0f1a9bddd}{\$id}});}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00015}00015\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00016}00016\ \}}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00018}00018\ \textcolor{preprocessor}{\#\ get\ pwd}}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00019}\mbox{\hyperlink{profile__delete__handler_8inc_8php_ac12113de5e552f7fe29ec2713254dfa4}{00019}}\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00020}00020\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{profile__delete__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ pwd\ FROM\ users\ WHERE\ users.id\ =\ :id'});}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':id'},\ \mbox{\hyperlink{profile__delete__handler_8inc_8php_ae7d56089a2b6b87eb3b4f1b0f1a9bddd}{\$id}},\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00023}\mbox{\hyperlink{profile__delete__handler_8inc_8php_adce4a62a19f49d06420a589d0dc981bf}{00023}}\ \ \ \ \ \mbox{\hyperlink{profile__delete__handler_8inc_8php_adce4a62a19f49d06420a589d0dc981bf}{\$pwd\_hash}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetch()[\textcolor{stringliteral}{'pwd'}];}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00024}00024\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'db\ failed:\ '}\ .\ \$e,\ \textcolor{stringliteral}{'../'});}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00028}00028\ \textcolor{keywordflow}{if}\ (!password\_verify(\mbox{\hyperlink{profile__delete__handler_8inc_8php_a12e4252e778952d356721bc655cff8c8}{\$pwd}},\ \mbox{\hyperlink{profile__delete__handler_8inc_8php_adce4a62a19f49d06420a589d0dc981bf}{\$pwd\_hash}}))\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00029}00029\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../profile.php?id='}.\mbox{\hyperlink{profile__delete__handler_8inc_8php_ae7d56089a2b6b87eb3b4f1b0f1a9bddd}{\$id}});}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00030}00030\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00032}00032\ \textcolor{preprocessor}{\#\ delete\ from\ db\ all\ about\ user,\ his\ events\ etc.}}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00033}00033\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{profile__delete__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ events.id\ FROM\ events\ WHERE\ events.creator\_id\ =\ :id'});}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':id'},\ \mbox{\hyperlink{profile__delete__handler_8inc_8php_ae7d56089a2b6b87eb3b4f1b0f1a9bddd}{\$id}},\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00037}\mbox{\hyperlink{profile__delete__handler_8inc_8php_aec60f4ead967f7b7fd43c97a7cab39aa}{00037}}\ \ \ \ \ \mbox{\hyperlink{profile__delete__handler_8inc_8php_aec60f4ead967f7b7fd43c97a7cab39aa}{\$all\_events\_where\_user\_is\_creator}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetchAll();}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00038}00038\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'db\ failed:\ '}\ .\ \$e,\ \textcolor{stringliteral}{'../'});}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00042}00042\ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{profile__delete__handler_8inc_8php_aec60f4ead967f7b7fd43c97a7cab39aa}{\$all\_events\_where\_user\_is\_creator}}\ as\ \$event)\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{add__user__to__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996}{\$event\_id}}\ =\ \$event[\textcolor{stringliteral}{'id'}];}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00045}00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{profile__delete__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'DELETE\ FROM\ events\_users\ WHERE\ events\_users.event\_id\ =\ :event\_id'});}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':event\_id'},\ \mbox{\hyperlink{add__user__to__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996}{\$event\_id}},\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00047}00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00048}00048\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00049}00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'db\ failed:\ '}\ .\ \$e,\ \textcolor{stringliteral}{'../'});}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{profile__delete__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'DELETE\ FROM\ events\ WHERE\ events.id\ =\ :event\_id'});}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':event\_id'},\ \mbox{\hyperlink{add__user__to__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996}{\$event\_id}},\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00055}00055\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'db\ failed:\ '}\ .\ \$e,\ \textcolor{stringliteral}{'../'});}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00058}00058\ \}}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00060}00060\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{profile__delete__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'DELETE\ FROM\ events\_users\ WHERE\ events\_users.user\_id\ =\ :user\_id'});}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00062}00062\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':user\_id'},\ \mbox{\hyperlink{profile__delete__handler_8inc_8php_ae7d56089a2b6b87eb3b4f1b0f1a9bddd}{\$id}},\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00064}00064\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00065}00065\ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'db\ failed:\ '}\ .\ \$e,\ \textcolor{stringliteral}{'../'});}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00066}00066\ \}}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00068}00068\ \textcolor{preprocessor}{\#\ unset\ all\ session\ fields}}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00070}00070\ session\_unset();}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00071}00071\ session\_destroy();}
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{profile__delete__handler_8inc_8php_source_l00073}00073\ header(\textcolor{stringliteral}{'Location:\ ../index.php'});}
+
+\end{DoxyCode}

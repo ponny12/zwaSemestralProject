@@ -8,7 +8,7 @@ function checkUsernameAlreadyExist($username)
 {
     try {
         global $pdo;
-        require "dbh.inc.php";
+        require "../tools/dbh.tool.php";
 
         $query = "SELECT username FROM users;";
         $stmt = $pdo->prepare($query);
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["confirmLicense"]) {
 
 
     try {
-        require "dbh.inc.php";
+        require "../tools/dbh.tool.php";
         global $pdo;
         $query = "INSERT INTO users (username, pwd, email) VALUES (:username, :pwd, :email);";
         $stmt = $pdo->prepare($query);

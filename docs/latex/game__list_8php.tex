@@ -1,0 +1,174 @@
+\doxysection{game\+\_\+list.\+php File Reference}
+\hypertarget{game__list_8php}{}\label{game__list_8php}\index{game\_list.php@{game\_list.php}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{game__list_8php_ad0ed846c8f91b26c70889960cd0c7526}{if}} (!isset( \$\+\_\+\+SESSION))
+\item 
+global \mbox{\hyperlink{game__list_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(isset(\$\+\_\+\+GET\mbox{[}\textquotesingle{}search\textquotesingle{}\mbox{]}) \&\& \$\+\_\+\+GET\mbox{[}\textquotesingle{}search\textquotesingle{}\mbox{]} !=\textquotesingle{}\textquotesingle{} \&\& \$\+\_\+\+GET\mbox{[}\textquotesingle{}search\textquotesingle{}\mbox{]} !=\textquotesingle{}\+\_\+\textquotesingle{}) \mbox{\hyperlink{game__list_8php_aa0d29377b94fcb45fe2534905bdf41e3}{else}}
+\item 
+\mbox{\hyperlink{game__list_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\+\_\+search}} = \$search
+\item 
+\mbox{\hyperlink{game__list_8php_a2d1f877d9738711d7686b368e02e2174}{\$sorted\+\_\+by}} = \textquotesingle{}name\textquotesingle{}
+\item 
+\mbox{\hyperlink{game__list_8php_aaf5dd8cf45c4b750f688d9716ba59195}{\$all\+\_\+args}} = "{}\&search=\$search\&sorted\+\_\+by=\$sorted\+\_\+by\&order=\$order\&items\+\_\+per\+\_\+page=\$items\+\_\+per\+\_\+page\&platform=\$platform"{}
+\item 
+\mbox{\hyperlink{game__list_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}}(Exception \$e) \mbox{\hyperlink{game__list_8php_add7ab0317f6847b2336e382bded9b7b3}{\$row\+\_\+count}} = \$result\mbox{[}0\mbox{]}
+\item 
+\mbox{\hyperlink{game__list_8php_a9f17eee7b7ba0af984d1a70a84f05446}{\$num\+\_\+of\+\_\+page}} = ceil(\$row\+\_\+count / \$items\+\_\+per\+\_\+page)
+\item 
+\mbox{\hyperlink{game__list_8php_a95a39965ce2356a40e05903617566233}{\$from\+\_\+item}} = (\$page -\/ 1) \texorpdfstring{$\ast$}{*} \$items\+\_\+per\+\_\+page
+\item 
+\mbox{\hyperlink{game__list_8php_a8b9258a0949c521830380818e33c164f}{\$games}} = \$stmt-\/$>$fetch\+All()
+\item 
+\mbox{\hyperlink{game__list_8php_a9ee42195f2b26ca51b7b816b4f28113e}{catch}} (Exception \$e)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{game__list_8php_aaf5dd8cf45c4b750f688d9716ba59195}\label{game__list_8php_aaf5dd8cf45c4b750f688d9716ba59195} 
+\index{game\_list.php@{game\_list.php}!\$all\_args@{\$all\_args}}
+\index{\$all\_args@{\$all\_args}!game\_list.php@{game\_list.php}}
+\doxysubsubsection{\texorpdfstring{\$all\_args}{\$all\_args}}
+{\footnotesize\ttfamily \$all\+\_\+args = "{}\&search=\$search\&sorted\+\_\+by=\$sorted\+\_\+by\&order=\$order\&items\+\_\+per\+\_\+page=\$items\+\_\+per\+\_\+page\&platform=\$platform"{}}
+
+
+
+Definition at line \mbox{\hyperlink{game__list_8php_source_l00112}{112}} of file \mbox{\hyperlink{game__list_8php_source}{game\+\_\+list.\+php}}.
+
+\Hypertarget{game__list_8php_a95a39965ce2356a40e05903617566233}\label{game__list_8php_a95a39965ce2356a40e05903617566233} 
+\index{game\_list.php@{game\_list.php}!\$from\_item@{\$from\_item}}
+\index{\$from\_item@{\$from\_item}!game\_list.php@{game\_list.php}}
+\doxysubsubsection{\texorpdfstring{\$from\_item}{\$from\_item}}
+{\footnotesize\ttfamily \$from\+\_\+item = (\$page -\/ 1) \texorpdfstring{$\ast$}{*} \$items\+\_\+per\+\_\+page}
+
+
+
+Definition at line \mbox{\hyperlink{game__list_8php_source_l00166}{166}} of file \mbox{\hyperlink{game__list_8php_source}{game\+\_\+list.\+php}}.
+
+\Hypertarget{game__list_8php_a8b9258a0949c521830380818e33c164f}\label{game__list_8php_a8b9258a0949c521830380818e33c164f} 
+\index{game\_list.php@{game\_list.php}!\$games@{\$games}}
+\index{\$games@{\$games}!game\_list.php@{game\_list.php}}
+\doxysubsubsection{\texorpdfstring{\$games}{\$games}}
+{\footnotesize\ttfamily \$games = \$stmt-\/$>$fetch\+All()}
+
+
+
+Definition at line \mbox{\hyperlink{game__list_8php_source_l00185}{185}} of file \mbox{\hyperlink{game__list_8php_source}{game\+\_\+list.\+php}}.
+
+\Hypertarget{game__list_8php_a9f17eee7b7ba0af984d1a70a84f05446}\label{game__list_8php_a9f17eee7b7ba0af984d1a70a84f05446} 
+\index{game\_list.php@{game\_list.php}!\$num\_of\_page@{\$num\_of\_page}}
+\index{\$num\_of\_page@{\$num\_of\_page}!game\_list.php@{game\_list.php}}
+\doxysubsubsection{\texorpdfstring{\$num\_of\_page}{\$num\_of\_page}}
+{\footnotesize\ttfamily \$num\+\_\+of\+\_\+page = ceil(\$row\+\_\+count / \$items\+\_\+per\+\_\+page)}
+
+
+
+Definition at line \mbox{\hyperlink{game__list_8php_source_l00160}{160}} of file \mbox{\hyperlink{game__list_8php_source}{game\+\_\+list.\+php}}.
+
+\Hypertarget{game__list_8php_a9f187aeb0999f8898ae2451de67650d0}\label{game__list_8php_a9f187aeb0999f8898ae2451de67650d0} 
+\index{game\_list.php@{game\_list.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!game\_list.php@{game\_list.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily global \$pdo}
+
+
+
+Definition at line \mbox{\hyperlink{game__list_8php_source_l00008}{8}} of file \mbox{\hyperlink{game__list_8php_source}{game\+\_\+list.\+php}}.
+
+\Hypertarget{game__list_8php_add7ab0317f6847b2336e382bded9b7b3}\label{game__list_8php_add7ab0317f6847b2336e382bded9b7b3} 
+\index{game\_list.php@{game\_list.php}!\$row\_count@{\$row\_count}}
+\index{\$row\_count@{\$row\_count}!game\_list.php@{game\_list.php}}
+\doxysubsubsection{\texorpdfstring{\$row\_count}{\$row\_count}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}} (Exception \$e) \$row\+\_\+count = \$result\mbox{[}0\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{game__list_8php_source_l00153}{153}} of file \mbox{\hyperlink{game__list_8php_source}{game\+\_\+list.\+php}}.
+
+\Hypertarget{game__list_8php_a7d55e18b034f38153336bceb8ca02a95}\label{game__list_8php_a7d55e18b034f38153336bceb8ca02a95} 
+\index{game\_list.php@{game\_list.php}!\$sanitized\_search@{\$sanitized\_search}}
+\index{\$sanitized\_search@{\$sanitized\_search}!game\_list.php@{game\_list.php}}
+\doxysubsubsection{\texorpdfstring{\$sanitized\_search}{\$sanitized\_search}}
+{\footnotesize\ttfamily \$sanitized\+\_\+search = \$search}
+
+
+
+Definition at line \mbox{\hyperlink{game__list_8php_source_l00031}{31}} of file \mbox{\hyperlink{game__list_8php_source}{game\+\_\+list.\+php}}.
+
+\Hypertarget{game__list_8php_a2d1f877d9738711d7686b368e02e2174}\label{game__list_8php_a2d1f877d9738711d7686b368e02e2174} 
+\index{game\_list.php@{game\_list.php}!\$sorted\_by@{\$sorted\_by}}
+\index{\$sorted\_by@{\$sorted\_by}!game\_list.php@{game\_list.php}}
+\doxysubsubsection{\texorpdfstring{\$sorted\_by}{\$sorted\_by}}
+{\footnotesize\ttfamily \$sorted\+\_\+by = \textquotesingle{}name\textquotesingle{}}
+
+
+
+Definition at line \mbox{\hyperlink{game__list_8php_source_l00048}{48}} of file \mbox{\hyperlink{game__list_8php_source}{game\+\_\+list.\+php}}.
+
+\Hypertarget{game__list_8php_a9ee42195f2b26ca51b7b816b4f28113e}\label{game__list_8php_a9ee42195f2b26ca51b7b816b4f28113e} 
+\index{game\_list.php@{game\_list.php}!catch@{catch}}
+\index{catch@{catch}!game\_list.php@{game\_list.php}}
+\doxysubsubsection{\texorpdfstring{catch}{catch}}
+{\footnotesize\ttfamily catch(Exception \$e) (\begin{DoxyParamCaption}\item[{Exception}]{\$e }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game__list_8php_source_l00186}{186}} of file \mbox{\hyperlink{game__list_8php_source}{game\+\_\+list.\+php}}.
+
+\Hypertarget{game__list_8php_aa0d29377b94fcb45fe2534905bdf41e3}\label{game__list_8php_aa0d29377b94fcb45fe2534905bdf41e3} 
+\index{game\_list.php@{game\_list.php}!else@{else}}
+\index{else@{else}!game\_list.php@{game\_list.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} (isset( \$\+\_\+\+GET\mbox{[} \textquotesingle{}page\textquotesingle{}\mbox{]}) \&\&intval( \$\+\_\+\+GET\mbox{[} \textquotesingle{}page\textquotesingle{}\mbox{]}) $>$ 0 \&\&intval( \$\+\_\+\+GET\mbox{[} \textquotesingle{}page\textquotesingle{}\mbox{]})$<$=\$num\+\_\+of\+\_\+page) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \$search\ =\ \textcolor{charliteral}{'\_'}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{game__list_8php_source_l00029}{29}} of file \mbox{\hyperlink{game__list_8php_source}{game\+\_\+list.\+php}}.
+
+\Hypertarget{game__list_8php_ad0ed846c8f91b26c70889960cd0c7526}\label{game__list_8php_ad0ed846c8f91b26c70889960cd0c7526} 
+\index{game\_list.php@{game\_list.php}!if@{if}}
+\index{if@{if}!game\_list.php@{game\_list.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}}
+{\footnotesize\ttfamily if(!isset(\$\+\_\+\+SESSION)) (\begin{DoxyParamCaption}\item[{!}]{isset \$\+\_\+\+SESSION }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game__list_8php_source_l00002}{2}} of file \mbox{\hyperlink{game__list_8php_source}{game\+\_\+list.\+php}}.
+
+\Hypertarget{game__list_8php_abe4cc9788f52e49485473dc699537388}\label{game__list_8php_abe4cc9788f52e49485473dc699537388} 
+\index{game\_list.php@{game\_list.php}!try@{try}}
+\index{try@{try}!game\_list.php@{game\_list.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\$platform\ ==\ \textcolor{stringliteral}{'all'})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{game__list_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>query(\textcolor{stringliteral}{'SELECT\ COUNT(*)}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FROM\ games\ g}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ (g.name\ LIKE\ "{}\%'}.\mbox{\hyperlink{game__list_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ g.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{game__list_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{})'});}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{game__list_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>query(\textcolor{stringliteral}{'SELECT\ COUNT(*)}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FROM\ games\ g}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LEFT\ JOIN\ games\_platforms\ p\ ON\ g.id\ =\ p.id}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ (g.name\ LIKE\ "{}\%'}.\mbox{\hyperlink{game__list_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ g.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{game__list_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{})\ AND\ p.'}.\$platform.\textcolor{stringliteral}{'\ =\ 1'});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{add__user__to__event__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetch()}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{game__list_8php_source_l00134}{134}} of file \mbox{\hyperlink{game__list_8php_source}{game\+\_\+list.\+php}}.
+

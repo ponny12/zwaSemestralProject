@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST' || empty($_POST['event_id']) || empty($
     die();
 }
 require '../tools/error.tool.php';
-require '../includes/dbh.inc.php';
+require '../tools/dbh.tool.php';
 global $pdo;
 
 $event_id = intval($_POST['event_id']);

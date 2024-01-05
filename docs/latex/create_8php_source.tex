@@ -1,0 +1,238 @@
+\doxysection{create.\+php}
+\hypertarget{create_8php_source}{}\label{create_8php_source}\mbox{\hyperlink{create_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00002}\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{00002}}\ \textcolor{keywordflow}{if}(!isset(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}))}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00003}00003\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00004}00004\ \ \ \ \ session\_start();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00005}00005\ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00006}00006\ require\ \textcolor{stringliteral}{'includes/dbh.inc.php'};}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00007}00007\ require\ \textcolor{stringliteral}{'tools/error.tool.php'};}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00008}\mbox{\hyperlink{create_8php_a9f187aeb0999f8898ae2451de67650d0}{00008}}\ global\ \mbox{\hyperlink{create_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}};}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00010}\mbox{\hyperlink{create_8php_a8b9258a0949c521830380818e33c164f}{00010}}\ \mbox{\hyperlink{create_8php_a8b9258a0949c521830380818e33c164f}{\$games}}\ =\ [];}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00011}\mbox{\hyperlink{create_8php_ae5bdccab14dffa73cfe88ff355572504}{00011}}\ \mbox{\hyperlink{create_8php_ae5bdccab14dffa73cfe88ff355572504}{\$successfully\_upload}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00013}00013\ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00014}00014\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ login.php'});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00015}00015\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00016}00016\ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00018}00018\ \textcolor{preprocessor}{\#\ check\ if\ search\ btn\ pressed}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00019}00019\ \textcolor{keywordflow}{if}\ (isset(\$\_POST[\textcolor{stringliteral}{'search\_button'}])\ \&\&\ \$\_POST[\textcolor{stringliteral}{'search\_line'}]\ !=\ \textcolor{stringliteral}{''}\ \&\&\ \$\_POST[\textcolor{stringliteral}{'search\_line'}]\ !=\ \textcolor{charliteral}{'\_'})\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00020}00020\ \ \ \ \ \$search\ =\ \$\_POST[\textcolor{stringliteral}{'search\_line'}];}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ \$search;}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00022}00022\ \textcolor{preprocessor}{\ \ \ \ \#sanitizing}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ str\_replace(\textcolor{charliteral}{'\(\backslash\)\(\backslash\)'},\ \textcolor{stringliteral}{'\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)'},\ \mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ str\_replace(\textcolor{charliteral}{'\%'},\ \textcolor{charliteral}{'\(\backslash\)\%'},\ \mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ str\_replace(\textcolor{charliteral}{'\_'},\ \textcolor{charliteral}{'\(\backslash\)\_'},\ \mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00026}00026\ \ \ \ \ \mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ str\_replace(\textcolor{charliteral}{'"{}'},\ \textcolor{charliteral}{'\(\backslash\)"{}'},\ \mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00027}00027\ \ \ \ \ \mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ str\_replace(\textcolor{charliteral}{'-\/'},\ \textcolor{stringliteral}{'\(\backslash\)-\/"{}'},\ \mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00028}\mbox{\hyperlink{create_8php_a3dff60ca0da6bc98937343c2496f9694}{00028}}\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00029}00029\ \ \ \ \ \$search\ =\ \textcolor{charliteral}{'\_'};}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00030}\mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{00030}}\ \ \ \ \ \mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ \$search;}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00034}\mbox{\hyperlink{create_8php_abe4cc9788f52e49485473dc699537388}{00034}}\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{create_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ *\ FROM\ games\ g}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00036}00036\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOIN\ games\_platforms\ p\ ON\ g.id\ =\ p.id}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ g.name\ LIKE\ "{}\%'}.\mbox{\hyperlink{create_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ORDER\ BY\ g.name'});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{create_8php_a8b9258a0949c521830380818e33c164f}{\$games}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetchAll();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00041}00041\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00042}00042\ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'db\ failed:\ '}.\$e);}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00046}\mbox{\hyperlink{create_8php_a20fb99398e894aefb3af9ab650dd32f4}{00046}}\ \textcolor{keywordflow}{if}\ (isset(\$\_POST[\textcolor{stringliteral}{'create\_button'}])\ \&\&\ \$\_POST[\textcolor{stringliteral}{'token'}]\ ==\ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'token'}])\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00047}00047\ \textcolor{preprocessor}{\ \ \ \ \#check\ all\ fields}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00048}00048\ \textcolor{preprocessor}{\ \ \ \ \#get\ game\_id}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (isset(\$\_POST[\textcolor{stringliteral}{'game'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00050}00050\ \ \ \ \ \ \ \ \ \$game\_id\ =\ \$\_POST[\textcolor{stringliteral}{'game'}];}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00051}00051\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#\ check\ that\ game\ exists}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{create_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ id\ FROM\ games\ WHERE\ games.id\ =\ :game\_id'});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':game\_id'},\ \$game\_id,\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{add__user__to__event__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetch();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00057}00057\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'db\ error:\ '}.htmlspecialchars(\$e).\textcolor{stringliteral}{',\ while\ searching\ for\ game\ with\ id:\ '}.\$game\_id;}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{add__user__to__event__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}))\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'attempt\ to\ create\ event,\ but\ did\ not\ found\ game\ with\ id:\ '}.htmlspecialchars(\$game\_id);}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00070}00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00073}00073\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00074}00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'attempt\ to\ create\ event,\ but\ no\ game\ selected'};}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00075}00075\ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00076}00076\ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00077}00077\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00078}00078\ \textcolor{preprocessor}{\ \ \ \ \#\ get\ event\ description}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00079}00079\ \ \ \ \ \textcolor{keywordflow}{if}\ (isset(\$\_POST[\textcolor{stringliteral}{'event\_description'}])\ \&\&\ \$\_POST[\textcolor{stringliteral}{'event\_description'}]\ !=\ \textcolor{stringliteral}{''})\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00080}00080\ \ \ \ \ \ \ \ \ \$event\_description\ =\ \$\_POST[\textcolor{stringliteral}{'event\_description'}];}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00081}00081\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00082}00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'attempt\ to\ create\ event,\ but\ no\ description\ given'};}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00083}00083\ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00084}00084\ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00086}00086\ \textcolor{preprocessor}{\ \ \ \ \#\ get\ datetime}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{if}\ (isset(\$\_POST[\textcolor{stringliteral}{'event\_time'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00088}00088\ \ \ \ \ \ \ \ \ \$event\_time\ =\ \$\_POST[\textcolor{stringliteral}{'event\_time'}];}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00089}00089\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00090}00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'attempt\ to\ create\ event,\ but\ no\ datetime\ selected'};}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00091}00091\ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00092}00092\ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00094}00094\ \textcolor{preprocessor}{\ \ \ \ \#\ get\ max\ people}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{if}\ (isset(\$\_POST[\textcolor{stringliteral}{'max\_people'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00096}00096\ \ \ \ \ \ \ \ \ \$max\_people\ =\ intval(\$\_POST[\textcolor{stringliteral}{'max\_people'}]);}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$max\_people\ <\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'attempt\ to\ create\ event,\ but\ no\ max\ people\ less\ than\ 2'};}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00101}00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00102}00102\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00103}00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'attempt\ to\ create\ event,\ but\ no\ max\ people\ selected'};}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00104}00104\ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00105}00105\ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00108}00108\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00109}00109\ \ \ \ \ \ \ \ \ \$timestamp\ =\ strtotime(\$event\_time);}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00110}00110\ \ \ \ \ \ \ \ \ \$event\_time\_sql\_format\ =\ date(\textcolor{stringliteral}{'Y-\/m-\/d\ H:i:s'},\ \$timestamp);}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00111}00111\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00112}00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'failed\ convert\ datetime:\ '}.\$event\_time.\textcolor{stringliteral}{'.\ Error\ occurred:\ '}.\$e;}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00113}00113\ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00114}00114\ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00115}00115\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00122}00122\ \textcolor{preprocessor}{\ \ \ \ \#\ insert\ event\ to\ db}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00123}00123\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00124}00124\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{create_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'INSERT\ INTO\ events\ (creator\_id,\ game\_id,\ description,\ event\_time,\ max\_people)}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00125}00125\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VALUES\ (:creator\_id,\ :game\_id,\ :description,\ :event\_time,\ :max\_people)'});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00126}00126\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':creator\_id'},\ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}],\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00127}00127\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':game\_id'},\ \$game\_id,\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00128}00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':description'},\ \$event\_description);}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00129}00129\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':event\_time'},\ \$event\_time\_sql\_format);}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00130}00130\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':max\_people'},\ \$max\_people);}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00131}00131\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create_8php_ae5bdccab14dffa73cfe88ff355572504}{\$successfully\_upload}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00132}00132\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00133}00133\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'db\ failed:\ '}.\$e;}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00134}00134\ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00135}00135\ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00136}00136\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00141}00141\ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00145}00145\ ?>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00148}00148\ <!DOCTYPE\ html>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00149}00149\ <html\ lang=\textcolor{stringliteral}{"{}en"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00151}00151\ <head>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00152}00152\ \ \ \ \ <meta\ charset=\textcolor{stringliteral}{"{}UTF-\/8"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00153}00153\ \ \ \ \ <meta\ name=\textcolor{stringliteral}{"{}viewport"{}}\ content=\textcolor{stringliteral}{"{}width=device-\/width,\ initial-\/scale=1.0"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00154}00154\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}css/style.css"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00155}00155\ \ \ \ \ <title>VRMates\ -\/\ create\ \textcolor{keyword}{new}\ \textcolor{keyword}{event}</title>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00156}00156\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}icon"{}}\ type=\textcolor{stringliteral}{"{}image/x-\/icon"{}}\ href=\textcolor{stringliteral}{"{}images/icons/favicon.ico"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00158}00158\ \ \ \ \ <script\ defer\ src=\textcolor{stringliteral}{"{}js/createEventScript.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00159}00159\ </head>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00161}00161\ <body>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00163}00163\ \ \ \ \ <?php\ include\ \textcolor{stringliteral}{"{}header.php"{}}\ ?>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00167}00167\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}create\_content"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00168}00168\ \ \ \ \ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{create_8php_ae5bdccab14dffa73cfe88ff355572504}{\$successfully\_upload}})\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}success"{}}>You\ have\ successfully\ loaded\ the\ \textcolor{keyword}{event}!</div>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00171}00171\ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00173}00173\ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00174}00174\ \ \ \ \ \ \ \ \ <form\ action=\textcolor{stringliteral}{"{}\#"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}create\_event\_form"{}}\ method=\textcolor{stringliteral}{"{}POST"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}create\_event\_form"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'token'}]\ =\ time();}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}hidden"{}}\ name=\textcolor{stringliteral}{"{}token"{}}\ value=\textcolor{stringliteral}{"{}<?php\ echo\ \$\_SESSION['token']?>"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}title"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ create\ your\ \textcolor{keyword}{event}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}step"{}}>step\ 1.\ Choose\ a\ game</div>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}search"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}search"{}}\ name=\textcolor{stringliteral}{"{}search\_line"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}search"{}}\ value=\textcolor{stringliteral}{"{}<?php\ echo\ \$search\ ==\ '\_'\ ?\ ''\ :\ \$search\ ?>"{}}\ placeholder=\textcolor{stringliteral}{"{}type\ a\ game\ name"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}search\_line"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}submit"{}}\ name=\textcolor{stringliteral}{"{}search\_button"{}}\ value=\textcolor{stringliteral}{"{}search"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}search\_button"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}game\_window"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{create_8php_a8b9258a0949c521830380818e33c164f}{\$games}}))\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}nothing\_found"{}}>nothing\ found...</div>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{create_8php_a8b9258a0949c521830380818e33c164f}{\$games}}\ as\ \mbox{\hyperlink{game_8php_a7d6a0f063eaff0bfafef87435c31540c}{\$game}})\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}<?php\ echo\ \$game['id']?>"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <img\ src=\textcolor{stringliteral}{"{}<?php\ echo\ htmlspecialchars(\$game['img\_small'])\ ?>"{}}\ alt=\textcolor{stringliteral}{"{}game\_logo"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php\ echo\ htmlspecialchars(\mbox{\hyperlink{game_8php_a7d6a0f063eaff0bfafef87435c31540c}{\$game}}[\textcolor{stringliteral}{'name'}])\ ?>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}radio"{}}\ name=\textcolor{stringliteral}{"{}game"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}<?php\ echo\ \$game['id']?>"{}}\ value=\textcolor{stringliteral}{"{}<?php\ echo\ \$game['id']?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}radio"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </label>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}game\_error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}event\_description"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}step"{}}>step\ 2.\ Write\ a\ description</label>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ <textarea\ name=\textcolor{stringliteral}{"{}event\_description"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}event\_description"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}event\_description"{}}\ placeholder=\textcolor{stringliteral}{"{}Write\ everything\ people\ need\ to\ know\ about\ your\ event.\ If\ you\ need\ to\ clarify\ the\ platform,\ how\ long\ you\ will\ play\ and\ so\ on.\ You\ can\ also\ indicate\ your\ discord\ so\ people\ know\ how\ to\ contact\ you"{}}></textarea>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}description\_error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}event\_time"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}step"{}}>step\ 3.\ Select\ date\ and\ time</label>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}datetime-\/local"{}}\ name=\textcolor{stringliteral}{"{}event\_time"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}event\_time"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}date\_error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}event\_people"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}step"{}}>step\ 4.\ Set\ a\ limit\ on\ the\ number<br>of\ people\ (includes\ you)</label>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}number"{}}\ name=\textcolor{stringliteral}{"{}max\_people"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}event\_people"{}}\ min=\textcolor{stringliteral}{"{}2"{}}}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max=\textcolor{stringliteral}{"{}99"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}people\_count\_error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}submit"{}}\ name=\textcolor{stringliteral}{"{}create\_button"{}}\ value=\textcolor{stringliteral}{"{}create"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}submit"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}submit"{}}>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00225}00225\ \ \ \ \ \ \ \ \ </form>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00226}00226\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00228}00228\ \ \ \ \ <?php\ include\ \textcolor{stringliteral}{"{}footer.php"{}};\ ?>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00230}00230\ </body>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00232}00232\ </html>}
+\DoxyCodeLine{\Hypertarget{create_8php_source_l00233}00233\ }
+
+\end{DoxyCode}

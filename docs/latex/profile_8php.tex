@@ -1,0 +1,83 @@
+\doxysection{profile.\+php File Reference}
+\hypertarget{profile_8php}{}\label{profile_8php}\index{profile.php@{profile.php}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{profile_8php_ad0ed846c8f91b26c70889960cd0c7526}{if}} (!isset( \$\+\_\+\+SESSION))
+\item 
+global \mbox{\hyperlink{profile_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty( \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}login\+ID\textquotesingle{}\mbox{]})) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(isset(\$\+\_\+\+GET\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]})) \mbox{\hyperlink{profile_8php_a3bed8b014c7d4848c038bf498ad13333}{else}}
+\item 
+\mbox{\hyperlink{profile_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5}{\$user}} = \$stmt-\/$>$fetch()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{profile_8php_a9f187aeb0999f8898ae2451de67650d0}\label{profile_8php_a9f187aeb0999f8898ae2451de67650d0} 
+\index{profile.php@{profile.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily global \$pdo}
+
+
+
+Definition at line \mbox{\hyperlink{profile_8php_source_l00007}{7}} of file \mbox{\hyperlink{profile_8php_source}{profile.\+php}}.
+
+\Hypertarget{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5}\label{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5} 
+\index{profile.php@{profile.php}!\$user@{\$user}}
+\index{\$user@{\$user}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$user}{\$user}}
+{\footnotesize\ttfamily \$user = \$stmt-\/$>$fetch()}
+
+
+
+Definition at line \mbox{\hyperlink{profile_8php_source_l00038}{38}} of file \mbox{\hyperlink{profile_8php_source}{profile.\+php}}.
+
+\Hypertarget{profile_8php_a3bed8b014c7d4848c038bf498ad13333}\label{profile_8php_a3bed8b014c7d4848c038bf498ad13333} 
+\index{profile.php@{profile.php}!else@{else}}
+\index{else@{else}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}}(Exception \$e) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty(\$user)) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} (isset( \$user\mbox{[} \textquotesingle{}admin\textquotesingle{}\mbox{]}) \&\&\$user\mbox{[} \textquotesingle{}admin\textquotesingle{}\mbox{]} !=null) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'Profile\ id\ was\ not\ selected.'}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{profile_8php_source_l00018}{18}} of file \mbox{\hyperlink{profile_8php_source}{profile.\+php}}.
+
+\Hypertarget{profile_8php_ad0ed846c8f91b26c70889960cd0c7526}\label{profile_8php_ad0ed846c8f91b26c70889960cd0c7526} 
+\index{profile.php@{profile.php}!if@{if}}
+\index{if@{if}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}}
+{\footnotesize\ttfamily if(!isset(\$\+\_\+\+SESSION)) (\begin{DoxyParamCaption}\item[{!}]{isset \$\+\_\+\+SESSION }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{profile_8php_source_l00002}{2}} of file \mbox{\hyperlink{profile_8php_source}{profile.\+php}}.
+
+\Hypertarget{profile_8php_abe4cc9788f52e49485473dc699537388}\label{profile_8php_abe4cc9788f52e49485473dc699537388} 
+\index{profile.php@{profile.php}!try@{try}}
+\index{try@{try}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{profile_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ *,\ admins.user\_id\ as\ admin}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FROM\ users}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LEFT\ JOIN\ admins\ ON\ users.id\ =\ admins.user\_id}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ users.id\ =\ :id'})}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{profile_8php_source_l00031}{31}} of file \mbox{\hyperlink{profile_8php_source}{profile.\+php}}.
+

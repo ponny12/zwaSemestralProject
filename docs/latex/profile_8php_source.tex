@@ -1,0 +1,148 @@
+\doxysection{profile.\+php}
+\hypertarget{profile_8php_source}{}\label{profile_8php_source}\mbox{\hyperlink{profile_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00002}\mbox{\hyperlink{profile_8php_ad0ed846c8f91b26c70889960cd0c7526}{00002}}\ \textcolor{keywordflow}{if}(!isset(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}))}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00003}00003\ \{}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00004}00004\ \ \ \ \ session\_start();}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00005}00005\ \}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00006}00006\ require\ \textcolor{stringliteral}{'includes/dbh.inc.php'};}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00007}\mbox{\hyperlink{profile_8php_a9f187aeb0999f8898ae2451de67650d0}{00007}}\ global\ \mbox{\hyperlink{profile_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}};}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00008}00008\ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00009}00009\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'You\ are\ not\ allowed\ to\ visit\ a\ profile\ page\ without\ a\ registration.'};}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00010}00010\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00011}00011\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00012}00012\ \}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00015}00015\ \textcolor{preprocessor}{\#\ get\ -\/\ display}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00016}00016\ \textcolor{keywordflow}{if}\ (isset(\$\_GET[\textcolor{stringliteral}{'id'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00017}00017\ \ \ \ \ \mbox{\hyperlink{create__game__handler_8inc_8php_a764c44f4c037b6ff7b78806cd13e1ece}{\$id}}\ =\ \$\_GET[\textcolor{stringliteral}{'id'}];}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00018}\mbox{\hyperlink{profile_8php_a3bed8b014c7d4848c038bf498ad13333}{00018}}\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'Profile\ id\ was\ not\ selected.'};}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00020}00020\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00021}00021\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00025}00025\ \textcolor{keywordflow}{if}\ (isset(\$\_GET[\textcolor{stringliteral}{'edit'}])\ \&\&\ \$\_GET[\textcolor{stringliteral}{'edit'}]\ ==\ \textcolor{stringliteral}{'true'}\ \&\&\ \mbox{\hyperlink{create__game__handler_8inc_8php_a764c44f4c037b6ff7b78806cd13e1ece}{\$id}}\ ==\ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}])\ \{}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00026}00026\ \ \ \ \ \$edit\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00027}00027\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00028}00028\ \ \ \ \ \$edit\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00031}\mbox{\hyperlink{profile_8php_abe4cc9788f52e49485473dc699537388}{00031}}\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{profile_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ *,\ admins.user\_id\ as\ admin}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FROM\ users}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00034}00034\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LEFT\ JOIN\ admins\ ON\ users.id\ =\ admins.user\_id}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ users.id\ =\ :id'});}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':id'},\ \$\_GET[\textcolor{stringliteral}{'id'}],\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00038}\mbox{\hyperlink{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5}{00038}}\ \ \ \ \ \mbox{\hyperlink{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5}{\$user}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetch();}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00039}00039\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'db\ failed:\ '}.\$e.\textcolor{stringliteral}{'\ while\ searching\ for\ user\ with\ id:\ '}.\$\_GET[\textcolor{stringliteral}{'id'}];}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00041}00041\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00042}00042\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00045}00045\ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5}{\$user}}))\ \{}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00046}00046\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'user\ with\ id:\ '}.\$\_GET[\textcolor{stringliteral}{'id'}].\textcolor{stringliteral}{'\ does\ not\ exist.'};}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00047}00047\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00048}00048\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00049}00049\ \}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00052}00052\ \textcolor{keywordflow}{if}\ (isset(\mbox{\hyperlink{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5}{\$user}}[\textcolor{stringliteral}{'admin'}])\ \&\&\ \mbox{\hyperlink{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5}{\$user}}[\textcolor{stringliteral}{'admin'}]\ !=\ \textcolor{keyword}{null})\ \{}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00053}00053\ \ \ \ \ \mbox{\hyperlink{header_8php_ad4b6a6e61327c02f6a7a39e45e7d0dd1}{\$isAdmin}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00054}00054\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00055}00055\ \ \ \ \ \mbox{\hyperlink{header_8php_ad4b6a6e61327c02f6a7a39e45e7d0dd1}{\$isAdmin}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00057}00057\ ?>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00058}00058\ <!DOCTYPE\ html>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00060}00060\ <html\ lang=\textcolor{stringliteral}{"{}en"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00062}00062\ <head>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00063}00063\ \ \ \ \ <meta\ charset=\textcolor{stringliteral}{"{}UTF-\/8"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00064}00064\ \ \ \ \ <meta\ name=\textcolor{stringliteral}{"{}viewport"{}}\ content=\textcolor{stringliteral}{"{}width=device-\/width,\ initial-\/scale=1.0"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00065}00065\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ type=\textcolor{stringliteral}{"{}text/css"{}}\ href=\textcolor{stringliteral}{"{}css/style.css"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00066}00066\ \ \ \ \ <title>VRMate</title>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00067}00067\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}icon"{}}\ type=\textcolor{stringliteral}{"{}image/x-\/icon"{}}\ href=\textcolor{stringliteral}{"{}images/icons/favicon.ico"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00068}00068\ \ \ \ \ <script\ defer\ src=\textcolor{stringliteral}{"{}js/profileEditScript.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00069}00069\ </head>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00072}00072\ <body>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00073}00073\ \ \ \ \ <?php\ include\ \textcolor{stringliteral}{"{}header.php"{}}\ ?>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00076}00076\ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00077}00077\ \textcolor{preprocessor}{\ \ \ \ \#\ edit\ view}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{if}\ (\$edit)\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00079}00079\ \ \ \ \ \ \ \ \ <form\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}profile\_container"{}}\ method=\textcolor{stringliteral}{"{}POST"{}}\ action=\textcolor{stringliteral}{"{}includes/profile\_edit\_handler.inc.php"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}edit\_profile\_form"{}}\ enctype=\textcolor{stringliteral}{"{}multipart/form-\/data"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}hidden"{}}\ name=\textcolor{stringliteral}{"{}id"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}id"{}}\ value=\textcolor{stringliteral}{"{}<?php\ echo\ \$user['id']\ ?>"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}image\_and\_edit"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <img\ src=\textcolor{stringliteral}{"{}<?php\ echo\ htmlspecialchars(\$user['img\_big'])?>"{}}\ alt=\textcolor{stringliteral}{"{}user\ photo"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}user\_photo"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}file"{}}\ name=\textcolor{stringliteral}{"{}image"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}image\_edit"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}image\_edit"{}}\ accept=\textcolor{stringliteral}{"{}image/webp,\ image/jpeg,\ image/png"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}user\_personal\_data"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}username\_and\_edit"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}text"{}}\ name=\textcolor{stringliteral}{"{}name"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}username\_edit"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}new\_name"{}}\ value=\textcolor{stringliteral}{"{}<?php\ echo\ htmlspecialchars(\$user['username'])\ ?>"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}name\_error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}submit"{}}\ name=\textcolor{stringliteral}{"{}submit"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}submit"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}orange\_button\ save"{}}\ value=\textcolor{stringliteral}{"{}save"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}info\_title"{}}>info:</div>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <textarea\ name=\textcolor{stringliteral}{"{}info"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}info\_text\_edit"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}new\_info"{}}><?php\ echo\ htmlspecialchars(\mbox{\hyperlink{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5}{\$user}}[\textcolor{stringliteral}{'info'}])?></textarea>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}info\_error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00095}00095\ \ \ \ \ \ \ \ \ </form>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00096}00096\ \ \ \ \ <?php\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00097}00097\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#\ display\ view}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00098}00098\ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00100}00100\ \ \ \ \ <content\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}profile\_container"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00101}00101\ \ \ \ \ \ \ \ \ <img\ src=\textcolor{stringliteral}{"{}<?php\ echo\ htmlspecialchars(\$user['img\_big'])?>"{}}\ alt=\textcolor{stringliteral}{"{}user\ photo"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}user\_photo"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00102}00102\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}user\_personal\_data"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}username\_and\_edit"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}username"{}}><?php\ echo\ htmlspecialchars(\mbox{\hyperlink{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5}{\$user}}[\textcolor{stringliteral}{'username'}])\ ?></div>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5}{\$user}}[\textcolor{stringliteral}{'id'}]\ ==\ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}])\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}?id=<?php\ echo\ \$user['id']?>\&edit=<?php\ echo\ 'true'?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}orange\_button"{}}>edit</a>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}info\_title"{}}>info:</div>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}info\_text"{}}><?php\ echo\ htmlspecialchars(\mbox{\hyperlink{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5}{\$user}}[\textcolor{stringliteral}{'info'}])?></div>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00113}00113\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00114}00114\ \ \ \ \ </content>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00116}00116\ \ \ \ \ <?php\ \}\ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00117}00117\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{create__game__handler_8inc_8php_a764c44f4c037b6ff7b78806cd13e1ece}{\$id}}\ ==\ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}]\ \&\&\ !\$edit\ \&\&\ !\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'isAdmin'}])\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00119}00119\ \ \ \ \ \ \ \ \ <form\ action=\textcolor{stringliteral}{"{}includes/profile\_delete\_handler.inc.php"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}delete\_user\_form"{}}\ method=\textcolor{stringliteral}{"{}POST"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}password"{}}></label>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}delete"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}hidden"{}}\ name=\textcolor{stringliteral}{"{}id"{}}\ value=\textcolor{stringliteral}{"{}<?php\ echo\ htmlspecialchars(\$id)?>"{}}>}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}checkbox"{}}\ name=\textcolor{stringliteral}{"{}delete\_checkbox"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}delete\_checkbox"{}}>\ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}delete\_checkbox"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}checkbox\_label"{}}>I\ want\ to\ \textcolor{keyword}{delete}\ my\ account\ and\ all\ events\ I\textcolor{stringliteral}{'ve\ created\ without\ the\ slightest\ possibility\ of\ recovery,\ I\ accept\ all\ the\ risks\ associated\ with\ deleting\ my\ account,\ understanding\ that\ for\ the\ rest\ of\ my\ life\ I\ will\ miss\ without\ a\ company\ for\ VR\ games</label>}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00124}00124\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type="{}password"{}\ name="{}password"{}\ id="{}password"{}\ class="{}password"{}\ placeholder="{}enter\ your\ password"{}>}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00125}00125\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type="{}submit"{}\ name="{}submit"{}\ value="{}delete"{}\ class="{}delete\_button"{}>}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00126}00126\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00127}00127\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ </form>}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00128}00128\ \textcolor{stringliteral}{\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00129}00129\ \textcolor{stringliteral}{\ \ \ \ <?php\ \}}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00130}00130\ \textcolor{stringliteral}{\ \ \ \ if\ (\$\_SESSION['}isAdmin\textcolor{stringliteral}{'])\ \{\ ?>}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00131}00131\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ <div\ class="{}admin\_tools"{}>}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00132}00132\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="{}create\_new\_game.php"{}\ class="{}add\_game\ orange\_button"{}>add\ new\ game</a>}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00133}00133\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00134}00134\ \textcolor{stringliteral}{\ \ \ \ <?php\ \}}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00135}00135\ \textcolor{stringliteral}{\ \ \ \ ?>}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00136}00136\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00137}00137\ \textcolor{stringliteral}{\ \ \ \ <?php\ include\ "{}footer.php"{};?>}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00138}00138\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00139}00139\ \textcolor{stringliteral}{</body>}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00140}00140\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00141}00141\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00142}00142\ \textcolor{stringliteral}{</html>}}
+\DoxyCodeLine{\Hypertarget{profile_8php_source_l00143}00143\ \textcolor{stringliteral}{}}
+
+\end{DoxyCode}

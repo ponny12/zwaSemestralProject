@@ -1,0 +1,421 @@
+\doxysection{discover.\+php}
+\hypertarget{discover_8php_source}{}\label{discover_8php_source}\mbox{\hyperlink{discover_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00002}\mbox{\hyperlink{discover_8php_ad0ed846c8f91b26c70889960cd0c7526}{00002}}\ \textcolor{keywordflow}{if}(!isset(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}))}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00003}00003\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00004}00004\ \ \ \ \ session\_start();}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00005}00005\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00008}00008\ require\ \textcolor{stringliteral}{'includes/dbh.inc.php'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00009}\mbox{\hyperlink{discover_8php_a9f187aeb0999f8898ae2451de67650d0}{00009}}\ global\ \mbox{\hyperlink{discover_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00012}00012\ \textcolor{comment}{//\ \ \ \ <!-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/>}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00013}00013\ \textcolor{comment}{//\ \ \ \ <!-\/-\/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/>}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00014}00014\ \textcolor{comment}{//\ \ \ \ <!-\/-\/\ \ \ \ \ \ SCRIPT\ STAFF\ \ \ \ \ \ \ -\/-\/>}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00015}00015\ \textcolor{comment}{//\ \ \ \ <!-\/-\/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/>}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00016}00016\ \textcolor{comment}{//\ \ \ \ <!-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/>}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00019}00019\ \textcolor{preprocessor}{\#sanitizing\ all\ variables\ before\ using\ in\ sql\ query}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00021}00021\ \textcolor{keywordflow}{if}\ (isset(\$\_GET[\textcolor{stringliteral}{'search'}])\ \&\&\ \$\_GET[\textcolor{stringliteral}{'search'}]\ !=\ \textcolor{stringliteral}{''}\ \&\&\ \$\_GET[\textcolor{stringliteral}{'search'}]\ !=\ \textcolor{charliteral}{'\_'})\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00022}00022\ \ \ \ \ \$search\ =\ \$\_GET[\textcolor{stringliteral}{'search'}];}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ \$search;}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00024}00024\ \textcolor{preprocessor}{\ \ \ \ \#sanitizing}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ str\_replace(\textcolor{charliteral}{'\(\backslash\)\(\backslash\)'},\ \textcolor{stringliteral}{'\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)'},\ \mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}});}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00026}00026\ \ \ \ \ \mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ str\_replace(\textcolor{charliteral}{'\%'},\ \textcolor{charliteral}{'\(\backslash\)\%'},\ \mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}});}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00027}00027\ \ \ \ \ \mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ str\_replace(\textcolor{charliteral}{'"{}'},\ \textcolor{charliteral}{'\(\backslash\)"{}'},\ \mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}});}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ str\_replace(\textcolor{charliteral}{'\_'},\ \textcolor{charliteral}{'\(\backslash\)\_'},\ \mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}});}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ str\_replace(\textcolor{charliteral}{'-\/'},\ \textcolor{charliteral}{'\(\backslash\)-\/'},\ \mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}});}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00031}\mbox{\hyperlink{discover_8php_aa0d29377b94fcb45fe2534905bdf41e3}{00031}}\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00032}00032\ \ \ \ \ \$search\ =\ \textcolor{charliteral}{'\_'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00033}\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{00033}}\ \ \ \ \ \mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}\ =\ \$search;}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00037}00037\ \textcolor{keywordflow}{if}\ (isset(\$\_GET[\textcolor{stringliteral}{'sorted\_by'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{switch}\ (\$\_GET[\textcolor{stringliteral}{'sorted\_by'}])\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{'name'}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{game__list_8php_a2d1f877d9738711d7686b368e02e2174}{\$sorted\_by}}\ =\ \textcolor{stringliteral}{'name'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{'max\_people'}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{game__list_8php_a2d1f877d9738711d7686b368e02e2174}{\$sorted\_by}}\ =\ \textcolor{stringliteral}{'max\_people'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{game__list_8php_a2d1f877d9738711d7686b368e02e2174}{\$sorted\_by}}\ =\ \textcolor{stringliteral}{'event\_time'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00048}00048\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{game__list_8php_a2d1f877d9738711d7686b368e02e2174}{\$sorted\_by}}\ =\ \textcolor{stringliteral}{'event\_time'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00052}00052\ \textcolor{keywordflow}{if}\ (isset(\$\_GET[\textcolor{stringliteral}{'items\_per\_page'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{switch}\ (\$\_GET[\textcolor{stringliteral}{'items\_per\_page'}])\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'2'}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \$items\_per\_page\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'5'}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \$items\_per\_page\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{'10'}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \$items\_per\_page\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{'25'}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \$items\_per\_page\ =\ 25;}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{'50'}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \$items\_per\_page\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \$items\_per\_page\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00072}00072\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00073}00073\ \ \ \ \ \$items\_per\_page\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00076}00076\ \textcolor{keywordflow}{if}\ (isset(\$\_GET[\textcolor{stringliteral}{'order'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{switch}\ (\$\_GET[\textcolor{stringliteral}{'order'}])\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{'ASC'}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \$order\ =\ \textcolor{stringliteral}{'ASC'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{'DESC'}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \$order\ =\ \textcolor{stringliteral}{'DESC'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \$order\ =\ \textcolor{stringliteral}{'ASC'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00087}00087\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00088}00088\ \ \ \ \ \$order\ =\ \textcolor{stringliteral}{'ASC'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00089}00089\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00091}00091\ \textcolor{keywordflow}{if}\ (isset(\$\_GET[\textcolor{stringliteral}{'platform'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00092}00092\ \ \ \ \ \textcolor{keywordflow}{switch}\ (\$\_GET[\textcolor{stringliteral}{'platform'}])\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{'all'}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \$platform\ =\ \textcolor{stringliteral}{'all'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{'meta'}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \$platform\ =\ \textcolor{stringliteral}{'meta'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{'pico'}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \$platform\ =\ \textcolor{stringliteral}{'pico'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{'pcvr'}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \$platform\ =\ \textcolor{stringliteral}{'pcvr'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \$platform\ =\ \textcolor{stringliteral}{'all'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00107}00107\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00108}00108\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00109}00109\ \ \ \ \ \$platform\ =\ \textcolor{stringliteral}{'all'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00112}00112\ \textcolor{preprocessor}{\#saving\ all\ GET\ args\ to\ string\ in\ order\ to\ not\ lose\ them\ after\ page\ transition}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00114}\mbox{\hyperlink{discover_8php_aaf5dd8cf45c4b750f688d9716ba59195}{00114}}\ \mbox{\hyperlink{discover_8php_aaf5dd8cf45c4b750f688d9716ba59195}{\$all\_args}}\ =\ \textcolor{stringliteral}{"{}\&search=\$search\&sorted\_by=\$sorted\_by\&order=\$order\&items\_per\_page=\$items\_per\_page\&platform=\$platform"{}};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00116}00116\ \textcolor{preprocessor}{\#selecting\ only\ right\ platform\ and\ finding\ out\ how\ many\ rows\ we\ have}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00117}\mbox{\hyperlink{discover_8php_abe4cc9788f52e49485473dc699537388}{00117}}\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{if}\ (\$platform\ ==\ \textcolor{stringliteral}{'all'})\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00119}00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{discover_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>query(\textcolor{stringliteral}{'SELECT\ COUNT(*)}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00120}00120\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FROM\ events\ e\ }}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00121}00121\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOIN\ games\ g\ ON\ e.game\_id\ =\ g.id}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00122}00122\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LEFT\ JOIN\ games\_platforms\ p\ ON\ g.id\ =\ p.id}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00123}00123\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ (g.name\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ g.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ e.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{})'});}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00124}00124\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00125}00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{discover_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>query(\textcolor{stringliteral}{'SELECT\ COUNT(*)}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00126}00126\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FROM\ events\ e\ }}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00127}00127\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOIN\ games\ g\ ON\ e.game\_id\ =\ g.id}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00128}00128\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LEFT\ JOIN\ games\_platforms\ p\ ON\ g.id\ =\ p.id}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00129}00129\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ (g.name\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ g.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ e.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{})\ AND\ p.'}.\$platform.\textcolor{stringliteral}{'\ =\ 1'});}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00130}00130\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00131}00131\ \ \ \ \ \mbox{\hyperlink{add__user__to__event__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetch();}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00132}00132\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00133}00133\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'database\ request\ failed:\ '}.\$e;}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00134}00134\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00135}00135\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00136}00136\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00139}\mbox{\hyperlink{discover_8php_add7ab0317f6847b2336e382bded9b7b3}{00139}}\ \mbox{\hyperlink{discover_8php_add7ab0317f6847b2336e382bded9b7b3}{\$row\_count}}\ =\ \mbox{\hyperlink{add__user__to__event__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}[0];}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00141}00141\ \textcolor{preprocessor}{\#\ calculating\ on\ which\ page\ we\ are}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00143}\mbox{\hyperlink{discover_8php_a9f17eee7b7ba0af984d1a70a84f05446}{00143}}\ \mbox{\hyperlink{discover_8php_a9f17eee7b7ba0af984d1a70a84f05446}{\$num\_of\_page}}\ =\ ceil(\mbox{\hyperlink{discover_8php_add7ab0317f6847b2336e382bded9b7b3}{\$row\_count}}\ /\ \$items\_per\_page);}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00144}00144\ \textcolor{keywordflow}{if}\ (isset(\$\_GET[\textcolor{stringliteral}{'page'}])\ \&\&\ intval(\$\_GET[\textcolor{stringliteral}{'page'}])\ >\ 0\ \&\&\ intval(\$\_GET[\textcolor{stringliteral}{'page'}])\ <=\ \mbox{\hyperlink{discover_8php_a9f17eee7b7ba0af984d1a70a84f05446}{\$num\_of\_page}})\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00145}00145\ \ \ \ \ \$page\ =\ intval(\$\_GET[\textcolor{stringliteral}{'page'}]);}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00146}00146\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00147}00147\ \ \ \ \ \$page\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00148}00148\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00149}\mbox{\hyperlink{discover_8php_a95a39965ce2356a40e05903617566233}{00149}}\ \mbox{\hyperlink{discover_8php_a95a39965ce2356a40e05903617566233}{\$from\_item}}\ =\ (\$page\ -\/\ 1)\ *\ \$items\_per\_page;}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00163}00163\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \$stmt\ =\ \$pdo-\/>prepare('SELECT\ e.id\ as\ event\_id,\ g.id\ as\ game\_id,\ g.img\_big,\ g.name,\ g.description,}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00164}00164\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.registered\_people,\ e.max\_people,\ e.event\_time,\ COALESCE\ (p.meta,\ 0)\ as\ meta,\ COALESCE\ (p.pico,\ 0)\ as\ pico,\ COALESCE\ (p.pcvr,\ 0)\ as\ pcvr}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00165}00165\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FROM\ events\ e}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00166}00166\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOIN\ games\ g\ ON\ e.game\_id\ =\ g.id}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00167}00167\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LEFT\ JOIN\ events\_platforms\ p\ ON\ e.id\ =\ p.event\_id}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00168}00168\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ORDER\ BY\ '.\$sorted\_by.'}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00169}00169\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LIMIT\ :from\_item,\ :items\_per\_page');}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00173}00173\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00174}00174\ \ \ \ \ \textcolor{keywordflow}{if}\ (\$platform\ ==\ \textcolor{stringliteral}{'all'})\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00175}00175\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{discover_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>query(\textcolor{stringliteral}{'SELECT\ e.id\ as\ event\_id,\ g.id\ as\ game\_id,\ g.img\_big,\ g.name\ as\ name,\ g.description,\ e.description\ as\ event\_description,}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00176}00176\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.registered\_people,\ e.max\_people\ as\ max\_people,\ e.event\_time\ as\ event\_time,\ COALESCE\ (p.meta,\ 0)\ as\ meta,\ COALESCE\ (p.pico,\ 0)\ as\ pico,\ COALESCE\ (p.pcvr,\ 0)\ as\ pcvr}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00177}00177\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FROM\ events\ e\ }}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00178}00178\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOIN\ games\ g\ ON\ e.game\_id\ =\ g.id\ }}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00179}00179\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LEFT\ JOIN\ games\_platforms\ p\ ON\ g.id\ =\ p.id}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00180}00180\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ (name\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ g.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ e.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{})}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00181}00181\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ORDER\ BY\ '}.\mbox{\hyperlink{game__list_8php_a2d1f877d9738711d7686b368e02e2174}{\$sorted\_by}}.\textcolor{charliteral}{'\ '}.\$order.\textcolor{stringliteral}{'}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00182}00182\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LIMIT\ '}.\mbox{\hyperlink{discover_8php_a95a39965ce2356a40e05903617566233}{\$from\_item}}.\textcolor{stringliteral}{',\ '}.\$items\_per\_page);}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00183}00183\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00184}00184\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{discover_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>query(\textcolor{stringliteral}{'SELECT\ e.id\ as\ event\_id,\ g.id\ as\ game\_id,\ g.img\_big,\ g.name\ as\ name,\ g.description,\ e.description\ as\ event\_description,}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00185}00185\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.registered\_people,\ e.max\_people\ as\ max\_people,\ e.event\_time\ as\ event\_time,\ COALESCE\ (p.meta,\ 0)\ as\ meta,\ COALESCE\ (p.pico,\ 0)\ as\ pico,\ COALESCE\ (p.pcvr,\ 0)\ as\ pcvr}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00186}00186\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FROM\ events\ e\ }}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00187}00187\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOIN\ games\ g\ ON\ e.game\_id\ =\ g.id\ }}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00188}00188\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LEFT\ JOIN\ games\_platforms\ p\ ON\ g.id\ =\ p.id}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00189}00189\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ (name\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ g.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{}\ OR\ e.description\ LIKE\ "{}\%'}.\mbox{\hyperlink{discover_8php_a7d55e18b034f38153336bceb8ca02a95}{\$sanitized\_search}}.\textcolor{stringliteral}{'\%"{})\ AND\ p.'}.\$platform.\textcolor{stringliteral}{'\ =\ 1}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00190}00190\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ORDER\ BY\ '}.\mbox{\hyperlink{game__list_8php_a2d1f877d9738711d7686b368e02e2174}{\$sorted\_by}}.\textcolor{charliteral}{'\ '}.\$order.\textcolor{stringliteral}{'}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00191}00191\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LIMIT\ '}.\mbox{\hyperlink{discover_8php_a95a39965ce2356a40e05903617566233}{\$from\_item}}.\textcolor{stringliteral}{',\ '}.\$items\_per\_page);}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00192}00192\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00193}00193\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00194}\mbox{\hyperlink{discover_8php_a1bcec9bbd34255927faaf155bf3a940a}{00194}}\ \ \ \ \ \mbox{\hyperlink{discover_8php_a1bcec9bbd34255927faaf155bf3a940a}{\$events}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetchAll();}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00195}00195\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00196}00196\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'database\ request\ failed:\ '}.\$e;}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00197}00197\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00198}00198\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00199}00199\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00201}00201\ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00214}00214\ <!DOCTYPE\ html>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00215}00215\ <html\ lang=\textcolor{stringliteral}{"{}en"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00217}00217\ <head>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00218}00218\ \ \ \ \ <meta\ charset=\textcolor{stringliteral}{"{}UTF-\/8"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00219}00219\ \ \ \ \ <meta\ name=\textcolor{stringliteral}{"{}viewport"{}}\ content=\textcolor{stringliteral}{"{}width=device-\/width,\ initial-\/scale=1.0"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00220}00220\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}css/style.css"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00221}00221\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}icon"{}}\ type=\textcolor{stringliteral}{"{}image/x-\/icon"{}}\ href=\textcolor{stringliteral}{"{}images/icons/favicon.ico"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00223}00223\ \ \ \ \ <title>VRMates\ -\/\ discover\ events</title>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00224}00224\ </head>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00226}00226\ <body>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00228}00228\ \ \ \ \ <?php\ include\ \textcolor{stringliteral}{"{}header.php"{}}\ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00231}00231\ \ \ \ \ <!-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00232}00232\ \ \ \ \ <!-\/-\/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00233}00233\ \ \ \ \ <!-\/-\/\ \ \ \ \ \ SEARCH\ STAFF\ \ \ \ \ \ \ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00234}00234\ \ \ \ \ <!-\/-\/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00235}00235\ \ \ \ \ <!-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00237}00237\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}search\_container"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00238}00238\ \ \ \ \ \ \ \ \ <form\ action=\textcolor{stringliteral}{"{}\#"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}search\_section"{}}\ method=\textcolor{stringliteral}{"{}GET"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}search\_bar"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}search"{}}></label>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}search"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}line"{}}\ name=\textcolor{stringliteral}{"{}search"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}search"{}}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ placeholder=\textcolor{stringliteral}{"{}search\ for\ specific\ game\ or\ activities"{}}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php\ \textcolor{keywordflow}{if}\ (\$search\ !=\ \textcolor{charliteral}{'\_'})\ echo\ \textcolor{stringliteral}{'value="{}'}.htmlspecialchars(\$search).\textcolor{charliteral}{'"{}'}\ ?>>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}submit"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}submit"{}}\ value=\textcolor{stringliteral}{"{}search"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}settings\_bar"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}sorted"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}sorted\_by\_select"{}}>sorted\ by</label>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <select\ name=\textcolor{stringliteral}{"{}sorted\_by"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}sorted\_by\_select"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}sorted\_by\_select"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}event\_time"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{game__list_8php_a2d1f877d9738711d7686b368e02e2174}{\$sorted\_by}}\ ==\ \textcolor{stringliteral}{'event\_time'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>date</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}max\_people"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{game__list_8php_a2d1f877d9738711d7686b368e02e2174}{\$sorted\_by}}\ ==\ \textcolor{stringliteral}{'max\_people'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>max\ people</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}name"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{game__list_8php_a2d1f877d9738711d7686b368e02e2174}{\$sorted\_by}}\ ==\ \textcolor{stringliteral}{'name'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>name\ of\ game</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </select>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}order"{}}></label>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <select\ name=\textcolor{stringliteral}{"{}order"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}order"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}order"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}ASC"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\$order\ ==\ \textcolor{stringliteral}{'ASC'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>↓</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}DESC"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\$order\ ==\ \textcolor{stringliteral}{'DESC'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>↑</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </select>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}filters"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}platform\_select"{}}>platform</label>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <select\ name=\textcolor{stringliteral}{"{}platform"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}platform\_select"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}platform\_select"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}all"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\$platform\ ==\ \textcolor{stringliteral}{'all'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>all</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}meta"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\$platform\ ==\ \textcolor{stringliteral}{'meta'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>META\ QUEST</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}pico"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\$platform\ ==\ \textcolor{stringliteral}{'pico'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>PICO</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}pcvr"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\$platform\ ==\ \textcolor{stringliteral}{'pcvr'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>PC\ VR</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </select>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}items\_per\_page"{}}>events\ on\ one\ page</label>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <select\ name=\textcolor{stringliteral}{"{}items\_per\_page"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}items\_per\_page"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}filter"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}2"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\$items\_per\_page\ ==\ \textcolor{charliteral}{'2'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>2</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}5"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\$items\_per\_page\ ==\ \textcolor{charliteral}{'5'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>5</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}10"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\$items\_per\_page\ ==\ \textcolor{stringliteral}{'10'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>10</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}25"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\$items\_per\_page\ ==\ \textcolor{stringliteral}{'25'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>25</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <option\ value=\textcolor{stringliteral}{"{}50"{}}\ <?php\ \textcolor{keywordflow}{if}\ (\$items\_per\_page\ ==\ \textcolor{stringliteral}{'50'})\ echo\ \textcolor{stringliteral}{'selected'}\ ?>>50</option>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </select>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00278}00278\ \ \ \ \ \ \ \ \ </form>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00279}00279\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00282}00282\ \ \ \ \ <!-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00283}00283\ \ \ \ \ <!-\/-\/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00284}00284\ \ \ \ \ <!-\/-\/\ \ \ \ RESULT\ OUT\ STAFF\ \ \ \ \ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00285}00285\ \ \ \ \ <!-\/-\/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00286}00286\ \ \ \ \ <!-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00289}00289\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}result\_section"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00292}00292\ \ \ \ \ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00294}00294\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{discover_8php_a1bcec9bbd34255927faaf155bf3a940a}{\$events}}))\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}nothing\ found("{}};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00296}00296\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ echo\ \mbox{\hyperlink{discover_8php_add7ab0317f6847b2336e382bded9b7b3}{\$row\_count}}.\textcolor{stringliteral}{'\ results\ found'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00298}00298\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00300}00300\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{discover_8php_a1bcec9bbd34255927faaf155bf3a940a}{\$events}}\ as\ \$event)\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00301}00301\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \$stmt\ =\ \$pdo-\/>prepare('SELECT\ *\ FROM\ games\ WHERE\ id\ =\ :game\_id');}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00302}00302\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \$stmt-\/>bindParam(':game\_id',\ \$event['game\_id']);}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00303}00303\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \$stmt-\/>execute();}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00304}00304\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \$game\ =\ \$stmt-\/>fetch();}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00305}00305\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event_8php_a06daf7b009ffc6aa841f90dc179be482}{\$php\_date}}\ =\ strtotime(\$event[\textcolor{stringliteral}{'event\_time'}]);}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event_8php_a8e033e73cf825abaa373873fcd57ee09}{\$dateYMD}}\ =\ date(\ \textcolor{stringliteral}{'M\ d,\ Y'},\ \mbox{\hyperlink{event_8php_a06daf7b009ffc6aa841f90dc179be482}{\$php\_date}}\ );}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event_8php_a69d047cdd29ec088029be1508f2233aa}{\$dateDOFW}}\ =\ date(\ \textcolor{charliteral}{'l'},\ \mbox{\hyperlink{event_8php_a06daf7b009ffc6aa841f90dc179be482}{\$php\_date}}\ );}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event_8php_ab4bf008be3b08ceb0535740bbe573d1c}{\$dateTIME}}\ =\ date(\ \textcolor{stringliteral}{'H:i'},\ \mbox{\hyperlink{event_8php_a06daf7b009ffc6aa841f90dc179be482}{\$php\_date}}\ );}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}event.php?id=<?php\ echo\ \$event['event\_id']\ ?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}item"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <img\ src=\textcolor{stringliteral}{"{}<?php\ echo\ \$event['img\_big']\ ?>"{}}\ alt=\textcolor{stringliteral}{"{}game\_image"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}text\_section"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}title"{}}><?php}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ echo\ strlen(\$event[\textcolor{stringliteral}{'name'}]\ >\ 20)\ ?\ htmlspecialchars(substr(\$event[\textcolor{stringliteral}{'name'}],\ 0,\ 20))\ :\ htmlspecialchars(\$event[\textcolor{stringliteral}{'name'}]);}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}label\_section"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$event[\textcolor{stringliteral}{'meta'}])\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}platform\_label"{}}>META</div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$event[\textcolor{stringliteral}{'pico'}])\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}platform\_label"{}}>PICO</div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$event[\textcolor{stringliteral}{'pcvr'}])\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}platform\_label"{}}>PC\ VR</div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php\ \}\ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}text"{}}><?php\ echo\ (strlen(\$event[\textcolor{stringliteral}{'event\_description'}])\ >\ 250)\ ?\ htmlspecialchars(substr(\$event[\textcolor{stringliteral}{'event\_description'}],\ 0,\ 250).\textcolor{stringliteral}{'...'})\ :\ htmlspecialchars(\$event[\textcolor{stringliteral}{'event\_description'}])\ ?></div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class=\textcolor{stringliteral}{"{}info\_section"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class=\textcolor{stringliteral}{"{}counter"{}}><?php\ echo\ \$event[\textcolor{stringliteral}{'registered\_people'}]\ ?>/<?php\ echo\ \$event[\textcolor{stringliteral}{'max\_people'}]\ ?></div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class=\textcolor{stringliteral}{"{}datetime"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div><?php\ echo\ \mbox{\hyperlink{event_8php_a8e033e73cf825abaa373873fcd57ee09}{\$dateYMD}}\ ?></div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div><?php\ echo\ \mbox{\hyperlink{event_8php_a69d047cdd29ec088029be1508f2233aa}{\$dateDOFW}}\ ?></div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div><?php\ echo\ \mbox{\hyperlink{event_8php_ab4bf008be3b08ceb0535740bbe573d1c}{\$dateTIME}}\ ?></div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00342}00342\ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00343}00343\ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00344}00344\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00346}00346\ \ \ \ \ <!-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00347}00347\ \ \ \ \ <!-\/-\/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00348}00348\ \ \ \ \ <!-\/-\/\ \ \ \ PAGINATION\ STAFF\ \ \ \ \ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00349}00349\ \ \ \ \ <!-\/-\/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00350}00350\ \ \ \ \ <!-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00352}00352\ \ \ \ \ <div\ class=\textcolor{stringliteral}{"{}pagination\_content"{}}>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00353}00353\ \ \ \ \ \ \ \ \ <!-\/-\/prev\ btn-\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00354}00354\ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}?page=<?php\ echo\ \$page\ -\/\ 1\ ?><?php\ echo\ \$all\_args?>"{}}\ <?php}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{discover_8php_ad0ed846c8f91b26c70889960cd0c7526}{if}}\ (\$page\ <=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{'class="{}prev\ btn\ disabled"{}'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00358}00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{'class="{}prev\ btn"{}'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00360}00360\ \ \ \ \ \ \ \ \ ?>>prev</a>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00362}00362\ \ \ \ \ \ \ \ \ <!-\/-\/\ prev\ 2\ pages\ btns\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00363}00363\ \ \ \ \ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00364}00364\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$page\ >\ 2)\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}?page=<?php\ echo\ \$page\ -\/\ 2\ ?><?php\ echo\ \$all\_args?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}prev\_page\ btn\ small"{}}><?php\ echo\ \$page\ -\/\ 2\ ?></a>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00366}00366\ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00367}00367\ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00368}00368\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00369}00369\ \ \ \ \ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00370}00370\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$page\ >\ 1)\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}?page=<?php\ echo\ \$page\ -\/\ 1\ ?><?php\ echo\ \$all\_args?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}prev\_page\ btn\ small"{}}><?php\ echo\ \$page\ -\/\ 1\ ?></a>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00372}00372\ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00373}00373\ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00374}00374\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00375}00375\ \ \ \ \ \ \ \ \ <!-\/-\/\ curr\ page\ btn\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00376}00376\ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}?page=<?php\ echo\ \$page\ ?><?php\ echo\ \$all\_args?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}selected\ btn"{}}><?php\ echo\ \$page\ ?></a>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00377}00377\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00378}00378\ \ \ \ \ \ \ \ \ <!-\/-\/\ next\ 2\ pages\ btns\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00379}00379\ \ \ \ \ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00380}00380\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$page\ <\ \mbox{\hyperlink{discover_8php_a9f17eee7b7ba0af984d1a70a84f05446}{\$num\_of\_page}})\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}?page=<?php\ echo\ \$page\ +\ 1\ ?><?php\ echo\ \$all\_args?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}next\_page\ btn\ small"{}}><?php\ echo\ \$page\ +\ 1\ ?></a>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00382}00382\ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00383}00383\ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00384}00384\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00385}00385\ \ \ \ \ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00386}00386\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$page\ <\ \mbox{\hyperlink{discover_8php_a9f17eee7b7ba0af984d1a70a84f05446}{\$num\_of\_page}}\ -\/\ 1)\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}?page=<?php\ echo\ \$page\ +\ 2\ ?><?php\ echo\ \$all\_args?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}next\_page\ btn\ small"{}}><?php\ echo\ \$page\ +\ 2\ ?></a>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00388}00388\ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00389}00389\ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00390}00390\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00392}00392\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00393}00393\ \ \ \ \ \ \ \ \ <!-\/-\/next\ btn-\/-\/>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00394}00394\ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}?page=<?php\ echo\ \$page\ +\ 1\ ?><?php\ echo\ \$all\_args?>"{}}\ <?php}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00395}00395\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$page\ >=\ \mbox{\hyperlink{discover_8php_a9f17eee7b7ba0af984d1a70a84f05446}{\$num\_of\_page}})\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{'class="{}next\ btn\ disabled"{}'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00397}00397\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{'class="{}next\ btn"{}'};}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00399}00399\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00400}00400\ \ \ \ \ \ \ \ \ ?>>next</a>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00401}00401\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00402}00402\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00403}00403\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00404}00404\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00405}00405\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00406}00406\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00407}00407\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00408}00408\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00410}00410\ \ \ \ \ <?php\ include\ \textcolor{stringliteral}{"{}footer.php"{}}\ ?>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00412}00412\ </body>}
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00413}00413\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{discover_8php_source_l00416}00416\ </html>}
+
+\end{DoxyCode}

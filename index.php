@@ -1,7 +1,7 @@
 <?php
 if(!isset($_SESSION)) session_start();
 require 'tools/error.tool.php';
-require 'includes/dbh.inc.php';
+require 'tools/dbh.tool.php';
 global $pdo;
 try {
     $stmt = $pdo->query('SELECT *, events.id as event_id FROM events JOIN games ON events.game_id = games.id
@@ -29,6 +29,7 @@ try {
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>VRMate</title>
     <link rel="icon" type="image/x-icon" href="images/icons/favicon.ico">
+    <script defer src="js/alert_animation.js"></script>
 </head>
 
 <body>
@@ -36,6 +37,11 @@ try {
     <?php include "header.php" ?>
 
     <div class="body_content">
+        <?php
+        if (!empty($_GET['message'])) { ?>
+            <div class="alert" id="alert"><?php echo htmlspecialchars($_GET['message']).' (click to hide)'?></div>
+        <?php } ?>
+
         <div class="hot_events_section">
             <div class="textnew">
                 &#128293;
@@ -44,11 +50,6 @@ try {
             </div>
 
             <div class="menu">
-<!--                <a href="#" class="circle">-->
-<!--                    <p class="arrow"></p>-->
-<!--                    <p class="line"></p>-->
-<!--                </a>-->
-
                 <?php
                 if (empty($hot_events)) { ?>
                     <div class="nothing_hot">There are no upcoming events at all :(</div>
@@ -85,37 +86,7 @@ try {
                         <img src="<?php echo htmlspecialchars($event['img_big']) ?>" alt="<?php echo htmlspecialchars($event['name'])?>" class="img">
                     </a>
                 <?php }
-
                 ?>
-
-<!--                <a href="event.php" class="item">-->
-<!--                    <div class="title">BEAT SABER</div>-->
-<!--                    <div class="date">TODAY / 17:30</div>-->
-<!--                    <img src="images\beat-saber.jpg" alt="beatsaber" class="img">-->
-<!--                    <button class="more">more...</button>-->
-<!--                </a>-->
-<!--                <a href="event.php" class="item">-->
-<!--                    <div class="title">eleven table tennis</div>-->
-<!--                    <div class="date">TODAY / 17:30</div>-->
-<!--                    <img src="images/eleven_logo.png" alt="beatsaber" class="img">-->
-<!--                    <button class="more">more...</button>-->
-<!--                </a>-->
-<!--                <a href="event.php" class="item">-->
-<!--                    <div class="title">rumble vr</div>-->
-<!--                    <div class="date">TODAY / 17:30</div>-->
-<!--                    <img src="images/rumble_logo.png" alt="beatsaber" class="img">-->
-<!--                    <button class="more">more...</button>-->
-<!--                </a>-->
-<!--                <a href="event.php" class="item">-->
-<!--                    <div class="title">walkabout minigolf</div>-->
-<!--                    <div class="date">TODAY / 17:30</div>-->
-<!--                    <img src="images/walkabout_minigolf_logo.png" alt="beatsaber" class="img">-->
-<!--                    <button class="more">more...</button>-->
-<!--                </a>-->
-<!--                <a href="#" class="circle">-->
-<!--                    <p class="arrow left_arrow"></p>-->
-<!--                    <p class="line"></p>-->
-<!--                </a>-->
             </div>
 
         </div>

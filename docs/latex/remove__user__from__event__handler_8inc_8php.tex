@@ -1,0 +1,110 @@
+\doxysection{includes/remove\+\_\+user\+\_\+from\+\_\+event\+\_\+handler.inc.\+php File Reference}
+\hypertarget{remove__user__from__event__handler_8inc_8php}{}\label{remove__user__from__event__handler_8inc_8php}\index{includes/remove\_user\_from\_event\_handler.inc.php@{includes/remove\_user\_from\_event\_handler.inc.php}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_ab2e66f440fe1bd6f7256ac7c6c016a02}{if}} ( \$\+\_\+\+SERVER\mbox{[} \textquotesingle{}REQUEST\+\_\+\+METHOD\textquotesingle{}\mbox{]} !=\textquotesingle{}POST\textquotesingle{}\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}empty( \$\+\_\+\+POST\mbox{[} \textquotesingle{}event\+\_\+id\textquotesingle{}\mbox{]})\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}empty( \$\+\_\+\+POST\mbox{[} \textquotesingle{}user\+\_\+id\textquotesingle{}\mbox{]}))
+\item 
+global \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}
+\item 
+\mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996}{\$event\+\_\+id}} = intval(\$\+\_\+\+POST\mbox{[}\textquotesingle{}event\+\_\+id\textquotesingle{}\mbox{]})
+\item 
+\mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_af0fcd925f00973e32f7214859dfb3c6b}{\$user\+\_\+id}} = intval(\$\+\_\+\+POST\mbox{[}\textquotesingle{}user\+\_\+id\textquotesingle{}\mbox{]})
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(\$user\+\_\+id !=\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}login\+ID\textquotesingle{}\mbox{]}) \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_a34a17039defc0fb6017128350a10ba33}{try}}
+\item 
+\mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}} = \$stmt-\/$>$fetch()
+\item 
+\mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_afed7c194239f7ede0349eb14946bc200}{\$people\+\_\+after\+\_\+update}} = \$result\mbox{[}\textquotesingle{}registered\+\_\+people\textquotesingle{}\mbox{]} -\/ 1
+\item 
+\mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}}(Exception \$e) \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_a1b8b91d789c2f1b6b747806928cfadcd}{\$in\+\_\+event}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{remove__user__from__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996}\label{remove__user__from__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996} 
+\index{remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}!\$event\_id@{\$event\_id}}
+\index{\$event\_id@{\$event\_id}!remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$event\_id}{\$event\_id}}
+{\footnotesize\ttfamily \$event\+\_\+id = intval(\$\+\_\+\+POST\mbox{[}\textquotesingle{}event\+\_\+id\textquotesingle{}\mbox{]})}
+
+
+
+Definition at line \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source_l00010}{10}} of file \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source}{remove\+\_\+user\+\_\+from\+\_\+event\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{remove__user__from__event__handler_8inc_8php_a1b8b91d789c2f1b6b747806928cfadcd}\label{remove__user__from__event__handler_8inc_8php_a1b8b91d789c2f1b6b747806928cfadcd} 
+\index{remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}!\$in\_event@{\$in\_event}}
+\index{\$in\_event@{\$in\_event}!remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$in\_event}{\$in\_event}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}} (Exception \$e) \$in\+\_\+event = false}
+
+
+
+Definition at line \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source_l00036}{36}} of file \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source}{remove\+\_\+user\+\_\+from\+\_\+event\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{remove__user__from__event__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}\label{remove__user__from__event__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0} 
+\index{remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily global \$pdo}
+
+
+
+Definition at line \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source_l00008}{8}} of file \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source}{remove\+\_\+user\+\_\+from\+\_\+event\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{remove__user__from__event__handler_8inc_8php_afed7c194239f7ede0349eb14946bc200}\label{remove__user__from__event__handler_8inc_8php_afed7c194239f7ede0349eb14946bc200} 
+\index{remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}!\$people\_after\_update@{\$people\_after\_update}}
+\index{\$people\_after\_update@{\$people\_after\_update}!remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$people\_after\_update}{\$people\_after\_update}}
+{\footnotesize\ttfamily \$people\+\_\+after\+\_\+update = \$result\mbox{[}\textquotesingle{}registered\+\_\+people\textquotesingle{}\mbox{]} -\/ 1}
+
+
+
+Definition at line \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source_l00023}{23}} of file \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source}{remove\+\_\+user\+\_\+from\+\_\+event\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{remove__user__from__event__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}\label{remove__user__from__event__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07} 
+\index{remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}!\$result@{\$result}}
+\index{\$result@{\$result}!remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$result}{\$result}}
+{\footnotesize\ttfamily \$result = \$stmt-\/$>$fetch()}
+
+
+
+Definition at line \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source_l00022}{22}} of file \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source}{remove\+\_\+user\+\_\+from\+\_\+event\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{remove__user__from__event__handler_8inc_8php_af0fcd925f00973e32f7214859dfb3c6b}\label{remove__user__from__event__handler_8inc_8php_af0fcd925f00973e32f7214859dfb3c6b} 
+\index{remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}!\$user\_id@{\$user\_id}}
+\index{\$user\_id@{\$user\_id}!remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$user\_id}{\$user\_id}}
+{\footnotesize\ttfamily \$user\+\_\+id = intval(\$\+\_\+\+POST\mbox{[}\textquotesingle{}user\+\_\+id\textquotesingle{}\mbox{]})}
+
+
+
+Definition at line \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source_l00011}{11}} of file \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source}{remove\+\_\+user\+\_\+from\+\_\+event\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{remove__user__from__event__handler_8inc_8php_ab2e66f440fe1bd6f7256ac7c6c016a02}\label{remove__user__from__event__handler_8inc_8php_ab2e66f440fe1bd6f7256ac7c6c016a02} 
+\index{remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}!if@{if}}
+\index{if@{if}!remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}}
+{\footnotesize\ttfamily if(\$\+\_\+\+SERVER\mbox{[}\textquotesingle{}REQUEST\+\_\+\+METHOD\textquotesingle{}\mbox{]} !=\textquotesingle{}POST\textquotesingle{}\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}empty(\$\+\_\+\+POST\mbox{[}\textquotesingle{}event\+\_\+id\textquotesingle{}\mbox{]})\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}empty(\$\+\_\+\+POST\mbox{[}\textquotesingle{}user\+\_\+id\textquotesingle{}\mbox{]})) (\begin{DoxyParamCaption}\item[{}]{\$\+\_\+\+SERVER !\mbox{[} \textquotesingle{}\+REQUEST\+\_\+\+METHOD\textquotesingle{}\mbox{]} = {\ttfamily \textquotesingle{}POST\textquotesingle{}~\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}~empty(\$\+\_\+POST\mbox{[}\textquotesingle{}event\+\_\+id\textquotesingle{}\mbox{]})~\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}~empty(\$\+\_\+POST\mbox{[}\textquotesingle{}user\+\_\+id\textquotesingle{}\mbox{]})} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source_l00002}{2}} of file \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source}{remove\+\_\+user\+\_\+from\+\_\+event\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{remove__user__from__event__handler_8inc_8php_a34a17039defc0fb6017128350a10ba33}\label{remove__user__from__event__handler_8inc_8php_a34a17039defc0fb6017128350a10ba33} 
+\index{remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}!try@{try}}
+\index{try@{try}!remove\_user\_from\_event\_handler.inc.php@{remove\_user\_from\_event\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}} (Exception \$e) try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ events.registered\_people\ FROM\ events\ WHERE\ events.id\ =\ :event\_id'})}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source_l00018}{18}} of file \mbox{\hyperlink{remove__user__from__event__handler_8inc_8php_source}{remove\+\_\+user\+\_\+from\+\_\+event\+\_\+handler.\+inc.\+php}}.
+

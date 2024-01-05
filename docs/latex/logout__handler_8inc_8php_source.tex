@@ -1,0 +1,18 @@
+\doxysection{logout\+\_\+handler.\+inc.\+php}
+\hypertarget{logout__handler_8inc_8php_source}{}\label{logout__handler_8inc_8php_source}\index{includes/logout\_handler.inc.php@{includes/logout\_handler.inc.php}}
+\mbox{\hyperlink{logout__handler_8inc_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{logout__handler_8inc_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{logout__handler_8inc_8php_source_l00002}00002\ \textcolor{keywordflow}{if}(!isset(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}))}
+\DoxyCodeLine{\Hypertarget{logout__handler_8inc_8php_source_l00003}00003\ \{}
+\DoxyCodeLine{\Hypertarget{logout__handler_8inc_8php_source_l00004}00004\ \ \ \ \ session\_start();}
+\DoxyCodeLine{\Hypertarget{logout__handler_8inc_8php_source_l00005}00005\ \}}
+\DoxyCodeLine{\Hypertarget{logout__handler_8inc_8php_source_l00006}00006\ session\_unset();}
+\DoxyCodeLine{\Hypertarget{logout__handler_8inc_8php_source_l00007}00007\ session\_destroy();}
+\DoxyCodeLine{\Hypertarget{logout__handler_8inc_8php_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{logout__handler_8inc_8php_source_l00009}00009\ header(\textcolor{stringliteral}{"{}Location:\ ../login.php"{}});}
+\DoxyCodeLine{\Hypertarget{logout__handler_8inc_8php_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{logout__handler_8inc_8php_source_l00011}00011\ die();}
+\DoxyCodeLine{\Hypertarget{logout__handler_8inc_8php_source_l00012}00012\ }
+
+\end{DoxyCode}

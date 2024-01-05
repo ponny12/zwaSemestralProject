@@ -1,0 +1,194 @@
+\doxysection{event.\+php}
+\hypertarget{event_8php_source}{}\label{event_8php_source}\mbox{\hyperlink{event_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00002}00002\ \textcolor{keywordflow}{if}(!isset(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}))}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00003}00003\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00004}00004\ \ \ \ \ session\_start();}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00005}00005\ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00006}\mbox{\hyperlink{event_8php_a84c75948774dbb79604b7cb58e6bb5c0}{00006}}\ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00007}00007\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ login.php?message=login\ first!'});}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00008}00008\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00009}00009\ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00012}00012\ require\_once\ \textcolor{stringliteral}{'includes/dbh.inc.php'};}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00013}\mbox{\hyperlink{event_8php_a9f187aeb0999f8898ae2451de67650d0}{00013}}\ global\ \mbox{\hyperlink{event_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}};}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00014}00014\ require\ \textcolor{stringliteral}{'tools/error.tool.php'};}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00016}00016\ \textcolor{preprocessor}{\#\ get\ all\ data\ about\ event\ from\ db}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00017}00017\ \textcolor{keywordflow}{if}\ (isset(\$\_GET[\textcolor{stringliteral}{'id'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00021}00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{event_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ *,\ events.description\ as\ event\_description\ FROM\ events\ JOIN\ games\ ON\ events.game\_id\ =\ games.id\ WHERE\ events.id\ =\ :event\_id'});}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':event\_id'},\ \$\_GET[\textcolor{stringliteral}{'id'}]);}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00024}00024\ \ \ \ \ \ \ \ \ \$event\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetch();}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (empty(\$event))\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'event\ does\ not\ exist\ (id:\ '}.\$\_GET[\textcolor{stringliteral}{"{}id"{}}].\textcolor{charliteral}{')'});}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00028}00028\ \ \ \ \ \ \ \ \ \$max\_people\ =\ \$event[\textcolor{stringliteral}{'max\_people'}];}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00029}00029\ \ \ \ \ \ \ \ \ \$registered\_people\ =\ \$event[\textcolor{stringliteral}{'registered\_people'}];}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00030}00030\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00031}00031\ \ \ \ \ \ \ \ \ echo\ \$e-\/>getMessage();\ die();}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00032}00032\ \ \ \ \ \}\ \textcolor{keywordflow}{finally}\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00033}00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00036}\mbox{\hyperlink{event_8php_ad6c623a22e0aaeb5cc89bf91f8ac1772}{00036}}\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'event\ does\ not\ exist\ (not\ has\ even\ been\ chosen).'};}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00038}00038\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00039}00039\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00042}00042\ \textcolor{preprocessor}{\#\ transform\ datetime}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00043}\mbox{\hyperlink{event_8php_a06daf7b009ffc6aa841f90dc179be482}{00043}}\ \mbox{\hyperlink{event_8php_a06daf7b009ffc6aa841f90dc179be482}{\$php\_date}}\ =\ strtotime(\$event[\textcolor{stringliteral}{'event\_time'}]);}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00044}\mbox{\hyperlink{event_8php_a8e033e73cf825abaa373873fcd57ee09}{00044}}\ \mbox{\hyperlink{event_8php_a8e033e73cf825abaa373873fcd57ee09}{\$dateYMD}}\ =\ date(\ \textcolor{stringliteral}{'M\ d,\ Y'},\ \mbox{\hyperlink{event_8php_a06daf7b009ffc6aa841f90dc179be482}{\$php\_date}}\ );}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00045}\mbox{\hyperlink{event_8php_a69d047cdd29ec088029be1508f2233aa}{00045}}\ \mbox{\hyperlink{event_8php_a69d047cdd29ec088029be1508f2233aa}{\$dateDOFW}}\ =\ date(\ \textcolor{charliteral}{'l'},\ \mbox{\hyperlink{event_8php_a06daf7b009ffc6aa841f90dc179be482}{\$php\_date}}\ );}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00046}\mbox{\hyperlink{event_8php_ab4bf008be3b08ceb0535740bbe573d1c}{00046}}\ \mbox{\hyperlink{event_8php_ab4bf008be3b08ceb0535740bbe573d1c}{\$dateTIME}}\ =\ date(\ \textcolor{stringliteral}{'H:i'},\ \mbox{\hyperlink{event_8php_a06daf7b009ffc6aa841f90dc179be482}{\$php\_date}}\ );}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00047}00047\ \textcolor{preprocessor}{\#\ get\ info\ about\ creator\ and\ participants}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00048}\mbox{\hyperlink{event_8php_abe4cc9788f52e49485473dc699537388}{00048}}\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{event_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ *\ FROM\ users\ WHERE\ users.id\ =\ :creator\_id'});}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':creator\_id'},\ \$event[\textcolor{stringliteral}{'creator\_id'}]);}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00052}\mbox{\hyperlink{event_8php_a3ebaa535f689506e9f6766abf8386086}{00052}}\ \ \ \ \ \mbox{\hyperlink{event_8php_a3ebaa535f689506e9f6766abf8386086}{\$creator}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetch();}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{event_8php_a3ebaa535f689506e9f6766abf8386086}{\$creator}}))\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'can\ not\ find\ creator\ (id:\ '}.\$event[\textcolor{stringliteral}{'creator\_id'}].\textcolor{stringliteral}{')\ of\ event\ (id:\ '}.\$\_GET[\textcolor{stringliteral}{"{}id"{}}].\textcolor{charliteral}{')'});}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00056}00056\ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00057}00057\ \ \ \ \ echo\ \$e-\/>getMessage();\ die();}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00058}\mbox{\hyperlink{event_8php_aced2e7364d7b16e6b2cf6848ab64e580}{00058}}\ \}\ \textcolor{keywordflow}{finally}\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00062}00062\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{event_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ *\ FROM\ events\ }}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOIN\ events\_users\ ON\ events\_users.event\_id\ =\ events.id}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOIN\ users\ ON\ events\_users.user\_id\ =\ users.id}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ events.id\ =\ :event\_id'});}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00067}00067\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':event\_id'},\ \$\_GET[\textcolor{stringliteral}{'id'}]);}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00069}\mbox{\hyperlink{event_8php_a6d19776f7785e12716cedd38fea82f88}{00069}}\ \ \ \ \ \mbox{\hyperlink{event_8php_a6d19776f7785e12716cedd38fea82f88}{\$participants}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetchAll();}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{event_8php_a3ebaa535f689506e9f6766abf8386086}{\$creator}}))\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00071}00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'can\ not\ find\ creator\ (id:\ '}.\$event[\textcolor{stringliteral}{'creator\_id'}].\textcolor{stringliteral}{')\ of\ event\ (id:\ '}.\$\_GET[\textcolor{stringliteral}{"{}id"{}}].\textcolor{charliteral}{')'});}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00073}00073\ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00074}00074\ \ \ \ \ echo\ \$e-\/>getMessage();\ die();}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00075}00075\ \}\ \textcolor{keywordflow}{finally}\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00076}00076\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00078}00078\ \textcolor{preprocessor}{\#\ find\ out\ if\ current\ user\ is\ creator\ or\ already\ joined\ event}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00079}\mbox{\hyperlink{event_8php_a8e414c0dd16b1de8f9c533690753ed94}{00079}}\ \mbox{\hyperlink{event_8php_a8e414c0dd16b1de8f9c533690753ed94}{\$is\_creator}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00080}\mbox{\hyperlink{event_8php_a3a984f4624ef75d1027902e1b08d25b2}{00080}}\ \mbox{\hyperlink{event_8php_a3a984f4624ef75d1027902e1b08d25b2}{\$already\_joined}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00081}00081\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{event_8php_a3ebaa535f689506e9f6766abf8386086}{\$creator}}[\textcolor{stringliteral}{'id'}]\ ==\ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}])\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00082}00082\ \ \ \ \ \mbox{\hyperlink{event_8php_a8e414c0dd16b1de8f9c533690753ed94}{\$is\_creator}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00083}00083\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00084}00084\ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{event_8php_a6d19776f7785e12716cedd38fea82f88}{\$participants}}\ as\ \$participant)\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$participant[\textcolor{stringliteral}{'id'}]\ ==\ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}])\ \{}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event_8php_a3a984f4624ef75d1027902e1b08d25b2}{\$already\_joined}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00088}00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00089}00089\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00090}00090\ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00094}00094\ ?>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00096}00096\ <!DOCTYPE\ html>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00097}00097\ <html\ lang=\textcolor{stringliteral}{"{}en"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00099}00099\ <head>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00100}00100\ \ \ \ \ <meta\ charset=\textcolor{stringliteral}{"{}UTF-\/8"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00101}00101\ \ \ \ \ <meta\ name=\textcolor{stringliteral}{"{}viewport"{}}\ content=\textcolor{stringliteral}{"{}width=device-\/width,\ initial-\/scale=1.0"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00102}00102\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ type=\textcolor{stringliteral}{"{}text/css"{}}\ href=\textcolor{stringliteral}{"{}css/style.css"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00103}00103\ \ \ \ \ <title>VRMate</title>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00104}00104\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}icon"{}}\ type=\textcolor{stringliteral}{"{}image/x-\/icon"{}}\ href=\textcolor{stringliteral}{"{}images/icons/favicon.ico"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00105}00105\ </head>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00109}00109\ <body>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00111}00111\ \ \ \ \ <?php\ include\ \textcolor{stringliteral}{"{}header.php"{}}\ ?>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00113}00113\ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}event\_content"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00114}00114\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}container"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00115}00115\ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}game.php?id=<?php\ echo\ \$event['game\_id']?>"{}}><img\ src=\textcolor{stringliteral}{"{}<?php\ echo\ \$event['img\_big']\ ?>"{}}\ alt=\textcolor{stringliteral}{"{}eleven\ table\ tennis\ logo"{}}></a>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00116}00116\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}text\_section"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}game.php?id=<?php\ echo\ \$event['game\_id']?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}title"{}}><?php\ echo\ \$event[\textcolor{stringliteral}{'name'}]\ ?></a>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}text"{}}><?php\ echo\ \$event[\textcolor{stringliteral}{'event\_description'}]\ ?></div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00119}00119\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00120}00120\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}info\_section"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}counter"{}}><?php\ echo\ \$event[\textcolor{stringliteral}{'registered\_people'}]\ ?>/<?php\ echo\ \$event[\textcolor{stringliteral}{'max\_people'}]\ ?></div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}datetime\_section"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}datetime"{}}><?php\ echo\ \mbox{\hyperlink{event_8php_a8e033e73cf825abaa373873fcd57ee09}{\$dateYMD}}\ ?></div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}datetime"{}}><?php\ echo\ \mbox{\hyperlink{event_8php_a69d047cdd29ec088029be1508f2233aa}{\$dateDOFW}}\ ?></div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}datetime"{}}><?php\ echo\ \mbox{\hyperlink{event_8php_ab4bf008be3b08ceb0535740bbe573d1c}{\$dateTIME}}\ ?></div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00127}00127\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00128}00128\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00129}00129\ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00130}00130\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{event_8php_a8e414c0dd16b1de8f9c533690753ed94}{\$is\_creator}}\ ||\ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}]\ ==\ 1)\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00131}00131\ \ \ \ \ \ \ \ \ <form\ action=\textcolor{stringliteral}{"{}includes/delete\_event\_handler.inc.php"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}delete\_content"{}}\ method=\textcolor{stringliteral}{"{}POST"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}hidden"{}}\ name=\textcolor{stringliteral}{"{}event\_id"{}}\ value=\textcolor{stringliteral}{"{}<?php\ echo\ \$\_GET['id']?>"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}hidden"{}}\ name=\textcolor{stringliteral}{"{}user\_id"{}}\ value=\textcolor{stringliteral}{"{}<?php\ echo\ \$\_SESSION['loginID']?>"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}delete\_text"{}}></label>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}text"{}}\ name=\textcolor{stringliteral}{"{}delete\_text"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}delete\_text"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}delete\_text"{}}\ placeholder=\textcolor{stringliteral}{"{}write\ 'DELETE'\ to\ approve"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}submit"{}}\ value=\textcolor{stringliteral}{"{}DELETE"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}orange\_button\ delete\_button"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00137}00137\ \ \ \ \ \ \ \ \ </form>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00138}00138\ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00139}00139\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{event_8php_a3a984f4624ef75d1027902e1b08d25b2}{\$already\_joined}}\ \&\&\ !\mbox{\hyperlink{event_8php_a8e414c0dd16b1de8f9c533690753ed94}{\$is\_creator}})\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00140}00140\ \ \ \ \ \ \ \ \ <form\ action=\textcolor{stringliteral}{"{}includes/add\_user\_to\_event\_handler.inc.php"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}join\_content"{}}\ method=\textcolor{stringliteral}{"{}POST"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}hidden"{}}\ name=\textcolor{stringliteral}{"{}event\_id"{}}\ value=\textcolor{stringliteral}{"{}<?php\ echo\ \$\_GET['id']?>"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}hidden"{}}\ name=\textcolor{stringliteral}{"{}user\_id"{}}\ value=\textcolor{stringliteral}{"{}<?php\ echo\ \$\_SESSION['loginID']?>"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ <?php\ echo\ \$max\_people\ ==\ \$registered\_people\ ?\ \textcolor{stringliteral}{'disabled'}\ :\ \textcolor{stringliteral}{''}\ ?>\ type=\textcolor{stringliteral}{"{}submit"{}}\ value=\textcolor{stringliteral}{"{}JOIN"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}orange\_button\ join\_button"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00144}00144\ \ \ \ \ \ \ \ \ </form>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00145}00145\ \ \ \ \ <?php\ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{event_8php_a8e414c0dd16b1de8f9c533690753ed94}{\$is\_creator}})\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00146}00146\ \ \ \ \ \ \ \ \ <form\ action=\textcolor{stringliteral}{"{}includes/remove\_user\_from\_event\_handler.inc.php"{}}\ method=\textcolor{stringliteral}{"{}POST"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}hidden"{}}\ name=\textcolor{stringliteral}{"{}event\_id"{}}\ value=\textcolor{stringliteral}{"{}<?php\ echo\ \$\_GET['id']?>"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}hidden"{}}\ name=\textcolor{stringliteral}{"{}user\_id"{}}\ value=\textcolor{stringliteral}{"{}<?php\ echo\ \$\_SESSION['loginID']?>"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}submit"{}}\ value=\textcolor{stringliteral}{"{}LEAVE"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}orange\_button\ leave\_button"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00150}00150\ \ \ \ \ \ \ \ \ </form>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00151}00151\ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00152}00152\ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00155}00155\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}created\_by"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00156}00156\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}title"{}}>created\ by</div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00157}00157\ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}profile.php?id=<?php\ echo\ \$creator['id']?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}creator"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ <img\ src=\textcolor{stringliteral}{"{}<?php\ echo\ \$creator['img\_small']?>"{}}\ alt=\textcolor{stringliteral}{"{}creator\ photo"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}name"{}}><?php\ echo\ htmlspecialchars(\mbox{\hyperlink{event_8php_a3ebaa535f689506e9f6766abf8386086}{\$creator}}[\textcolor{stringliteral}{'username'}])?></div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00160}00160\ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00161}00161\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00163}00163\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}participants"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00164}00164\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}title"{}}>participants</div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00165}00165\ \ \ \ \ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{event_8php_a6d19776f7785e12716cedd38fea82f88}{\$participants}}\ as\ \mbox{\hyperlink{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5}{\$user}})\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}profile.php?id=<?php\ echo\ \$user['id']?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}user"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <img\ src=\textcolor{stringliteral}{"{}<?php\ echo\ \$user['img\_small']?>"{}}\ alt=\textcolor{stringliteral}{"{}"{}}>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}name"{}}><?php\ echo\ \mbox{\hyperlink{profile_8php_a598ca4e71b15a1313ec95f0df1027ca5}{\$user}}[\textcolor{stringliteral}{'username'}]\ ?></div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00171}00171\ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{event_8php_a6d19776f7785e12716cedd38fea82f88}{\$participants}}))\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}zero\_participants"{}}>There\ are\ no\ participants\ yet\ :(\ <br>\ Become\ first!</div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00175}00175\ \ \ \ \ \ \ \ \ <?php\ \}\ ?>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00178}00178\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00179}00179\ </div>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00183}00183\ </body>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00185}00185\ </html>}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00187}00187\ <?php}
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{event_8php_source_l00189}00189\ include\ \textcolor{stringliteral}{"{}footer.php"{}};}
+
+\end{DoxyCode}

@@ -1,0 +1,50 @@
+\doxysection{delete\+\_\+event\+\_\+handler.\+inc.\+php}
+\hypertarget{delete__event__handler_8inc_8php_source}{}\label{delete__event__handler_8inc_8php_source}\index{includes/delete\_event\_handler.inc.php@{includes/delete\_event\_handler.inc.php}}
+\mbox{\hyperlink{delete__event__handler_8inc_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00002}\mbox{\hyperlink{delete__event__handler_8inc_8php_ab2e66f440fe1bd6f7256ac7c6c016a02}{00002}}\ \textcolor{keywordflow}{if}\ (\$\_SERVER[\textcolor{stringliteral}{'REQUEST\_METHOD'}]\ !=\ \textcolor{stringliteral}{'POST'}\ ||\ empty(\$\_POST[\textcolor{stringliteral}{'event\_id'}])\ ||\ empty(\$\_POST[\textcolor{stringliteral}{'user\_id'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00003}00003\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../index.php'});}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00004}00004\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00005}00005\ \}}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00009}00009\ require\ \textcolor{stringliteral}{'../tools/error.tool.php'};}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00010}00010\ require\ \textcolor{stringliteral}{'../includes/dbh.inc.php'};}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00011}\mbox{\hyperlink{delete__event__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{00011}}\ global\ \mbox{\hyperlink{delete__event__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}};}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00013}\mbox{\hyperlink{delete__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996}{00013}}\ \mbox{\hyperlink{delete__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996}{\$event\_id}}\ =\ intval(\$\_POST[\textcolor{stringliteral}{'event\_id'}]);}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00014}\mbox{\hyperlink{delete__event__handler_8inc_8php_af0fcd925f00973e32f7214859dfb3c6b}{00014}}\ \mbox{\hyperlink{delete__event__handler_8inc_8php_af0fcd925f00973e32f7214859dfb3c6b}{\$user\_id}}\ =\ intval(\$\_POST[\textcolor{stringliteral}{'user\_id'}]);}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00016}00016\ \textcolor{preprocessor}{\#\ if\ delete\ text\ was\ not\ typed\ so\ nothing\ to\ do}}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00017}00017\ \textcolor{keywordflow}{if}\ (empty(\$\_POST[\textcolor{stringliteral}{'delete\_text'}])\ ||\ \$\_POST[\textcolor{stringliteral}{'delete\_text'}]\ !=\ \textcolor{stringliteral}{'DELETE'})\ \{}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00018}00018\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../event.php?id='}.\mbox{\hyperlink{delete__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996}{\$event\_id}});}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00019}00019\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00021}00021\ \textcolor{preprocessor}{\#\ check\ rights}}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00022}00022\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{delete__event__handler_8inc_8php_af0fcd925f00973e32f7214859dfb3c6b}{\$user\_id}}\ !=\ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}]\ \&\&\ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'loginID'}]\ !=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'attempt\ to\ delete\ event\ (id:\ '}.\mbox{\hyperlink{delete__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996}{\$event\_id}}.\textcolor{stringliteral}{')\ but\ have\ not\ enough\ rights'},\ \textcolor{stringliteral}{'../'});}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00026}00026\ \textcolor{preprocessor}{\#\ delete\ all\ participants\ from\ db}}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00027}\mbox{\hyperlink{delete__event__handler_8inc_8php_a697b77a70c5dc710a90b422eb3a77d12}{00027}}\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{delete__event__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'DELETE\ FROM\ events\_users\ WHERE\ events\_users.event\_id\ =\ :event\_id'});}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':event\_id'},\ \mbox{\hyperlink{delete__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996}{\$event\_id}},\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00030}00030\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00031}00031\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'db\ failed:\ '}.\$e,\ \textcolor{stringliteral}{'../'});}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00034}00034\ \textcolor{preprocessor}{\#\ delete\ event\ from\ db}}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00035}00035\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{delete__event__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'DELETE\ FROM\ events\ WHERE\ events.id\ =\ :event\_id'});}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':event\_id'},\ \mbox{\hyperlink{delete__event__handler_8inc_8php_aed5d30c2040590065eb5b2c7b83a0996}{\$event\_id}},\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00039}00039\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'db\ failed:\ '}.\$e,\ \textcolor{stringliteral}{'../'});}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00042}00042\ \textcolor{preprocessor}{\#\ redirect}}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00043}00043\ header(\textcolor{stringliteral}{'Location:\ ../index.php?massage=you\ have\ successfully\ delete\ the\ event'});}
+\DoxyCodeLine{\Hypertarget{delete__event__handler_8inc_8php_source_l00044}00044\ die();}
+
+\end{DoxyCode}

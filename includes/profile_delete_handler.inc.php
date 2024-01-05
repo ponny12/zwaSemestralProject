@@ -1,5 +1,5 @@
 <?php
-include 'dbh.inc.php';
+include '../tools/dbh.tool.php';
 include '../tools/error.tool.php';
 global $pdo;
 
@@ -14,13 +14,15 @@ if (!isset($_POST['delete_checkbox'])) {
     header('Location: ../profile.php?id='.$id);
     die();
 }
-
-# get pwd
+# get pwd and images paths
 try {
-    $stmt = $pdo->prepare('SELECT pwd FROM users WHERE users.id = :id');
+    $stmt = $pdo->prepare('SELECT pwd, img_small, img_big FROM users WHERE users.id = :id');
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
-    $pwd_hash = $stmt->fetch()['pwd'];
+    $results = $stmt->fetch();
+    $pwd_hash = $results['pwd'];
+    $img_small = $results['img_small'];
+    $img_big = $results['img_big'];
 } catch (Exception $e) {
     raiseError('db failed: ' . $e, '../');
 }
@@ -30,6 +32,8 @@ if (!password_verify($pwd, $pwd_hash)) {
     die();
 }
 # delete from db all about user, his events etc.
+unlink('../'.$img_small);
+unlink('../'.$img_big);
 try {
     $stmt = $pdo->prepare('SELECT events.id FROM events WHERE events.creator_id = :id');
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -56,9 +60,17 @@ foreach ($all_events_where_user_is_creator as $event) {
         raiseError('db failed: ' . $e, '../');
     }
 }
-
+# delete all users activities in other events
 try {
     $stmt = $pdo->prepare('DELETE FROM events_users WHERE events_users.user_id = :user_id');
+    $stmt->bindParam(':user_id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+} catch (Exception $e) {
+    raiseError('db failed: ' . $e, '../');
+}
+# delete user
+try {
+    $stmt = $pdo->prepare('DELETE FROM users WHERE users.id = :user_id');
     $stmt->bindParam(':user_id', $id, PDO::PARAM_INT);
     $stmt->execute();
 } catch (Exception $e) {

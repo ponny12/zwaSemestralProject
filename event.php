@@ -9,7 +9,7 @@ if (empty($_SESSION['loginID'])) {
 }
 
 
-require_once 'includes/dbh.inc.php';
+require_once 'tools/dbh.tool.php';
 global $pdo;
 require 'tools/error.tool.php';
 

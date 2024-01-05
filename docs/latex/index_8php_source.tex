@@ -1,0 +1,211 @@
+\doxysection{index.\+php}
+\hypertarget{index_8php_source}{}\label{index_8php_source}\mbox{\hyperlink{index_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00002}00002\ \textcolor{keywordflow}{if}(!isset(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}))\ session\_start();}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00003}00003\ require\ \textcolor{stringliteral}{'tools/error.tool.php'};}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00004}00004\ require\ \textcolor{stringliteral}{'includes/dbh.inc.php'};}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00005}\mbox{\hyperlink{index_8php_a9f187aeb0999f8898ae2451de67650d0}{00005}}\ global\ \mbox{\hyperlink{index_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}};}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00006}\mbox{\hyperlink{index_8php_abe4cc9788f52e49485473dc699537388}{00006}}\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00007}00007\ \ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{index_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>query(\textcolor{stringliteral}{'SELECT\ *,\ events.id\ as\ event\_id\ FROM\ events\ JOIN\ games\ ON\ events.game\_id\ =\ games.id}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00008}00008\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ events.event\_time\ >=\ CURDATE()}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00009}00009\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ORDER\ BY\ events.event\_time}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LIMIT\ 4'});}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00011}\mbox{\hyperlink{index_8php_ad01f64e3a3b5714caf493cf35a24d1c7}{00011}}\ \ \ \ \ \mbox{\hyperlink{index_8php_ad01f64e3a3b5714caf493cf35a24d1c7}{\$hot\_events}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetchAll();}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00012}\mbox{\hyperlink{index_8php_a9ee42195f2b26ca51b7b816b4f28113e}{00012}}\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'db\ failed:\ '}.\$e.\textcolor{stringliteral}{'\ While\ selecting\ hot\ events'});}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00017}00017\ ?>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00022}00022\ <!DOCTYPE\ html>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00024}00024\ <html\ lang=\textcolor{stringliteral}{"{}en"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00026}00026\ <head>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00027}00027\ \ \ \ \ <meta\ charset=\textcolor{stringliteral}{"{}UTF-\/8"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00028}00028\ \ \ \ \ <meta\ name=\textcolor{stringliteral}{"{}viewport"{}}\ content=\textcolor{stringliteral}{"{}width=device-\/width,\ initial-\/scale=1.0"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00029}00029\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ type=\textcolor{stringliteral}{"{}text/css"{}}\ href=\textcolor{stringliteral}{"{}css/style.css"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00030}00030\ \ \ \ \ <title>VRMate</title>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00031}00031\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}icon"{}}\ type=\textcolor{stringliteral}{"{}image/x-\/icon"{}}\ href=\textcolor{stringliteral}{"{}images/icons/favicon.ico"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00032}00032\ </head>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00034}00034\ <body>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00036}00036\ \ \ \ \ <?php\ include\ \textcolor{stringliteral}{"{}header.php"{}}\ ?>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00038}00038\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}body\_content"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00039}00039\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}hot\_events\_section"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}textnew"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\#128293;}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <span\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}hot"{}}>HOT</span>\ events}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\#128293;}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (empty(\mbox{\hyperlink{index_8php_ad01f64e3a3b5714caf493cf35a24d1c7}{\$hot\_events}}))\ \{\ ?>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}nothing\_hot"{}}>There\ are\ no\ upcoming\ events\ at\ all\ :(</div>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{index_8php_ad01f64e3a3b5714caf493cf35a24d1c7}{\$hot\_events}}\ as\ \$event)\ \{}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event_8php_a06daf7b009ffc6aa841f90dc179be482}{\$php\_date}}\ =\ strtotime(\$event[\textcolor{stringliteral}{'event\_time'}]);}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$event\_time\_proper\_format\ =\ \textcolor{keyword}{new}\ DateTime(strval(date(\textcolor{stringliteral}{"{}Y-\/m-\/d"{}},\ \mbox{\hyperlink{event_8php_a06daf7b009ffc6aa841f90dc179be482}{\$php\_date}})));}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$today\ =\ \textcolor{keyword}{new}\ DateTime(strval(date(\textcolor{stringliteral}{"{}Y-\/m-\/d"{}},\ strtotime(\textcolor{stringliteral}{'today'}))));}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$today\ >\ \$event\_time\_proper\_format)\ \{}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$time\_text\ =\ \textcolor{stringliteral}{'already\ passed'};}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\$today\ ==\ \$event\_time\_proper\_format)\ \{}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$time\_text\ =\ \textcolor{stringliteral}{'today'};}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$diff\ =\ \$today-\/>diff(\$event\_time\_proper\_format)-\/>days;}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$diff\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$time\_text\ =\ \textcolor{stringliteral}{'tomorrow'};}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$time\_text\ =\ \textcolor{stringliteral}{'in\ '}.\$diff.\textcolor{stringliteral}{'\ days'};}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{error_8tool_8php_a9e900eb420320315733cdf3ed7b17fe2}{raiseError}}(\textcolor{stringliteral}{'datetime\ failed:\ '}.\$e);}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}event.php?id=<?php\ echo\ htmlspecialchars(\$event['event\_id'])\ ?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}item"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}title"{}}><?php\ echo\ htmlspecialchars(\$event[\textcolor{stringliteral}{'name'}])\ ?></div>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}date"{}}><?php\ echo\ htmlspecialchars(strtoupper(\$time\_text))\ ?></div>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <img\ src=\textcolor{stringliteral}{"{}<?php\ echo\ htmlspecialchars(\$event['img\_big'])\ ?>"{}}\ alt=\textcolor{stringliteral}{"{}<?php\ echo\ htmlspecialchars(\$event['name'])?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}img"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php\ \}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00086}00086\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00087}00087\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}decoration\_line"{}}></div>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00088}00088\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}about\_section"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ <h1>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Welcome\ to\ VRMates!<br>\ the\ platform\ that\ brings\ together\ individuals\ <br>\ seeking\ enjoyable}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ experiences}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ in}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ reality}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ </h1>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}decoration\_line"{}}></div>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ <h2\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}key\_features\_title"{}}>Key\ Features:</h2>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}key\_features\_conteiner"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}key\_features\_block"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h3\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}key\_features\_block\_title"{}}>Connect\ and\ Play:</h3>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}key\_features\_block\_text"{}}>}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Easily\ connect\ with\ fellow\ VR\ enthusiasts\ who\ share\ your\ passion.\ Whether\ you\textcolor{stringliteral}{'re\ a\ solo\ gamer}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00104}00104\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ looking}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00105}00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for\ a\ team\ or}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00106}00106\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ someone\ who\ just\ wants\ to\ explore\ VR\ experiences\ with\ new\ friends,\ VRMates\ is\ the\ place\ to\ be.}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00107}00107\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00108}00108\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00109}00109\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00110}00110\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}key\_features\_block"{}>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00111}00111\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00112}00112\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h3\ class="{}key\_features\_block\_title"{}>Create\ and\ Join\ Events:</h3>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00113}00113\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}key\_features\_block\_text"{}>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00114}00114\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00115}00115\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Take\ charge\ of\ your\ VR\ social\ life\ by\ creating\ events\ tailored\ to\ your\ interests.\ Host\ gaming}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00116}00116\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sessions,}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00117}00117\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ virtual\ meetups,}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00118}00118\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ or\ collaborative\ experiences\ –\ the\ possibilities\ are\ endless.\ Alternatively,\ browse\ and\ join}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00119}00119\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ existing}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00120}00120\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ events\ to\ meet\ new}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00121}00121\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ people\ and\ expand\ your\ VR\ circle.}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00122}00122\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00123}00123\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00124}00124\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00125}00125\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00126}00126\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}key\_features\_block"{}>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00127}00127\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00128}00128\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h3\ class="{}key\_features\_block\_title"{}>Absolutely\ Free:</h3>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00129}00129\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}key\_features\_block\_text"{}>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00130}00130\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VRMates\ is\ committed\ to\ breaking\ down\ barriers.\ Joining\ our\ community,\ creating\ events,\ and}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00131}00131\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ connecting}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00132}00132\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ with\ others\ –\ all}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00133}00133\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ it\ is\ completely\ free!\ We\ believe\ that\ everyone\ should\ have\ the\ opportunity\ to\ enjoy\ the}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00134}00134\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wonders}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00135}00135\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00136}00136\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ virtual\ reality}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00137}00137\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ without\ any\ financial\ constraints.}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00138}00138\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00139}00139\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00140}00140\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00141}00141\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00142}00142\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00143}00143\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}decoration\_line"{}></div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00144}00144\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00145}00145\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ <h2\ class="{}how\_it\_works\_title"{}>How\ It\ Works:</h2>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00146}00146\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}how\_it\_works\_conteiner"{}>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00147}00147\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}how\_it\_works\_block"{}>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00148}00148\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h3\ class="{}how\_it\_works\_block\_title"{}>Sign\ Up:</h3>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00149}00149\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}how\_it\_works\_block\_text"{}>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00150}00150\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Creating\ your\ VRMates\ account\ is\ quick\ and\ easy.\ Simply\ sign\ up,\ set\ up\ your\ profile,\ and\ start}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00151}00151\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exploring\ the\ VR}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00152}00152\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ community.}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00153}00153\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00154}00154\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00155}00155\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}how\_it\_works\_block"{}>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00156}00156\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00157}00157\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h3\ class="{}how\_it\_works\_block\_title"{}>Discover\ Events:</h3>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00158}00158\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}how\_it\_works\_block\_text"{}>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00159}00159\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Browse\ through\ a\ variety\ of\ upcoming\ events\ hosted\ by\ members.\ Whether\ it'}s\ a\ VR\ game\ night,\ a}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00161}\mbox{\hyperlink{index_8php_a4ab6fe4007a86e786e2ac47d6a20f9e6}{00161}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ museum\ \mbox{\hyperlink{index_8php_a4ab6fe4007a86e786e2ac47d6a20f9e6}{tour}},\ or\ a}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00162}\mbox{\hyperlink{index_8php_a2b09882cce35f25e182b2bfb269b26ae}{00162}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ creative\ \mbox{\hyperlink{index_8php_a2b09882cce35f25e182b2bfb269b26ae}{collaboration}},\ there\textcolor{stringliteral}{'s\ something\ for\ everyone.}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00163}00163\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00164}00164\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00165}00165\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00166}00166\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}how\_it\_works\_block"{}>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00167}00167\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00168}00168\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h3\ class="{}how\_it\_works\_block\_title"{}>Create\ Your\ Event:</h3>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00169}00169\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}how\_it\_works\_block\_text"{}>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00170}00170\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Feeling\ adventurous?\ Plan\ your\ own\ VR\ event\ and\ invite\ others\ to\ join.\ Choose\ your\ activity,\ set}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00171}00171\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00172}00172\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ date\ and\ time,\ and}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00173}00173\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ watch\ your\ event\ come\ to\ life\ with\ participants\ eager\ to\ share\ the\ experience\ with\ you.}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00174}00174\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00175}00175\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00176}00176\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00177}00177\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00178}00178\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00179}00179\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}how\_it\_works\_block"{}>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00180}00180\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00181}00181\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h3\ class="{}how\_it\_works\_block\_title"{}>Connect\ and\ Enjoy:</h3>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00182}00182\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ class="{}how\_it\_works\_block\_text"{}>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00183}00183\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00184}00184\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Forge\ new\ friendships,\ embark\ on\ virtual\ adventures,\ and\ immerse\ yourself\ in\ the\ exciting\ world}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00185}00185\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00186}00186\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VR.}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00187}00187\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Connect\ with}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00188}00188\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VRMates\ who\ share\ your\ interests\ and\ make\ every\ VR\ experience\ memorable.}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00189}00189\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00190}00190\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00191}00191\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00192}00192\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00193}00193\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00194}00194\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00195}00195\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00196}00196\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00197}00197\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00198}00198\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00199}00199\ \textcolor{stringliteral}{\ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00200}00200\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00201}00201\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00202}00202\ \textcolor{stringliteral}{\ \ \ \ <?php\ include\ "{}footer.php"{};\ ?>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00203}00203\ \textcolor{stringliteral}{</body>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00204}00204\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00205}00205\ \textcolor{stringliteral}{</html>}}
+\DoxyCodeLine{\Hypertarget{index_8php_source_l00206}00206\ \textcolor{stringliteral}{}}
+
+\end{DoxyCode}

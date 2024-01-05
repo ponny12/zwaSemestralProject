@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     try {
-        require "dbh.inc.php";
+        require "../tools/dbh.tool.php";
         global $pdo;
 
         $query = "SELECT * FROM users WHERE username = :username";

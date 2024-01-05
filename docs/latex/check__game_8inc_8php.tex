@@ -1,0 +1,56 @@
+\doxysection{includes/check\+\_\+game.inc.\+php File Reference}
+\hypertarget{check__game_8inc_8php}{}\label{check__game_8inc_8php}\index{includes/check\_game.inc.php@{includes/check\_game.inc.php}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+global \mbox{\hyperlink{check__game_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(!isset(\$\+\_\+\+GET\mbox{[}\textquotesingle{}q\textquotesingle{}\mbox{]})) \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}} = \$pdo-\/$>$prepare(\textquotesingle{}SELECT \texorpdfstring{$\ast$}{*} FROM games WHERE LOWER(games.\+name) = \+:name\textquotesingle{})
+\item 
+\mbox{\hyperlink{check__game_8inc_8php_afbde608feab2bdb2dd9e1c20b20f12bb}{\$strtolower}} = strtolower(\$\+\_\+\+GET\mbox{[}\textquotesingle{}q\textquotesingle{}\mbox{]})
+\item 
+\mbox{\hyperlink{check__game_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}} = \$stmt-\/$>$fetch()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{check__game_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}\label{check__game_8inc_8php_a9f187aeb0999f8898ae2451de67650d0} 
+\index{check\_game.inc.php@{check\_game.inc.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!check\_game.inc.php@{check\_game.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily global \$pdo}
+
+
+
+Definition at line \mbox{\hyperlink{check__game_8inc_8php_source_l00004}{4}} of file \mbox{\hyperlink{check__game_8inc_8php_source}{check\+\_\+game.\+inc.\+php}}.
+
+\Hypertarget{check__game_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}\label{check__game_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07} 
+\index{check\_game.inc.php@{check\_game.inc.php}!\$result@{\$result}}
+\index{\$result@{\$result}!check\_game.inc.php@{check\_game.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$result}{\$result}}
+{\footnotesize\ttfamily \$result = \$stmt-\/$>$fetch()}
+
+
+
+Definition at line \mbox{\hyperlink{check__game_8inc_8php_source_l00018}{18}} of file \mbox{\hyperlink{check__game_8inc_8php_source}{check\+\_\+game.\+inc.\+php}}.
+
+\Hypertarget{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}\label{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca} 
+\index{check\_game.inc.php@{check\_game.inc.php}!\$stmt@{\$stmt}}
+\index{\$stmt@{\$stmt}!check\_game.inc.php@{check\_game.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$stmt}{\$stmt}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} (!isset( \$\+\_\+\+GET\mbox{[} \textquotesingle{}q\textquotesingle{}\mbox{]})) \$stmt = \$pdo-\/$>$prepare(\textquotesingle{}SELECT \texorpdfstring{$\ast$}{*} FROM games WHERE LOWER(games.\+name) = \+:name\textquotesingle{})}
+
+
+
+Definition at line \mbox{\hyperlink{check__game_8inc_8php_source_l00014}{14}} of file \mbox{\hyperlink{check__game_8inc_8php_source}{check\+\_\+game.\+inc.\+php}}.
+
+\Hypertarget{check__game_8inc_8php_afbde608feab2bdb2dd9e1c20b20f12bb}\label{check__game_8inc_8php_afbde608feab2bdb2dd9e1c20b20f12bb} 
+\index{check\_game.inc.php@{check\_game.inc.php}!\$strtolower@{\$strtolower}}
+\index{\$strtolower@{\$strtolower}!check\_game.inc.php@{check\_game.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$strtolower}{\$strtolower}}
+{\footnotesize\ttfamily \$strtolower = strtolower(\$\+\_\+\+GET\mbox{[}\textquotesingle{}q\textquotesingle{}\mbox{]})}
+
+
+
+Definition at line \mbox{\hyperlink{check__game_8inc_8php_source_l00015}{15}} of file \mbox{\hyperlink{check__game_8inc_8php_source}{check\+\_\+game.\+inc.\+php}}.
+

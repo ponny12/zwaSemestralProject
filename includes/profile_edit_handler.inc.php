@@ -1,8 +1,7 @@
 <?php
 if(!isset($_SESSION)) session_start();
 require '../tools/error.tool.php';
-
-require 'dbh.inc.php';
+require '../tools/dbh.tool.php';
 global $pdo;
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {

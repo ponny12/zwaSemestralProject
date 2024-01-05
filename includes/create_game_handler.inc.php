@@ -4,7 +4,7 @@ if(!isset($_SESSION))
     session_start();
 }
 require '../tools/error.tool.php';
-require 'dbh.inc.php';
+require '../tools/dbh.tool.php';
 global $pdo;
 
 # check if connecting via post

@@ -1,0 +1,63 @@
+\doxysection{signup.\+php}
+\hypertarget{signup_8php_source}{}\label{signup_8php_source}\mbox{\hyperlink{signup_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00002}00002\ \textcolor{keywordflow}{if}(!isset(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}))}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00003}00003\ \{}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00004}00004\ \ \ \ \ session\_start();}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00005}00005\ \}}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00011}\mbox{\hyperlink{signup_8php_a23e781c9cc7df5e67fe7664139ddd30c}{00011}}\ \mbox{\hyperlink{signup_8php_a23e781c9cc7df5e67fe7664139ddd30c}{\$login}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00012}00012\ include\ \textcolor{stringliteral}{"{}header.php"{}}}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00013}00013\ ?>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00016}00016\ <!DOCTYPE\ html>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00017}00017\ <html\ lang=\textcolor{stringliteral}{"{}en"{}}>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00019}00019\ <head>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00020}00020\ \ \ \ \ <meta\ charset=\textcolor{stringliteral}{"{}UTF-\/8"{}}>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00021}00021\ \ \ \ \ <meta\ name=\textcolor{stringliteral}{"{}viewport"{}}\ content=\textcolor{stringliteral}{"{}width=device-\/width,\ initial-\/scale=1.0"{}}>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00022}00022\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ type=\textcolor{stringliteral}{"{}text/css"{}}\ href=\textcolor{stringliteral}{"{}css/style.css"{}}>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00023}00023\ \ \ \ \ <title>VRMate\ -\/\ signup</title>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00024}00024\ \ \ \ \ <script\ defer\ src=\textcolor{stringliteral}{"{}js/signupScript.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00025}00025\ </head>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00027}00027\ <body>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00029}00029\ \ \ \ \ <content\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}registration\_page"{}}>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00030}00030\ \ \ \ \ \ \ \ \ <h1\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}love"{}}>Registration</h1>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00031}00031\ \ \ \ \ \ \ \ \ <form\ action=\textcolor{stringliteral}{"{}includes/signup\_handler.inc.php"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}signupForm"{}}\ method=\textcolor{stringliteral}{"{}post"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}registration\_form"{}}\ novalidate>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}username"{}}>Nickname:\ <input\ type=\textcolor{stringliteral}{"{}text"{}}\ name=\textcolor{stringliteral}{"{}username"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}username"{}}></label>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}usernameError"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}email"{}}>E-\/mail:\ <input\ type=\textcolor{stringliteral}{"{}email"{}}\ name=\textcolor{stringliteral}{"{}email"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}email"{}}></label>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}emailError"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}password1"{}}>Password:\ <input\ type=\textcolor{stringliteral}{"{}password"{}}\ name=\textcolor{stringliteral}{"{}password1"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}password1"{}}\ value=\textcolor{stringliteral}{"{}PreparedPassword"{}}></label>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}weakPassError"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}password2"{}}>Password\ again:\ <input\ type=\textcolor{stringliteral}{"{}password"{}}\ name=\textcolor{stringliteral}{"{}password2"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}password2"{}}\ value=\textcolor{stringliteral}{"{}PreparedPassword"{}}></label>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}matchPassError"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}confirmLicense"{}}>Confirm\ with<a\ href=\textcolor{stringliteral}{"{}license.php"{}}\ target=\textcolor{stringliteral}{"{}\_blank"{}}}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}license\_link"{}}>license:</a><input\ type=\textcolor{stringliteral}{"{}checkbox"{}}\ name=\textcolor{stringliteral}{"{}confirmLicense"{}}}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}confirmLicense"{}}></label>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}confirmError"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}submit"{}}\ name=\textcolor{stringliteral}{"{}submit"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}submit"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}submit"{}}\ value=\textcolor{stringliteral}{"{}Let's\ go"{}}>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00047}00047\ \ \ \ \ \ \ \ \ </form>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00048}00048\ \ \ \ \ \ \ \ \ <br>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00049}00049\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}reminder"{}}>Already\ have\ an\ account?\ <a\ href=\textcolor{stringliteral}{"{}login.php"{}}>Just\ log\ in!</a></div>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00050}00050\ \ \ \ \ </content>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00052}00052\ </body>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00054}00054\ </html>}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00056}00056\ <?php}
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{signup_8php_source_l00058}00058\ include\ \textcolor{stringliteral}{"{}footer.php"{}};}
+
+\end{DoxyCode}

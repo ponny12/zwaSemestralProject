@@ -1,0 +1,182 @@
+\doxysection{event.\+php File Reference}
+\hypertarget{event_8php}{}\label{event_8php}\index{event.php@{event.php}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+if(!isset( \$\+\_\+\+SESSION)) \mbox{\hyperlink{event_8php_a84c75948774dbb79604b7cb58e6bb5c0}{if}} (empty( \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}login\+ID\textquotesingle{}\mbox{]}))
+\item 
+global \mbox{\hyperlink{event_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(isset(\$\+\_\+\+GET\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]})) \mbox{\hyperlink{event_8php_ad6c623a22e0aaeb5cc89bf91f8ac1772}{else}}
+\item 
+\mbox{\hyperlink{event_8php_a06daf7b009ffc6aa841f90dc179be482}{\$php\+\_\+date}} = strtotime(\$event\mbox{[}\textquotesingle{}event\+\_\+time\textquotesingle{}\mbox{]})
+\item 
+\mbox{\hyperlink{event_8php_a8e033e73cf825abaa373873fcd57ee09}{\$date\+YMD}} = date( \textquotesingle{}M d, Y\textquotesingle{}, \$php\+\_\+date )
+\item 
+\mbox{\hyperlink{event_8php_a69d047cdd29ec088029be1508f2233aa}{\$date\+DOFW}} = date( \textquotesingle{}l\textquotesingle{}, \$php\+\_\+date )
+\item 
+\mbox{\hyperlink{event_8php_ab4bf008be3b08ceb0535740bbe573d1c}{\$date\+TIME}} = date( \textquotesingle{}H\+:i\textquotesingle{}, \$php\+\_\+date )
+\item 
+\mbox{\hyperlink{event_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{event_8php_a3ebaa535f689506e9f6766abf8386086}{\$creator}} = \$stmt-\/$>$fetch()
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty( \$creator)) \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}}(PDOException \$e) \mbox{\hyperlink{event_8php_aced2e7364d7b16e6b2cf6848ab64e580}{finally}}
+\item 
+\mbox{\hyperlink{event_8php_a6d19776f7785e12716cedd38fea82f88}{\$participants}} = \$stmt-\/$>$fetch\+All()
+\item 
+\mbox{\hyperlink{event_8php_a8e414c0dd16b1de8f9c533690753ed94}{\$is\+\_\+creator}} = false
+\item 
+\mbox{\hyperlink{event_8php_a3a984f4624ef75d1027902e1b08d25b2}{\$already\+\_\+joined}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{event_8php_a3a984f4624ef75d1027902e1b08d25b2}\label{event_8php_a3a984f4624ef75d1027902e1b08d25b2} 
+\index{event.php@{event.php}!\$already\_joined@{\$already\_joined}}
+\index{\$already\_joined@{\$already\_joined}!event.php@{event.php}}
+\doxysubsubsection{\texorpdfstring{\$already\_joined}{\$already\_joined}}
+{\footnotesize\ttfamily \$already\+\_\+joined = false}
+
+
+
+Definition at line \mbox{\hyperlink{event_8php_source_l00080}{80}} of file \mbox{\hyperlink{event_8php_source}{event.\+php}}.
+
+\Hypertarget{event_8php_a3ebaa535f689506e9f6766abf8386086}\label{event_8php_a3ebaa535f689506e9f6766abf8386086} 
+\index{event.php@{event.php}!\$creator@{\$creator}}
+\index{\$creator@{\$creator}!event.php@{event.php}}
+\doxysubsubsection{\texorpdfstring{\$creator}{\$creator}}
+{\footnotesize\ttfamily \$creator = \$stmt-\/$>$fetch()}
+
+
+
+Definition at line \mbox{\hyperlink{event_8php_source_l00052}{52}} of file \mbox{\hyperlink{event_8php_source}{event.\+php}}.
+
+\Hypertarget{event_8php_a69d047cdd29ec088029be1508f2233aa}\label{event_8php_a69d047cdd29ec088029be1508f2233aa} 
+\index{event.php@{event.php}!\$dateDOFW@{\$dateDOFW}}
+\index{\$dateDOFW@{\$dateDOFW}!event.php@{event.php}}
+\doxysubsubsection{\texorpdfstring{\$dateDOFW}{\$dateDOFW}}
+{\footnotesize\ttfamily \$date\+DOFW = date( \textquotesingle{}l\textquotesingle{}, \$php\+\_\+date )}
+
+
+
+Definition at line \mbox{\hyperlink{event_8php_source_l00045}{45}} of file \mbox{\hyperlink{event_8php_source}{event.\+php}}.
+
+\Hypertarget{event_8php_ab4bf008be3b08ceb0535740bbe573d1c}\label{event_8php_ab4bf008be3b08ceb0535740bbe573d1c} 
+\index{event.php@{event.php}!\$dateTIME@{\$dateTIME}}
+\index{\$dateTIME@{\$dateTIME}!event.php@{event.php}}
+\doxysubsubsection{\texorpdfstring{\$dateTIME}{\$dateTIME}}
+{\footnotesize\ttfamily \$date\+TIME = date( \textquotesingle{}H\+:i\textquotesingle{}, \$php\+\_\+date )}
+
+
+
+Definition at line \mbox{\hyperlink{event_8php_source_l00046}{46}} of file \mbox{\hyperlink{event_8php_source}{event.\+php}}.
+
+\Hypertarget{event_8php_a8e033e73cf825abaa373873fcd57ee09}\label{event_8php_a8e033e73cf825abaa373873fcd57ee09} 
+\index{event.php@{event.php}!\$dateYMD@{\$dateYMD}}
+\index{\$dateYMD@{\$dateYMD}!event.php@{event.php}}
+\doxysubsubsection{\texorpdfstring{\$dateYMD}{\$dateYMD}}
+{\footnotesize\ttfamily \$date\+YMD = date( \textquotesingle{}M d, Y\textquotesingle{}, \$php\+\_\+date )}
+
+
+
+Definition at line \mbox{\hyperlink{event_8php_source_l00044}{44}} of file \mbox{\hyperlink{event_8php_source}{event.\+php}}.
+
+\Hypertarget{event_8php_a8e414c0dd16b1de8f9c533690753ed94}\label{event_8php_a8e414c0dd16b1de8f9c533690753ed94} 
+\index{event.php@{event.php}!\$is\_creator@{\$is\_creator}}
+\index{\$is\_creator@{\$is\_creator}!event.php@{event.php}}
+\doxysubsubsection{\texorpdfstring{\$is\_creator}{\$is\_creator}}
+{\footnotesize\ttfamily \$is\+\_\+creator = false}
+
+
+
+Definition at line \mbox{\hyperlink{event_8php_source_l00079}{79}} of file \mbox{\hyperlink{event_8php_source}{event.\+php}}.
+
+\Hypertarget{event_8php_a6d19776f7785e12716cedd38fea82f88}\label{event_8php_a6d19776f7785e12716cedd38fea82f88} 
+\index{event.php@{event.php}!\$participants@{\$participants}}
+\index{\$participants@{\$participants}!event.php@{event.php}}
+\doxysubsubsection{\texorpdfstring{\$participants}{\$participants}}
+{\footnotesize\ttfamily \$participants = \$stmt-\/$>$fetch\+All()}
+
+
+
+Definition at line \mbox{\hyperlink{event_8php_source_l00069}{69}} of file \mbox{\hyperlink{event_8php_source}{event.\+php}}.
+
+\Hypertarget{event_8php_a9f187aeb0999f8898ae2451de67650d0}\label{event_8php_a9f187aeb0999f8898ae2451de67650d0} 
+\index{event.php@{event.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!event.php@{event.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily global \$pdo}
+
+
+
+Definition at line \mbox{\hyperlink{event_8php_source_l00013}{13}} of file \mbox{\hyperlink{event_8php_source}{event.\+php}}.
+
+\Hypertarget{event_8php_a06daf7b009ffc6aa841f90dc179be482}\label{event_8php_a06daf7b009ffc6aa841f90dc179be482} 
+\index{event.php@{event.php}!\$php\_date@{\$php\_date}}
+\index{\$php\_date@{\$php\_date}!event.php@{event.php}}
+\doxysubsubsection{\texorpdfstring{\$php\_date}{\$php\_date}}
+{\footnotesize\ttfamily \$php\+\_\+date = strtotime(\$event\mbox{[}\textquotesingle{}event\+\_\+time\textquotesingle{}\mbox{]})}
+
+
+
+Definition at line \mbox{\hyperlink{event_8php_source_l00043}{43}} of file \mbox{\hyperlink{event_8php_source}{event.\+php}}.
+
+\Hypertarget{event_8php_ad6c623a22e0aaeb5cc89bf91f8ac1772}\label{event_8php_ad6c623a22e0aaeb5cc89bf91f8ac1772} 
+\index{event.php@{event.php}!else@{else}}
+\index{else@{else}!event.php@{event.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} ( \$creator\mbox{[} \textquotesingle{}id\textquotesingle{}\mbox{]}==\$\+\_\+\+SESSION\mbox{[} \textquotesingle{}login\+ID\textquotesingle{}\mbox{]}) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'event\ does\ not\ exist\ (not\ has\ even\ been\ chosen).'}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{event_8php_source_l00036}{36}} of file \mbox{\hyperlink{event_8php_source}{event.\+php}}.
+
+\Hypertarget{event_8php_aced2e7364d7b16e6b2cf6848ab64e580}\label{event_8php_aced2e7364d7b16e6b2cf6848ab64e580} 
+\index{event.php@{event.php}!finally@{finally}}
+\index{finally@{finally}!event.php@{event.php}}
+\doxysubsubsection{\texorpdfstring{finally}{finally}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty(\$creator)) \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}} (PDOException \$e) finally}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \textcolor{keyword}{null}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{event_8php_source_l00058}{58}} of file \mbox{\hyperlink{event_8php_source}{event.\+php}}.
+
+\Hypertarget{event_8php_a84c75948774dbb79604b7cb58e6bb5c0}\label{event_8php_a84c75948774dbb79604b7cb58e6bb5c0} 
+\index{event.php@{event.php}!if@{if}}
+\index{if@{if}!event.php@{event.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}}
+{\footnotesize\ttfamily if(!isset(\$\+\_\+\+SESSION)) if(empty(\$\+\_\+\+SESSION\mbox{[}\textquotesingle{}login\+ID\textquotesingle{}\mbox{]})) (\begin{DoxyParamCaption}\item[{empty( \$\+\_\+\+SESSION\mbox{[} \textquotesingle{}login\+ID\textquotesingle{}\mbox{]})}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{event_8php_source_l00006}{6}} of file \mbox{\hyperlink{event_8php_source}{event.\+php}}.
+
+\Hypertarget{event_8php_abe4cc9788f52e49485473dc699537388}\label{event_8php_abe4cc9788f52e49485473dc699537388} 
+\index{event.php@{event.php}!try@{try}}
+\index{try@{try}!event.php@{event.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{event_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ *\ FROM\ users\ WHERE\ users.id\ =\ :creator\_id'})}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{event_8php_source_l00048}{48}} of file \mbox{\hyperlink{event_8php_source}{event.\+php}}.
+

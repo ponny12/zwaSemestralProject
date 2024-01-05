@@ -1,0 +1,89 @@
+\doxysection{index.\+php File Reference}
+\hypertarget{index_8php}{}\label{index_8php}\index{index.php@{index.php}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+global \mbox{\hyperlink{index_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}
+\item 
+\mbox{\hyperlink{index_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{index_8php_ad01f64e3a3b5714caf493cf35a24d1c7}{\$hot\+\_\+events}} = \$stmt-\/$>$fetch\+All()
+\item 
+\mbox{\hyperlink{index_8php_a9ee42195f2b26ca51b7b816b4f28113e}{catch}} (Exception \$e)
+\item 
+virtual a museum \mbox{\hyperlink{index_8php_a4ab6fe4007a86e786e2ac47d6a20f9e6}{tour}}
+\item 
+virtual a museum or a creative \mbox{\hyperlink{index_8php_a2b09882cce35f25e182b2bfb269b26ae}{collaboration}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{index_8php_ad01f64e3a3b5714caf493cf35a24d1c7}\label{index_8php_ad01f64e3a3b5714caf493cf35a24d1c7} 
+\index{index.php@{index.php}!\$hot\_events@{\$hot\_events}}
+\index{\$hot\_events@{\$hot\_events}!index.php@{index.php}}
+\doxysubsubsection{\texorpdfstring{\$hot\_events}{\$hot\_events}}
+{\footnotesize\ttfamily \$hot\+\_\+events = \$stmt-\/$>$fetch\+All()}
+
+
+
+Definition at line \mbox{\hyperlink{index_8php_source_l00011}{11}} of file \mbox{\hyperlink{index_8php_source}{index.\+php}}.
+
+\Hypertarget{index_8php_a9f187aeb0999f8898ae2451de67650d0}\label{index_8php_a9f187aeb0999f8898ae2451de67650d0} 
+\index{index.php@{index.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!index.php@{index.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily global \$pdo}
+
+
+
+Definition at line \mbox{\hyperlink{index_8php_source_l00005}{5}} of file \mbox{\hyperlink{index_8php_source}{index.\+php}}.
+
+\Hypertarget{index_8php_a9ee42195f2b26ca51b7b816b4f28113e}\label{index_8php_a9ee42195f2b26ca51b7b816b4f28113e} 
+\index{index.php@{index.php}!catch@{catch}}
+\index{catch@{catch}!index.php@{index.php}}
+\doxysubsubsection{\texorpdfstring{catch}{catch}}
+{\footnotesize\ttfamily catch(Exception \$e) (\begin{DoxyParamCaption}\item[{Exception}]{\$e }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{index_8php_source_l00012}{12}} of file \mbox{\hyperlink{index_8php_source}{index.\+php}}.
+
+\Hypertarget{index_8php_a2b09882cce35f25e182b2bfb269b26ae}\label{index_8php_a2b09882cce35f25e182b2bfb269b26ae} 
+\index{index.php@{index.php}!collaboration@{collaboration}}
+\index{collaboration@{collaboration}!index.php@{index.php}}
+\doxysubsubsection{\texorpdfstring{collaboration}{collaboration}}
+{\footnotesize\ttfamily virtual a museum or a creative collaboration}
+
+
+
+Definition at line \mbox{\hyperlink{index_8php_source_l00162}{162}} of file \mbox{\hyperlink{index_8php_source}{index.\+php}}.
+
+\Hypertarget{index_8php_a4ab6fe4007a86e786e2ac47d6a20f9e6}\label{index_8php_a4ab6fe4007a86e786e2ac47d6a20f9e6} 
+\index{index.php@{index.php}!tour@{tour}}
+\index{tour@{tour}!index.php@{index.php}}
+\doxysubsubsection{\texorpdfstring{tour}{tour}}
+{\footnotesize\ttfamily virtual a museum tour}
+
+
+
+Definition at line \mbox{\hyperlink{index_8php_source_l00161}{161}} of file \mbox{\hyperlink{index_8php_source}{index.\+php}}.
+
+\Hypertarget{index_8php_abe4cc9788f52e49485473dc699537388}\label{index_8php_abe4cc9788f52e49485473dc699537388} 
+\index{index.php@{index.php}!try@{try}}
+\index{try@{try}!index.php@{index.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{index_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>query(\textcolor{stringliteral}{'SELECT\ *,\ events.id\ as\ event\_id\ FROM\ events\ JOIN\ games\ ON\ events.game\_id\ =\ games.id}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ events.event\_time\ >=\ CURDATE()}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ORDER\ BY\ events.event\_time}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LIMIT\ 4'})}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{index_8php_source_l00006}{6}} of file \mbox{\hyperlink{index_8php_source}{index.\+php}}.
+

@@ -1,0 +1,128 @@
+\doxysection{game.\+php File Reference}
+\hypertarget{game_8php}{}\label{game_8php}\index{game.php@{game.php}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{game_8php_ad0ed846c8f91b26c70889960cd0c7526}{if}} (!isset( \$\+\_\+\+SESSION))
+\item 
+global \mbox{\hyperlink{game_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(!isset(\$\+\_\+\+GET\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]})\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} \$\+\_\+\+GET\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]}==\textquotesingle{}\textquotesingle{}) \mbox{\hyperlink{game_8php_aa258fab1f707b9c466e8b5ba25a18030}{else}}
+\item 
+\mbox{\hyperlink{game_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{game_8php_a7d6a0f063eaff0bfafef87435c31540c}{\$game}} = \$stmt-\/$>$fetch()
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty( \$game)) \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}}(Exception \$e) \mbox{\hyperlink{game_8php_a61497ba8d746d1fc3219f72a94ab1046}{finally}}
+\item 
+\mbox{\hyperlink{game_8php_a1bcec9bbd34255927faaf155bf3a940a}{\$events}} = \$stmt-\/$>$fetch\+All()
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty( \$events)) \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}} (Exception \$e)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{game_8php_a1bcec9bbd34255927faaf155bf3a940a}\label{game_8php_a1bcec9bbd34255927faaf155bf3a940a} 
+\index{game.php@{game.php}!\$events@{\$events}}
+\index{\$events@{\$events}!game.php@{game.php}}
+\doxysubsubsection{\texorpdfstring{\$events}{\$events}}
+{\footnotesize\ttfamily \$events = \$stmt-\/$>$fetch\+All()}
+
+
+
+Definition at line \mbox{\hyperlink{game_8php_source_l00043}{43}} of file \mbox{\hyperlink{game_8php_source}{game.\+php}}.
+
+\Hypertarget{game_8php_a7d6a0f063eaff0bfafef87435c31540c}\label{game_8php_a7d6a0f063eaff0bfafef87435c31540c} 
+\index{game.php@{game.php}!\$game@{\$game}}
+\index{\$game@{\$game}!game.php@{game.php}}
+\doxysubsubsection{\texorpdfstring{\$game}{\$game}}
+{\footnotesize\ttfamily \$game = \$stmt-\/$>$fetch()}
+
+
+
+Definition at line \mbox{\hyperlink{game_8php_source_l00020}{20}} of file \mbox{\hyperlink{game_8php_source}{game.\+php}}.
+
+\Hypertarget{game_8php_a9f187aeb0999f8898ae2451de67650d0}\label{game_8php_a9f187aeb0999f8898ae2451de67650d0} 
+\index{game.php@{game.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!game.php@{game.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily global \$pdo}
+
+
+
+Definition at line \mbox{\hyperlink{game_8php_source_l00006}{6}} of file \mbox{\hyperlink{game_8php_source}{game.\+php}}.
+
+\Hypertarget{game_8php_a2a99526254229216f8db37db144326ba}\label{game_8php_a2a99526254229216f8db37db144326ba} 
+\index{game.php@{game.php}!catch@{catch}}
+\index{catch@{catch}!game.php@{game.php}}
+\doxysubsubsection{\texorpdfstring{catch}{catch}}
+{\footnotesize\ttfamily catch (\begin{DoxyParamCaption}\item[{Exception}]{\$e }\end{DoxyParamCaption})}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{game_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ events.creator\_id\ FROM\ events\ WHERE\ events.id\ =\ :event\_id'})}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{game_8php_source_l00048}{48}} of file \mbox{\hyperlink{game_8php_source}{game.\+php}}.
+
+\Hypertarget{game_8php_aa258fab1f707b9c466e8b5ba25a18030}\label{game_8php_aa258fab1f707b9c466e8b5ba25a18030} 
+\index{game.php@{game.php}!else@{else}}
+\index{else@{else}!game.php@{game.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} (!isset( \$\+\_\+\+GET\mbox{[} \textquotesingle{}id\textquotesingle{}\mbox{]})\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}\$\+\_\+\+GET\mbox{[} \textquotesingle{}id\textquotesingle{}\mbox{]}==\textquotesingle{}\textquotesingle{}) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \$game\_id\ =\ \$\_GET[\textcolor{stringliteral}{'id'}]}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{game_8php_source_l00012}{12}} of file \mbox{\hyperlink{game_8php_source}{game.\+php}}.
+
+\Hypertarget{game_8php_a61497ba8d746d1fc3219f72a94ab1046}\label{game_8php_a61497ba8d746d1fc3219f72a94ab1046} 
+\index{game.php@{game.php}!finally@{finally}}
+\index{finally@{finally}!game.php@{game.php}}
+\doxysubsubsection{\texorpdfstring{finally}{finally}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty(\$game)) \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}} (Exception \$e) finally}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \textcolor{keyword}{null}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{game_8php_source_l00029}{29}} of file \mbox{\hyperlink{game_8php_source}{game.\+php}}.
+
+\Hypertarget{game_8php_ad0ed846c8f91b26c70889960cd0c7526}\label{game_8php_ad0ed846c8f91b26c70889960cd0c7526} 
+\index{game.php@{game.php}!if@{if}}
+\index{if@{if}!game.php@{game.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}}
+{\footnotesize\ttfamily if(!isset(\$\+\_\+\+SESSION)) (\begin{DoxyParamCaption}\item[{!}]{isset \$\+\_\+\+SESSION }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8php_source_l00002}{2}} of file \mbox{\hyperlink{game_8php_source}{game.\+php}}.
+
+\Hypertarget{game_8php_abe4cc9788f52e49485473dc699537388}\label{game_8php_abe4cc9788f52e49485473dc699537388} 
+\index{game.php@{game.php}!try@{try}}
+\index{try@{try}!game.php@{game.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{game_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ *\ FROM\ games\ JOIN\ games\_platforms\ p\ ON\ games.id\ =\ p.id\ WHERE\ games.id\ =\ :game\_id'})}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{game_8php_source_l00016}{16}} of file \mbox{\hyperlink{game_8php_source}{game.\+php}}.
+

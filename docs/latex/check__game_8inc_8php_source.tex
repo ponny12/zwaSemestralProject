@@ -1,0 +1,29 @@
+\doxysection{check\+\_\+game.\+inc.\+php}
+\hypertarget{check__game_8inc_8php_source}{}\label{check__game_8inc_8php_source}\index{includes/check\_game.inc.php@{includes/check\_game.inc.php}}
+\mbox{\hyperlink{check__game_8inc_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00003}00003\ require\ \textcolor{stringliteral}{'dbh.inc.php'};}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00004}\mbox{\hyperlink{check__game_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{00004}}\ global\ \mbox{\hyperlink{check__game_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}};}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00006}00006\ \textcolor{keywordflow}{if}\ (!isset(\$\_GET[\textcolor{charliteral}{'q'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00007}00007\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'check\ if\ game\ exist\ but\ no\ name\ received'};}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00008}00008\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00009}00009\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00010}00010\ \}}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00014}\mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{00014}}\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ *\ FROM\ games\ WHERE\ LOWER(games.name)\ =\ :name'});}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00015}\mbox{\hyperlink{check__game_8inc_8php_afbde608feab2bdb2dd9e1c20b20f12bb}{00015}}\ \mbox{\hyperlink{check__game_8inc_8php_afbde608feab2bdb2dd9e1c20b20f12bb}{\$strtolower}}\ =\ strtolower(\$\_GET[\textcolor{charliteral}{'q'}]);}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00016}00016\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>bindParam(\textcolor{stringliteral}{':name'},\mbox{\hyperlink{check__game_8inc_8php_afbde608feab2bdb2dd9e1c20b20f12bb}{\$strtolower}});}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00017}00017\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>execute();}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00018}\mbox{\hyperlink{check__game_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{00018}}\ \mbox{\hyperlink{check__game_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}\ =\ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}-\/>fetch();}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00021}00021\ \textcolor{keywordflow}{if}\ (!empty(\mbox{\hyperlink{check__game_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}}))\ \{}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00022}00022\ \ \ \ \ echo\ \textcolor{stringliteral}{'this\ game\ is\ already\ in\ game\ list!'};}
+\DoxyCodeLine{\Hypertarget{check__game_8inc_8php_source_l00023}00023\ \}}
+
+\end{DoxyCode}

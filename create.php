@@ -3,7 +3,7 @@ if(!isset($_SESSION))
 {
     session_start();
 }
-require 'includes/dbh.inc.php';
+require 'tools/dbh.tool.php';
 require 'tools/error.tool.php';
 global $pdo;
 

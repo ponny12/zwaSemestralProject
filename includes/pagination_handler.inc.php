@@ -4,7 +4,7 @@ if(!isset($_SESSION))
     session_start();
 }
 
-include "dbh.inc.php";
+include "../tools/dbh.tool.php";
 global $pdo;
 
 

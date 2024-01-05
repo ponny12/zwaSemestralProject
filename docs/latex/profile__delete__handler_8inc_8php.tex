@@ -1,0 +1,86 @@
+\doxysection{includes/profile\+\_\+delete\+\_\+handler.inc.\+php File Reference}
+\hypertarget{profile__delete__handler_8inc_8php}{}\label{profile__delete__handler_8inc_8php}\index{includes/profile\_delete\_handler.inc.php@{includes/profile\_delete\_handler.inc.php}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+global \mbox{\hyperlink{profile__delete__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(\$\+\_\+\+SERVER\mbox{[}\textquotesingle{}REQUEST\+\_\+\+METHOD\textquotesingle{}\mbox{]} !=\textquotesingle{}POST\textquotesingle{}\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}!isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}submit\textquotesingle{}\mbox{]})) \mbox{\hyperlink{profile__delete__handler_8inc_8php_ae7d56089a2b6b87eb3b4f1b0f1a9bddd}{\$id}} = \$\+\_\+\+POST\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{profile__delete__handler_8inc_8php_a12e4252e778952d356721bc655cff8c8}{\$pwd}} = \$\+\_\+\+POST\mbox{[}\textquotesingle{}password\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(!isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}delete\+\_\+checkbox\textquotesingle{}\mbox{]})) \mbox{\hyperlink{profile__delete__handler_8inc_8php_ac12113de5e552f7fe29ec2713254dfa4}{try}}
+\item 
+\mbox{\hyperlink{profile__delete__handler_8inc_8php_adce4a62a19f49d06420a589d0dc981bf}{\$pwd\+\_\+hash}} = \$stmt-\/$>$fetch()\mbox{[}\textquotesingle{}pwd\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{profile__delete__handler_8inc_8php_aec60f4ead967f7b7fd43c97a7cab39aa}{\$all\+\_\+events\+\_\+where\+\_\+user\+\_\+is\+\_\+creator}} = \$stmt-\/$>$fetch\+All()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{profile__delete__handler_8inc_8php_aec60f4ead967f7b7fd43c97a7cab39aa}\label{profile__delete__handler_8inc_8php_aec60f4ead967f7b7fd43c97a7cab39aa} 
+\index{profile\_delete\_handler.inc.php@{profile\_delete\_handler.inc.php}!\$all\_events\_where\_user\_is\_creator@{\$all\_events\_where\_user\_is\_creator}}
+\index{\$all\_events\_where\_user\_is\_creator@{\$all\_events\_where\_user\_is\_creator}!profile\_delete\_handler.inc.php@{profile\_delete\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$all\_events\_where\_user\_is\_creator}{\$all\_events\_where\_user\_is\_creator}}
+{\footnotesize\ttfamily \$all\+\_\+events\+\_\+where\+\_\+user\+\_\+is\+\_\+creator = \$stmt-\/$>$fetch\+All()}
+
+
+
+Definition at line \mbox{\hyperlink{profile__delete__handler_8inc_8php_source_l00037}{37}} of file \mbox{\hyperlink{profile__delete__handler_8inc_8php_source}{profile\+\_\+delete\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{profile__delete__handler_8inc_8php_ae7d56089a2b6b87eb3b4f1b0f1a9bddd}\label{profile__delete__handler_8inc_8php_ae7d56089a2b6b87eb3b4f1b0f1a9bddd} 
+\index{profile\_delete\_handler.inc.php@{profile\_delete\_handler.inc.php}!\$id@{\$id}}
+\index{\$id@{\$id}!profile\_delete\_handler.inc.php@{profile\_delete\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$id}{\$id}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} ( \$\+\_\+\+SERVER\mbox{[} \textquotesingle{}REQUEST\+\_\+\+METHOD\textquotesingle{}\mbox{]} !=\textquotesingle{}POST\textquotesingle{}\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}!isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}submit\textquotesingle{}\mbox{]})) \$id = \$\+\_\+\+POST\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{profile__delete__handler_8inc_8php_source_l00011}{11}} of file \mbox{\hyperlink{profile__delete__handler_8inc_8php_source}{profile\+\_\+delete\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{profile__delete__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}\label{profile__delete__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0} 
+\index{profile\_delete\_handler.inc.php@{profile\_delete\_handler.inc.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!profile\_delete\_handler.inc.php@{profile\_delete\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily global \$pdo}
+
+
+
+Definition at line \mbox{\hyperlink{profile__delete__handler_8inc_8php_source_l00004}{4}} of file \mbox{\hyperlink{profile__delete__handler_8inc_8php_source}{profile\+\_\+delete\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{profile__delete__handler_8inc_8php_a12e4252e778952d356721bc655cff8c8}\label{profile__delete__handler_8inc_8php_a12e4252e778952d356721bc655cff8c8} 
+\index{profile\_delete\_handler.inc.php@{profile\_delete\_handler.inc.php}!\$pwd@{\$pwd}}
+\index{\$pwd@{\$pwd}!profile\_delete\_handler.inc.php@{profile\_delete\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$pwd}{\$pwd}}
+{\footnotesize\ttfamily \$pwd = \$\+\_\+\+POST\mbox{[}\textquotesingle{}password\textquotesingle{}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{profile__delete__handler_8inc_8php_source_l00012}{12}} of file \mbox{\hyperlink{profile__delete__handler_8inc_8php_source}{profile\+\_\+delete\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{profile__delete__handler_8inc_8php_adce4a62a19f49d06420a589d0dc981bf}\label{profile__delete__handler_8inc_8php_adce4a62a19f49d06420a589d0dc981bf} 
+\index{profile\_delete\_handler.inc.php@{profile\_delete\_handler.inc.php}!\$pwd\_hash@{\$pwd\_hash}}
+\index{\$pwd\_hash@{\$pwd\_hash}!profile\_delete\_handler.inc.php@{profile\_delete\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$pwd\_hash}{\$pwd\_hash}}
+{\footnotesize\ttfamily \$pwd\+\_\+hash = \$stmt-\/$>$fetch()\mbox{[}\textquotesingle{}pwd\textquotesingle{}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{profile__delete__handler_8inc_8php_source_l00023}{23}} of file \mbox{\hyperlink{profile__delete__handler_8inc_8php_source}{profile\+\_\+delete\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{profile__delete__handler_8inc_8php_ac12113de5e552f7fe29ec2713254dfa4}\label{profile__delete__handler_8inc_8php_ac12113de5e552f7fe29ec2713254dfa4} 
+\index{profile\_delete\_handler.inc.php@{profile\_delete\_handler.inc.php}!try@{try}}
+\index{try@{try}!profile\_delete\_handler.inc.php@{profile\_delete\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}}(Exception \$e) foreach ( \$all\+\_\+events\+\_\+where\+\_\+user\+\_\+is\+\_\+creator as \$event) try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{profile__delete__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ pwd\ FROM\ users\ WHERE\ users.id\ =\ :id'})}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{profile__delete__handler_8inc_8php_source_l00019}{19}} of file \mbox{\hyperlink{profile__delete__handler_8inc_8php_source}{profile\+\_\+delete\+\_\+handler.\+inc.\+php}}.
+

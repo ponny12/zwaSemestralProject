@@ -1,0 +1,79 @@
+\doxysection{create\+\_\+new\+\_\+game.\+php}
+\hypertarget{create__new__game_8php_source}{}\label{create__new__game_8php_source}\mbox{\hyperlink{create__new__game_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00002}00002\ \textcolor{keywordflow}{if}(!isset(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}))}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00003}00003\ \{}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00004}00004\ \ \ \ \ session\_start();}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00005}00005\ \}}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00007}00007\ \textcolor{keywordflow}{if}\ (isset(\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'isAdmin'}])\ \&\&\ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'isAdmin'}])\ \{}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00008}00008\ \ \ \ \ \mbox{\hyperlink{header_8php_ad4b6a6e61327c02f6a7a39e45e7d0dd1}{\$isAdmin}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00009}\mbox{\hyperlink{create__new__game_8php_a0eb3765d5248ca804b506a8c607af011}{00009}}\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{header_8php_ad4b6a6e61327c02f6a7a39e45e7d0dd1}{\$isAdmin}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00011}\mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{00011}}\ \ \ \ \ \mbox{\hyperlink{create__new__game_8php_ad3018b4366e796ddbd0c976a8bc7f1e6}{\$\_SESSION}}[\textcolor{stringliteral}{'errorType'}]\ =\ \textcolor{stringliteral}{'you\ are\ not\ an\ Admin!'};}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00012}00012\ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ error.php'});}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00013}00013\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00016}00016\ ?>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00021}00021\ <!DOCTYPE\ html>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00023}00023\ <html\ lang=\textcolor{stringliteral}{"{}en"{}}>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00025}00025\ <head>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00026}00026\ \ \ \ \ <meta\ charset=\textcolor{stringliteral}{"{}UTF-\/8"{}}>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00027}00027\ \ \ \ \ <meta\ name=\textcolor{stringliteral}{"{}viewport"{}}\ content=\textcolor{stringliteral}{"{}width=device-\/width,\ initial-\/scale=1.0"{}}>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00028}00028\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ type=\textcolor{stringliteral}{"{}text/css"{}}\ href=\textcolor{stringliteral}{"{}css/style.css"{}}>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00029}00029\ \ \ \ \ <title>VRMate</title>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00030}00030\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}icon"{}}\ type=\textcolor{stringliteral}{"{}image/x-\/icon"{}}\ href=\textcolor{stringliteral}{"{}images/icons/favicon.ico"{}}>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00031}00031\ \ \ \ \ <script\ defer\ src=\textcolor{stringliteral}{"{}js/addGameScript.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00033}00033\ </head>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00035}00035\ <body>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00037}00037\ <?php\ include\ \textcolor{stringliteral}{"{}header.php"{}}\ ?>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00039}00039\ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}admin\_content"{}}>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00040}00040\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}add\_game\_title"{}}>ADD\ GAME</div>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00041}00041\ \ \ \ \ <form\ action=\textcolor{stringliteral}{"{}includes/create\_game\_handler.inc.php"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}create\_game\_form"{}}\ method=\textcolor{stringliteral}{"{}POST"{}}\ enctype=\textcolor{stringliteral}{"{}multipart/form-\/data"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}create\_game\_form"{}}>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00042}00042\ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}game\_name"{}}>Game\ name:</label>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00043}00043\ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}text"{}}\ name=\textcolor{stringliteral}{"{}name"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}game\_name"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}name\_input"{}}>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00044}00044\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}name\_error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00046}00046\ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}game\_description"{}}>Game\ description:</label>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00047}00047\ \ \ \ \ \ \ \ \ <textarea\ name=\textcolor{stringliteral}{"{}description"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}game\_description"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}description\_input"{}}></textarea>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00048}00048\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}description\_error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00050}00050\ \ \ \ \ \ \ \ \ <!-\/-\/image-\/-\/>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00052}00052\ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}game\_image"{}}>Game\ image:</label>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00053}00053\ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}file"{}}\ name=\textcolor{stringliteral}{"{}image"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}game\_image"{}}\ accept=\textcolor{stringliteral}{"{}image/webp,\ image/jpeg,\ image/png"{}}>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}error"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}image\_error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00056}00056\ \ \ \ \ \ \ \ \ <!-\/-\/checkboxes-\/-\/>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00057}00057\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}checkbox\_title"{}}>choose\ platform(s):</div>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00058}00058\ \ \ \ \ \ \ \ \ <div\ class=\textcolor{stringliteral}{"{}checkboxes"{}}>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ <label\ for=\textcolor{stringliteral}{"{}meta\_checkbox"{}}>meta<input\ type=\textcolor{stringliteral}{"{}checkbox"{}}\ name=\textcolor{stringliteral}{"{}meta"{}}\ id=\textcolor{stringliteral}{"{}meta\_checkbox"{}}></label>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ <label\ for=\textcolor{stringliteral}{"{}pico\_checkbox"{}}>pico<input\ type=\textcolor{stringliteral}{"{}checkbox"{}}\ name=\textcolor{stringliteral}{"{}pico"{}}\ id=\textcolor{stringliteral}{"{}pico\_checkbox"{}}></label>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ <label\ for=\textcolor{stringliteral}{"{}pcvr\_checkbox"{}}>pcvr<input\ type=\textcolor{stringliteral}{"{}checkbox"{}}\ name=\textcolor{stringliteral}{"{}pcvr"{}}\ id=\textcolor{stringliteral}{"{}pcvr\_checkbox"{}}></label>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00062}00062\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00063}00063\ \ \ \ \ \ \ \ \ <div\ class=\textcolor{stringliteral}{"{}error"{}}\ id=\textcolor{stringliteral}{"{}checkbox\_error"{}}></div>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00065}00065\ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}submit"{}}\ id=\textcolor{stringliteral}{"{}submit"{}}\ name=\textcolor{stringliteral}{"{}submit"{}}\ value=\textcolor{stringliteral}{"{}ADD"{}}\ class=\textcolor{stringliteral}{"{}submit"{}}>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00067}00067\ \ \ \ \ </form>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00068}00068\ </div>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00070}00070\ <?php\ include\ \textcolor{stringliteral}{"{}footer.php"{}};\ ?>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00071}00071\ </body>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00073}00073\ </html>}
+\DoxyCodeLine{\Hypertarget{create__new__game_8php_source_l00074}00074\ }
+
+\end{DoxyCode}

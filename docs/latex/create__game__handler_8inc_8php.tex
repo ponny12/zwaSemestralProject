@@ -1,0 +1,218 @@
+\doxysection{includes/create\+\_\+game\+\_\+handler.inc.\+php File Reference}
+\hypertarget{create__game__handler_8inc_8php}{}\label{create__game__handler_8inc_8php}\index{includes/create\_game\_handler.inc.php@{includes/create\_game\_handler.inc.php}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{create__game__handler_8inc_8php_ad0ed846c8f91b26c70889960cd0c7526}{if}} (!isset( \$\+\_\+\+SESSION))
+\item 
+global \mbox{\hyperlink{create__game__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}( \$\+\_\+\+SERVER\mbox{[} \textquotesingle{}REQUEST\+\_\+\+METHOD\textquotesingle{}\mbox{]} !=\textquotesingle{}POST\textquotesingle{}) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(!isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}submit\textquotesingle{}\mbox{]})) \mbox{\hyperlink{create__game__handler_8inc_8php_a76a7d2519cbe77a6aef513d42cf791b1}{\$name}} = trim(\$\+\_\+\+POST\mbox{[}\textquotesingle{}name\textquotesingle{}\mbox{]})
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty(\$name)) \mbox{\hyperlink{create__game__handler_8inc_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{create__game__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}{\$result}} = \$stmt-\/$>$fetch()
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(!empty( \$result)) \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}}(PDOException \$e) \mbox{\hyperlink{create__game__handler_8inc_8php_a32292f75b6f103cc8b74527a00c94b2b}{finally}}
+\item 
+\mbox{\hyperlink{create__game__handler_8inc_8php_a87b032cba06009e3467abf1c8018d960}{\$description}} = trim(\$\+\_\+\+POST\mbox{[}\textquotesingle{}description\textquotesingle{}\mbox{]})
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty(\$description)) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(!isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}meta\textquotesingle{}\mbox{]}) \&\&!isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}pico\textquotesingle{}\mbox{]}) \&\&!isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}pcvr\textquotesingle{}\mbox{]})) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}meta\textquotesingle{}\mbox{]})) \mbox{\hyperlink{create__game__handler_8inc_8php_a19f5c4dcfcf41072c1ac8904c4f5001c}{else}}
+\item 
+\mbox{\hyperlink{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}{\$file}} = \$\+\_\+\+FILES\mbox{[}\textquotesingle{}image\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty( \$file\mbox{[} \textquotesingle{}name\textquotesingle{}\mbox{]})) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(!preg\+\_\+match(\textquotesingle{}\#image/\texorpdfstring{$\ast$}{*}\#\textquotesingle{}, \$file \mbox{\hyperlink{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}{\$file\+\_\+name}} \mbox{[}\textquotesingle{}type\textquotesingle{}\mbox{]})) = \$name
+\item 
+\mbox{\hyperlink{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919}{\$type}} = array\+\_\+slice(explode(\textquotesingle{}.\textquotesingle{}, \$file\mbox{[}\textquotesingle{}name\textquotesingle{}\mbox{]}), -\/1, 1)\mbox{[}0\mbox{]}
+\item 
+\mbox{\hyperlink{create__game__handler_8inc_8php_ab6d550f2b1705e9e971e83869a84047b}{\$new\+\_\+path\+\_\+big}} = \textquotesingle{}../images/games\+\_\+images/\textquotesingle{}.\$file\+\_\+name.\textquotesingle{}\+\_\+big.\textquotesingle{}.\$type
+\item 
+\mbox{\hyperlink{create__game__handler_8inc_8php_abae31d072e95b3332bc2479d09581349}{\$new\+\_\+path\+\_\+small}} = \textquotesingle{}../images/games\+\_\+images/\textquotesingle{}.\$file\+\_\+name.\textquotesingle{}\+\_\+small.\textquotesingle{}.\$type
+\item 
+\mbox{\hyperlink{create__game__handler_8inc_8php_aac0ad6d723a5d29ab3bf6049d2e2ea98}{\$new\+\_\+path\+\_\+big\+\_\+for\+\_\+db}} = \textquotesingle{}images/games\+\_\+images/\textquotesingle{}.\$file\+\_\+name.\textquotesingle{}\+\_\+big.\textquotesingle{}.\$type
+\item 
+\mbox{\hyperlink{create__game__handler_8inc_8php_aa9285bc63f1dfdf6b36180dd9b4e9e3c}{\$new\+\_\+path\+\_\+small\+\_\+for\+\_\+db}} = \textquotesingle{}images/games\+\_\+images/\textquotesingle{}.\$file\+\_\+name.\textquotesingle{}\+\_\+small.\textquotesingle{}.\$type
+\item 
+\mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(empty(\$result)) \mbox{\hyperlink{create__game__handler_8inc_8php_a764c44f4c037b6ff7b78806cd13e1ece}{\$id}} = \$result\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{create__game__handler_8inc_8php_a87b032cba06009e3467abf1c8018d960}\label{create__game__handler_8inc_8php_a87b032cba06009e3467abf1c8018d960} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!\$description@{\$description}}
+\index{\$description@{\$description}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$description}{\$description}}
+{\footnotesize\ttfamily \$description = trim(\$\+\_\+\+POST\mbox{[}\textquotesingle{}description\textquotesingle{}\mbox{]})}
+
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00049}{49}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f}\label{create__game__handler_8inc_8php_aa1bfbd27060176201b271918dff57e8f} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!\$file@{\$file}}
+\index{\$file@{\$file}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$file}{\$file}}
+{\footnotesize\ttfamily \$file = \$\+\_\+\+FILES\mbox{[}\textquotesingle{}image\textquotesingle{}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00081}{81}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c}\label{create__game__handler_8inc_8php_a048801adf32ddd718197c1060986ff2c} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!\$file\_name@{\$file\_name}}
+\index{\$file\_name@{\$file\_name}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$file\_name}{\$file\_name}}
+{\footnotesize\ttfamily \$file\+\_\+name = \$name}
+
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00090}{90}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_a764c44f4c037b6ff7b78806cd13e1ece}\label{create__game__handler_8inc_8php_a764c44f4c037b6ff7b78806cd13e1ece} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!\$id@{\$id}}
+\index{\$id@{\$id}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$id}{\$id}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} (empty( \$result)) \$id = \$result\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00140}{140}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_a76a7d2519cbe77a6aef513d42cf791b1}\label{create__game__handler_8inc_8php_a76a7d2519cbe77a6aef513d42cf791b1} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!\$name@{\$name}}
+\index{\$name@{\$name}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$name}{\$name}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}}(\$\+\_\+\+SERVER\mbox{[}\textquotesingle{}REQUEST\+\_\+\+METHOD\textquotesingle{}\mbox{]} !=\textquotesingle{}POST\textquotesingle{}) \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} (!isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}submit\textquotesingle{}\mbox{]})) \$name = trim(\$\+\_\+\+POST\mbox{[}\textquotesingle{}name\textquotesingle{}\mbox{]})}
+
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00023}{23}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_ab6d550f2b1705e9e971e83869a84047b}\label{create__game__handler_8inc_8php_ab6d550f2b1705e9e971e83869a84047b} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!\$new\_path\_big@{\$new\_path\_big}}
+\index{\$new\_path\_big@{\$new\_path\_big}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$new\_path\_big}{\$new\_path\_big}}
+{\footnotesize\ttfamily \$new\+\_\+path\+\_\+big = \textquotesingle{}../images/games\+\_\+images/\textquotesingle{}.\$file\+\_\+name.\textquotesingle{}\+\_\+big.\textquotesingle{}.\$type}
+
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00104}{104}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_aac0ad6d723a5d29ab3bf6049d2e2ea98}\label{create__game__handler_8inc_8php_aac0ad6d723a5d29ab3bf6049d2e2ea98} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!\$new\_path\_big\_for\_db@{\$new\_path\_big\_for\_db}}
+\index{\$new\_path\_big\_for\_db@{\$new\_path\_big\_for\_db}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$new\_path\_big\_for\_db}{\$new\_path\_big\_for\_db}}
+{\footnotesize\ttfamily \$new\+\_\+path\+\_\+big\+\_\+for\+\_\+db = \textquotesingle{}images/games\+\_\+images/\textquotesingle{}.\$file\+\_\+name.\textquotesingle{}\+\_\+big.\textquotesingle{}.\$type}
+
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00107}{107}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_abae31d072e95b3332bc2479d09581349}\label{create__game__handler_8inc_8php_abae31d072e95b3332bc2479d09581349} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!\$new\_path\_small@{\$new\_path\_small}}
+\index{\$new\_path\_small@{\$new\_path\_small}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$new\_path\_small}{\$new\_path\_small}}
+{\footnotesize\ttfamily \$new\+\_\+path\+\_\+small = \textquotesingle{}../images/games\+\_\+images/\textquotesingle{}.\$file\+\_\+name.\textquotesingle{}\+\_\+small.\textquotesingle{}.\$type}
+
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00105}{105}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_aa9285bc63f1dfdf6b36180dd9b4e9e3c}\label{create__game__handler_8inc_8php_aa9285bc63f1dfdf6b36180dd9b4e9e3c} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!\$new\_path\_small\_for\_db@{\$new\_path\_small\_for\_db}}
+\index{\$new\_path\_small\_for\_db@{\$new\_path\_small\_for\_db}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$new\_path\_small\_for\_db}{\$new\_path\_small\_for\_db}}
+{\footnotesize\ttfamily \$new\+\_\+path\+\_\+small\+\_\+for\+\_\+db = \textquotesingle{}images/games\+\_\+images/\textquotesingle{}.\$file\+\_\+name.\textquotesingle{}\+\_\+small.\textquotesingle{}.\$type}
+
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00108}{108}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}\label{create__game__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily global \$pdo}
+
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00008}{8}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07}\label{create__game__handler_8inc_8php_a112ef069ddc0454086e3d1e6d8d55d07} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!\$result@{\$result}}
+\index{\$result@{\$result}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$result}{\$result}}
+{\footnotesize\ttfamily \$result = \$stmt-\/$>$fetch()}
+
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00034}{34}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919}\label{create__game__handler_8inc_8php_a9a4a6fba2208984cabb3afacadf33919} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!\$type@{\$type}}
+\index{\$type@{\$type}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{\$type}{\$type}}
+{\footnotesize\ttfamily \$type = array\+\_\+slice(explode(\textquotesingle{}.\textquotesingle{}, \$file\mbox{[}\textquotesingle{}name\textquotesingle{}\mbox{]}), -\/1, 1)\mbox{[}0\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00103}{103}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_a19f5c4dcfcf41072c1ac8904c4f5001c}\label{create__game__handler_8inc_8php_a19f5c4dcfcf41072c1ac8904c4f5001c} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!else@{else}}
+\index{else@{else}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_8php_ac725e896cd274c32a2c65d0fcd3397ed}{if}} (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}pcvr\textquotesingle{}\mbox{]})) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \$meta\ =\ 0}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00065}{65}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_a32292f75b6f103cc8b74527a00c94b2b}\label{create__game__handler_8inc_8php_a32292f75b6f103cc8b74527a00c94b2b} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!finally@{finally}}
+\index{finally@{finally}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{finally}{finally}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game_8php_a2a99526254229216f8db37db144326ba}{catch}} (PDOException \$e) finally}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \textcolor{keyword}{null}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00044}{44}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_ad0ed846c8f91b26c70889960cd0c7526}\label{create__game__handler_8inc_8php_ad0ed846c8f91b26c70889960cd0c7526} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!if@{if}}
+\index{if@{if}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}}
+{\footnotesize\ttfamily if(!isset(\$\+\_\+\+SESSION)) (\begin{DoxyParamCaption}\item[{!}]{isset \$\+\_\+\+SESSION }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00002}{2}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
+\Hypertarget{create__game__handler_8inc_8php_abe4cc9788f52e49485473dc699537388}\label{create__game__handler_8inc_8php_abe4cc9788f52e49485473dc699537388} 
+\index{create\_game\_handler.inc.php@{create\_game\_handler.inc.php}!try@{try}}
+\index{try@{try}!create\_game\_handler.inc.php@{create\_game\_handler.inc.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{check__game_8inc_8php_ae413a8cfb4ac44977cad4df4ebf985ca}{\$stmt}}\ =\ \mbox{\hyperlink{create__game__handler_8inc_8php_a9f187aeb0999f8898ae2451de67650d0}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{'SELECT\ name\ FROM\ games\ WHERE\ LOWER(games.name)\ =\ :name'})}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{create__game__handler_8inc_8php_source_l00030}{30}} of file \mbox{\hyperlink{create__game__handler_8inc_8php_source}{create\+\_\+game\+\_\+handler.\+inc.\+php}}.
+
