@@ -1,0 +1,2 @@
+ErrorDocument 404 http://localhost/semestralka/index.php?message=error 404
+#ErrorDocument 404 https://zwa.toad.cz/~smyshdan/semestralka_stable/semestralka/index.php?message=404

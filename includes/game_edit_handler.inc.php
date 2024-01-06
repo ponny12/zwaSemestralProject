@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION)) session_start();
+require_once '../config/config.php';
 require '../tools/error.tool.php';
 require '../tools/dbh.tool.php';
 global $pdo;

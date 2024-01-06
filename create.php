@@ -1,8 +1,7 @@
 <?php
-if(!isset($_SESSION))
-{
-    session_start();
-}
+require_once 'config/config.php';
+require 'basedir/basedir.php';
+global $base_dir;
 require 'tools/dbh.tool.php';
 require 'tools/error.tool.php';
 global $pdo;
@@ -134,10 +133,6 @@ if (isset($_POST['create_button']) && $_POST['token'] == $_SESSION['token']) {
         header('Location: error.php');
         die();
     }
-
-
-
-
 }
 
 
@@ -149,6 +144,7 @@ if (isset($_POST['create_button']) && $_POST['token'] == $_SESSION['token']) {
 <html lang="en">
 
 <head>
+    <base href="<?php echo $base_dir?>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
@@ -171,7 +167,7 @@ if (isset($_POST['create_button']) && $_POST['token'] == $_SESSION['token']) {
         <?php }
 
         ?>
-        <form action="#" class="create_event_form" method="POST" id="create_event_form">
+        <form action="create.php" class="create_event_form" method="POST" id="create_event_form">
             <?php
             $_SESSION['token'] = time();
             ?>

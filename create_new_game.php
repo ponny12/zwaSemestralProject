@@ -1,8 +1,7 @@
 <?php
-if(!isset($_SESSION))
-{
-    session_start();
-}
+require_once 'config/config.php';
+require 'basedir/basedir.php';
+global $base_dir;
 
 if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
     $isAdmin = true;
@@ -23,6 +22,7 @@ if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
 <html lang="en">
 
 <head>
+    <base href="<?php echo $base_dir?>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">

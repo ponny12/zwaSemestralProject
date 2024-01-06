@@ -1,8 +1,8 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
+require_once 'config/config.php';
 require 'tools/dbh.tool.php';
+require 'basedir/basedir.php';
+global $base_dir;
 global $pdo;
 
 # check GET and set game_id from it
@@ -36,7 +36,7 @@ try {
 }
 
 # if it is admin who visit page, then we will show him an edit button etc
-if ($_SESSION['isAdmin']) {
+if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
     $is_admin = true;
 } else {
     $is_admin = false;
@@ -101,6 +101,7 @@ try {
 <html lang="en">
 
 <head>
+    <base href="<?php echo $base_dir ?>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
@@ -166,7 +167,7 @@ try {
                 <div class="description"><?php echo htmlspecialchars($game['description'])?></div>
             </div>
             <?php if ($is_admin) { ?>
-                <a href="?id=<?php echo $game_id?>&edit=true" class="edit orange_button">edit</a>
+                <a href="game.php?id=<?php echo $game_id?>&edit=true" class="edit orange_button">edit</a>
             <?php }?>
         </div>
 

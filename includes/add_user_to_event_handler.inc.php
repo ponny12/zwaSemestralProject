@@ -1,4 +1,6 @@
 <?php
+require '../config/config.php';
+
 if ($_SERVER['REQUEST_METHOD'] != 'POST' || empty($_POST['event_id']) || empty($_POST['user_id'])) {
     header('Location: ../index.php');
     die();

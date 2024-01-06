@@ -1,8 +1,5 @@
 <?php
-if(!isset($_SESSION))
-{
-    session_start();
-}
+require_once '../config/config.php';
 
 function checkUsernameAlreadyExist($username)
 {

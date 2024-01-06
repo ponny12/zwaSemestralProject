@@ -1,8 +1,7 @@
 <?php
-if(!isset($_SESSION))
-{
-    session_start();
-}
+require_once 'config/config.php';
+require 'basedir/basedir.php';
+global $base_dir;
 
 
 
@@ -17,6 +16,7 @@ include "header.php"
 <html lang="en">
 
 <head>
+    <base href="<?php echo $base_dir?>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -33,9 +33,9 @@ include "header.php"
             <div id="usernameError" class="error"></div>
             <label for="email">E-mail: <input type="email" name="email" id="email"></label>
             <div id="emailError" class="error"></div>
-            <label for="password1">Password: <input type="password" name="password1" id="password1" value="PreparedPassword"></label>
+            <label for="password1">Password: <input type="password" name="password1" id="password1" value=""></label>
             <div id="weakPassError" class="error"></div>
-            <label for="password2">Password again: <input type="password" name="password2" id="password2" value="PreparedPassword"></label>
+            <label for="password2">Password again: <input type="password" name="password2" id="password2" value=""></label>
             <div id="matchPassError" class="error"></div>
             <label for="confirmLicense">Confirm with<a href="license.php" target="_blank"
                     class="license_link">license:</a><input type="checkbox" name="confirmLicense"

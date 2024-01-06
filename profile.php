@@ -1,8 +1,7 @@
 <?php
-if(!isset($_SESSION))
-{
-    session_start();
-}
+require_once 'config/config.php';
+require 'basedir/basedir.php';
+global $base_dir;
 require 'tools/dbh.tool.php';
 global $pdo;
 if (empty($_SESSION['loginID'])) {
@@ -58,6 +57,7 @@ if (isset($user['admin']) && $user['admin'] != null) {
 <html lang="en">
 
 <head>
+    <base href="<?php echo $base_dir?>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -102,7 +102,7 @@ if (isset($user['admin']) && $user['admin'] != null) {
                 <div class="username"><?php echo htmlspecialchars($user['username']) ?></div>
                 <?php
                 if ($user['id'] == $_SESSION['loginID']) { ?>
-                    <a href="?id=<?php echo $user['id']?>&edit=<?php echo 'true'?>" class="orange_button">edit</a>
+                    <a href="profile.php/?id=<?php echo $user['id']?>&edit=<?php echo 'true'?>" class="orange_button">edit</a>
                 <?php }
                 ?>
             </div>
@@ -133,8 +133,8 @@ if (isset($user['admin']) && $user['admin'] != null) {
                 <a href="create_new_game.php" class="orange_button">add new game</a>
                 <a href="suggestions_list.php" class="orange_button">suggestions</a>
                 <a href="includes/delete_past_events.inc.php" class="orange_button">delete past events</a>
+                <a href="users_list.php" class="orange_button">users list</a>
             </div>
-
         </div>
     <?php }
     ?>

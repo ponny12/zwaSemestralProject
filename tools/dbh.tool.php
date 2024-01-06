@@ -1,8 +1,4 @@
 <?php
-if(!isset($_SESSION))
-{
-    session_start();
-}
 
 //
 //$dsn = "mysql:host=localhost;dbname=vrmates_db";

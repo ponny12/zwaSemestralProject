@@ -1,11 +1,12 @@
 <?php
 function raiseError($text, $prefix='') {
-    if(!isset($_SESSION)) session_start();
+    require_once $prefix.'config/config.php';
     $url = $prefix.'error.php';
     try {
         $_SESSION['errorType'] = strval($text);
         echo $url;
-        header('Location: '.$url);
+//        header('Location: '.$url);
+        echo $text;
         die();
     } catch (Exception $e) {
         echo htmlspecialchars('BAD ERROR PREFIX!!! '.$text);

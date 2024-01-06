@@ -1,4 +1,5 @@
 <?php
+require_once '../config/config.php';
 require '../tools/dbh.tool.php';
 global $pdo;
 require '../tools/error.tool.php';

@@ -1,14 +1,12 @@
 <?php
-if(!isset($_SESSION))
-{
-    session_start();
-}
+require_once 'config/config.php';
 if (empty($_SESSION['loginID'])) {
     header('Location: login.php?message=login first!');
     die();
 }
 
-
+require 'basedir/basedir.php';
+global $base_dir;
 require_once 'tools/dbh.tool.php';
 global $pdo;
 require 'tools/error.tool.php';
@@ -97,6 +95,7 @@ if ($creator['id'] == $_SESSION['loginID']) {
 <html lang="en">
 
 <head>
+    <base href="<?php echo $base_dir?>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">

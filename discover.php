@@ -1,9 +1,7 @@
 <?php
-if(!isset($_SESSION))
-{
-    session_start();
-}
-
+require_once 'config/config.php';
+require 'basedir/basedir.php';
+global $base_dir;
 
 require 'tools/dbh.tool.php';
 global $pdo;
@@ -215,6 +213,7 @@ try {
 <html lang="en">
 
 <head>
+    <base href="<?php echo $base_dir?>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
@@ -235,7 +234,7 @@ try {
     <!----------------------------->
 
     <div class="search_container">
-        <form action="#" class="search_section" method="GET">
+        <form action="discover.php/" class="search_section" method="GET">
             <div class="search_bar">
                 <label for="search"></label>
                 <input type="search" class="line" name="search" id="search"
@@ -351,7 +350,7 @@ try {
 
     <div class="pagination_content">
         <!--prev btn-->
-        <a href="?page=<?php echo $page - 1 ?><?php echo $all_args?>" <?php
+        <a href="discover.php?page=<?php echo $page - 1 ?><?php echo $all_args?>" <?php
             if ($page <= 1) {
                 echo 'class="prev btn disabled"';
             } else {
@@ -362,36 +361,36 @@ try {
         <!-- prev 2 pages btns -->
         <?php
         if ($page > 2) { ?>
-            <a href="?page=<?php echo $page - 2 ?><?php echo $all_args?>" class="prev_page btn small"><?php echo $page - 2 ?></a>
+            <a href="discover.php?page=<?php echo $page - 2 ?><?php echo $all_args?>" class="prev_page btn small"><?php echo $page - 2 ?></a>
         <?php }
         ?>
 
         <?php
         if ($page > 1) { ?>
-            <a href="?page=<?php echo $page - 1 ?><?php echo $all_args?>" class="prev_page btn small"><?php echo $page - 1 ?></a>
+            <a href="discover.php?page=<?php echo $page - 1 ?><?php echo $all_args?>" class="prev_page btn small"><?php echo $page - 1 ?></a>
         <?php }
         ?>
 
         <!-- curr page btn -->
-        <a href="?page=<?php echo $page ?><?php echo $all_args?>" class="selected btn"><?php echo $page ?></a>
+        <a href="discover.php?page=<?php echo $page ?><?php echo $all_args?>" class="selected btn"><?php echo $page ?></a>
 
         <!-- next 2 pages btns -->
         <?php
         if ($page < $num_of_page) { ?>
-            <a href="?page=<?php echo $page + 1 ?><?php echo $all_args?>" class="next_page btn small"><?php echo $page + 1 ?></a>
+            <a href="discover.php?page=<?php echo $page + 1 ?><?php echo $all_args?>" class="next_page btn small"><?php echo $page + 1 ?></a>
         <?php }
         ?>
 
         <?php
         if ($page < $num_of_page - 1) { ?>
-            <a href="?page=<?php echo $page + 2 ?><?php echo $all_args?>" class="next_page btn small"><?php echo $page + 2 ?></a>
+            <a href="discover.php?page=<?php echo $page + 2 ?><?php echo $all_args?>" class="next_page btn small"><?php echo $page + 2 ?></a>
         <?php }
         ?>
 
 
 
         <!--next btn-->
-        <a href="?page=<?php echo $page + 1 ?><?php echo $all_args?>" <?php
+        <a href="discover.php?page=<?php echo $page + 1 ?><?php echo $all_args?>" <?php
         if ($page >= $num_of_page) {
             echo 'class="next btn disabled"';
         } else {
